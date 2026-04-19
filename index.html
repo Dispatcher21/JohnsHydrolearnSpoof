@@ -15,13 +15,6 @@
   .learning-header .logo img { height:40px; }
   .course-title { font-size:0.95rem; font-weight:700; }
 
-  .course-tabs-navigation { background:#fff; border-bottom:1px solid #dee2e6; }
-  .nav-underline-tabs .nav-link { color:#495057; border:none; border-bottom:3px solid transparent; padding:0.75rem 1.25rem; border-radius:0; text-decoration:none; }
-  .nav-underline-tabs .nav-link:hover { color:var(--primary); border-bottom-color:var(--primary); }
-  .nav-underline-tabs .nav-link.active { color:var(--primary); border-bottom-color:var(--primary); font-weight:600; }
-
-  .sequence-navigation { display:flex; align-items:center; background:#f8f9fa; border:1px solid #dee2e6; border-radius:4px; padding:0.5rem 0.75rem; }
-
   .unit h1.h3 { font-size:1.4rem; font-weight:700; }
 
   /* Content styles */
@@ -69,6 +62,72 @@
   .unit-navigation { margin-top:1.5rem; padding-top:1rem; border-top:1px solid #dee2e6; }
   footer.footer { background:#fff; }
   footer.footer img { max-height:45px; }
+
+  /* ===== Table of Contents ===== */
+  #toc { background:#f4f8fc; border:1px solid #c8dff0; border-left:4px solid #0075b4; border-radius:4px; padding:1.1rem 1.4rem; margin-bottom:2rem; }
+  .toc-title { font-weight:700; font-size:0.95rem; color:#0075b4; margin-bottom:0.75rem; }
+  .toc-list { margin:0; padding-left:1.25rem; }
+  .toc-list li { margin-bottom:0.3rem; font-size:0.92rem; }
+  .toc-list ol { padding-left:1.25rem; margin-top:0.2rem; }
+  .toc-list ol li { font-size:0.85rem; color:#495057; margin-bottom:0.15rem; }
+  .toc-list a { color:#0075b4; text-decoration:none; }
+  .toc-list a:hover { text-decoration:underline; }
+
+  /* ===== Calculator styles ===== */
+  .calc-box { background:#f8f9fa; border:1px solid #dee2e6; border-radius:6px; padding:1.25rem 1.4rem; margin-bottom:1.5rem; }
+  .calc-label { font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.6rem; margin-top:0.75rem; }
+  .calc-label:first-child { margin-top:0; }
+  .calc-field-label { font-size:0.82rem; color:#495057; margin-bottom:0.2rem; display:block; }
+  .calc-input { width:100%; padding:0.4rem 0.6rem; border:1px solid #ced4da; border-radius:4px; font-size:0.9rem; background:#fff; }
+  .calc-input:focus { outline:none; border-color:#0075b4; box-shadow:0 0 0 2px rgba(0,117,180,0.15); }
+  .calc-textarea { width:100%; padding:0.5rem 0.6rem; border:1px solid #ced4da; border-radius:4px; font-size:0.88rem; font-family:"Courier New",monospace; background:#fff; min-height:140px; resize:vertical; }
+  .calc-textarea:focus { outline:none; border-color:#0075b4; box-shadow:0 0 0 2px rgba(0,117,180,0.15); }
+  .calc-btn { background:#0075b4; color:#fff; border:none; border-radius:4px; padding:0.45rem 1.2rem; font-size:0.9rem; font-weight:600; cursor:pointer; margin-right:0.5rem; }
+  .calc-btn:hover { background:#005f94; }
+  .calc-reset-btn { background:#fff; color:#6c757d; border:1px solid #ced4da; border-radius:4px; padding:0.45rem 1rem; font-size:0.9rem; cursor:pointer; }
+  .calc-reset-btn:hover { background:#f8f9fa; }
+  .calc-add-btn { background:none; border:1px dashed #0075b4; color:#0075b4; border-radius:4px; padding:0.3rem 0.8rem; font-size:0.82rem; cursor:pointer; margin-top:0.25rem; }
+  .calc-add-btn:hover { background:#e8f4fb; }
+  .calc-remove-btn { background:none; border:none; color:#dc3545; font-size:1.2rem; cursor:pointer; line-height:1; padding:0 0.25rem; }
+  .calc-remove-btn:hover { color:#a71d2a; }
+  .calc-result { background:#edf7f0; border:1px solid #28a745; border-radius:4px; padding:0.9rem 1.1rem; margin-top:1rem; }
+  .calc-result-title { font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em; color:#155724; margin-bottom:0.5rem; }
+  .calc-result-row { display:flex; justify-content:space-between; padding:0.2rem 0; border-bottom:1px solid #c3e6cb; font-size:0.9rem; }
+  .calc-result-row:last-child { border-bottom:none; font-weight:700; }
+  .calc-result-label { color:#495057; }
+  .calc-result-value { color:#155724; font-family:"Courier New",monospace; font-weight:600; }
+  .calc-error { background:#fff3cd; border:1px solid #ffc107; border-radius:4px; padding:0.6rem 0.9rem; margin-top:0.75rem; color:#856404; font-size:0.88rem; }
+  .conv-table-header { background:#0075b4; color:#fff; padding:0.4em 0.6em; border:1px solid #005f94; font-weight:700; font-size:0.82rem; text-align:center; white-space:nowrap; }
+  .conv-table-cell { padding:0.35em 0.6em; border:1px solid #dee2e6; text-align:center; font-size:0.82rem; font-family:"Courier New",monospace; }
+  .conv-table-cell.total { background:#edf7f0; font-weight:700; color:#155724; }
+  .conv-table-cell.drh { background:#f4f8fc; }
+  .conv-table-cell.time { background:#f8f9fa; font-weight:600; color:#495057; }
+
+  /* Step-by-step display */
+  .calc-steps { background:#fff; border:1px solid #dee2e6; border-radius:4px; padding:0.9rem 1.1rem; margin-top:0.75rem; }
+  .calc-steps-title { font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em; color:#6f42c1; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.4rem; }
+  .calc-step { display:flex; gap:0.75rem; margin-bottom:0.75rem; padding-bottom:0.75rem; border-bottom:1px solid #f0f0f0; }
+  .calc-step:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .step-num { background:#6f42c1; color:#fff; border-radius:50%; width:22px; height:22px; min-width:22px; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; margin-top:2px; flex-shrink:0; }
+  .step-body { flex:1; }
+  .step-label { font-weight:600; font-size:0.88rem; color:#343a40; margin-bottom:0.2rem; }
+  .step-formula { font-family:"Courier New",monospace; font-size:0.85rem; color:#495057; background:#f8f9fa; padding:0.2rem 0.5rem; border-radius:3px; margin-bottom:0.2rem; display:inline-block; }
+  .step-sub { font-family:"Courier New",monospace; font-size:0.85rem; color:#0075b4; margin-bottom:0.15rem; }
+  .step-answer { font-family:"Courier New",monospace; font-size:0.9rem; font-weight:700; color:#155724; margin-top:0.15rem; }
+
+  /* Method toggle buttons */
+  .method-toggle { display:flex; gap:0; margin-bottom:1rem; border:1px solid #ced4da; border-radius:4px; overflow:hidden; width:fit-content; }
+  .method-toggle button { background:#fff; border:none; padding:0.4rem 1rem; font-size:0.85rem; cursor:pointer; color:#495057; }
+  .method-toggle button.active { background:#0075b4; color:#fff; font-weight:600; }
+  .method-toggle button:hover:not(.active) { background:#f8f9fa; }
+
+  /* Concept question blocks */
+  .cq-block { display:flex; gap:1rem; margin-bottom:1.5rem; background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:1rem 1.1rem; }
+  .cq-num { background:#0075b4; color:#fff; border-radius:50%; width:32px; height:32px; min-width:32px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; margin-top:2px; flex-shrink:0; }
+  .cq-body { flex:1; }
+  .cq-question { font-weight:600; font-size:0.95rem; color:#212529; margin-bottom:0.75rem; line-height:1.5; }
+  .cq-answer { background:#f4f8fc; border-left:3px solid #0075b4; padding:0.8rem 1rem; border-radius:0 4px 4px 0; font-size:0.9rem; line-height:1.65; }
+  .cq-answer-title { font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.4rem; }
 </style>
 </head>
 <body>
@@ -94,19 +153,6 @@
 <!-- ===== MAIN ===== -->
 <main class="d-flex flex-column flex-grow-1">
 
-  <!-- Course tabs -->
-  <div class="course-tabs-navigation mb-3">
-    <div class="container-xl">
-      <nav class="nav flex-nowrap nav-underline-tabs">
-        <a class="nav-item flex-shrink-0 nav-link active" href="#">Course</a>
-        <a class="nav-item flex-shrink-0 nav-link" href="#">Progress</a>
-        <a class="nav-item flex-shrink-0 nav-link" href="#">Dates</a>
-        <a class="nav-item flex-shrink-0 nav-link" href="#">Discussion</a>
-        <a class="nav-item flex-shrink-0 nav-link" href="#">Green Streets Project</a>
-      </nav>
-    </div>
-  </div>
-
   <div class="container-xl">
 
     <!-- Breadcrumb -->
@@ -120,27 +166,83 @@
       </ol>
     </nav>
 
-    <!-- Sequence navigation -->
-    <nav class="sequence-navigation mb-4">
-      <button type="button" class="btn btn-link text-primary">
-        <i class="fas fa-chevron-left mr-1"></i>Previous
-      </button>
-      <div class="flex-grow-1 text-center">
-        <button type="button" class="btn btn-link text-muted" title="Background &amp; Overview"><i class="fas fa-book"></i></button>
-        <button type="button" class="btn btn-link text-primary font-weight-bold" title="UH, Rational Method, CN &amp; Routing (current)"><i class="fas fa-book"></i></button>
-        <button type="button" class="btn btn-link text-muted" title="Practice Problems"><i class="fas fa-book"></i></button>
-      </div>
-      <button type="button" class="btn btn-link text-primary">
-        Next<i class="fas fa-chevron-right ml-1"></i>
-      </button>
-    </nav>
-
     <!-- Unit content -->
     <div class="unit">
       <h1 class="mb-1 h3">Learning Activity: Unit Hydrograph, Rational Method, Curve Number &amp; Hydrologic Routing</h1>
       <button class="btn btn-link btn-sm text-primary px-0 mb-3">
         <i class="far fa-bookmark mr-1"></i>Bookmark this page
       </button>
+
+      <!-- TABLE OF CONTENTS -->
+      <div id="toc">
+        <div class="toc-title"><i class="fas fa-list mr-2"></i>Contents</div>
+        <ol class="toc-list">
+          <li><a href="#uh-theory">Unit Hydrograph (UH) Theory</a>
+            <ol>
+              <li><a href="#uh-theory">What is a Unit Hydrograph?</a></li>
+              <li><a href="#uh-theory">Key Assumptions</a></li>
+              <li><a href="#uh-theory">Essential Terminology</a></li>
+              <li><a href="#uh-theory">Reading a UH Figure</a></li>
+              <li><a href="#uh-theory">SCS Triangular Unit Hydrograph</a></li>
+              <li><a href="#uh-theory">Answering UH Questions: Peak, Time, Volume</a></li>
+              <li><a href="#uh-theory">Convolution</a></li>
+            </ol>
+          </li>
+          <li><a href="#rational-method">The Rational Method</a>
+            <ol>
+              <li><a href="#rational-method">Overview and Applicability</a></li>
+              <li><a href="#rational-method">The Rational Formula</a></li>
+              <li><a href="#rational-method">The Runoff Coefficient (C)</a></li>
+              <li><a href="#rational-method">Rainfall Intensity and IDF Curves</a></li>
+              <li><a href="#rational-method">Time of Concentration</a></li>
+              <li><a href="#rational-method">Worked Examples</a></li>
+            </ol>
+          </li>
+          <li><a href="#cn-method">The Curve Number (CN) Method</a>
+            <ol>
+              <li><a href="#cn-method">Background and Purpose</a></li>
+              <li><a href="#cn-method">Key CN Terminology</a></li>
+              <li><a href="#cn-method">The CN Equations</a></li>
+              <li><a href="#cn-method">CN Tables by Land Use &amp; HSG</a></li>
+              <li><a href="#cn-method">Computing Composite CN</a></li>
+              <li><a href="#cn-method">Worked Examples</a></li>
+            </ol>
+          </li>
+          <li><a href="#routing">Hydrologic Routing</a>
+            <ol>
+              <li><a href="#routing">What is Hydrologic Routing?</a></li>
+              <li><a href="#routing">The Continuity Equation</a></li>
+              <li><a href="#routing">Reservoir vs. Channel Routing</a></li>
+              <li><a href="#routing">Key Concepts and Effects</a></li>
+              <li><a href="#routing">The Routing Process Step-by-Step</a></li>
+              <li><a href="#routing">Applications</a></li>
+            </ol>
+          </li>
+          <li><a href="#summary">Summary: Choosing the Right Method</a></li>
+          <li><a href="#concept-questions">Concept Review Questions</a>
+            <ol>
+              <li><a href="#concept-questions">Unit Hydrograph — Q1–5</a></li>
+              <li><a href="#concept-questions">Rational Method — Q6–10</a></li>
+              <li><a href="#concept-questions">Curve Number — Q11–15</a></li>
+              <li><a href="#concept-questions">Hydrologic Routing — Q16–20</a></li>
+            </ol>
+          </li>
+          <li><a href="#calculators">Interactive Calculators</a>
+            <ol>
+              <li><a href="#calculators">Calculator 1: Rational Method Peak Discharge</a></li>
+              <li><a href="#calculators">Calculator 2: Curve Number — Runoff Depth &amp; Volume</a></li>
+              <li><a href="#calculators">Calculator 3: SCS Triangular Unit Hydrograph</a></li>
+              <li><a href="#calculators">Calculator 4: UH Convolution</a></li>
+              <li><a href="#calculators">Calculator 5: Time of Concentration</a></li>
+              <li><a href="#calculators">Calculator 6: IDF Rainfall Intensity</a></li>
+              <li><a href="#calculators">Calculator 7: Composite CN (Quick)</a></li>
+              <li><a href="#calculators">Calculator 8: UH Duration Change (S-Curve)</a></li>
+              <li><a href="#calculators">Calculator 9: Level-Pool (Modified Puls) Routing</a></li>
+              <li><a href="#calculators">Calculator 10: Back-Calculate Peak from Volume</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
 
       <!-- ============================================================
            MAIN CONTENT
@@ -740,18 +842,645 @@
           </ol>
         </div>
 
+
+
+        <!-- ============================================================
+             SECTION 5: INTERACTIVE CALCULATORS
+             ============================================================ -->
+        <h2 id="concept-questions">Section 5: Concept Review Questions</h2>
+        <p>The following questions test conceptual understanding of the material covered in this activity. For each question, read carefully and formulate your own answer before reading the provided explanation.</p>
+
+        <!-- ── UH QUESTIONS ── -->
+        <h3>Unit Hydrograph — Questions 1–5</h3>
+
+        <div class="cq-block">
+          <div class="cq-num">Q1</div>
+          <div class="cq-body">
+            <div class="cq-question">What are the two core assumptions of Unit Hydrograph theory, and what do they imply about how a watershed responds to different storm sizes?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The two core assumptions are <strong>linearity</strong> and <strong>time-invariance</strong>. Linearity means that the watershed's runoff response is directly proportional to the rainfall excess — doubling the rainfall excess doubles every ordinate of the resulting hydrograph, while the shape remains identical. Time-invariance means the watershed responds the same way regardless of when the storm occurs; the UH shape does not change with season, antecedent condition, or time of year. Together, these imply that a watershed can be treated as a simple linear system: once you know the UH, you can predict the full hydrograph for any storm by multiplying ordinates and superimposing results. The practical consequence is that a single UH derived from one storm event can be applied to any other storm of the same duration on the same watershed.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q2</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain the difference between time to peak (t<sub>p</sub>) and lag time (t<sub>L</sub>). How are they related in the SCS method?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              <strong>Lag time (t<sub>L</sub>)</strong> is the time from the <em>centroid</em> of the rainfall excess to the peak of the direct runoff hydrograph. It is a measure of the average travel time of water through the watershed and is a fundamental watershed characteristic. <strong>Time to peak (t<sub>p</sub>)</strong> is the time from the <em>start</em> of rainfall excess (or the beginning of the storm) to the peak discharge — it depends on both the lag time and the storm duration. In the SCS Triangular UH method, the two are related by the equation t<sub>p</sub> = t<sub>r</sub>/2 + t<sub>L</sub>, where t<sub>r</sub> is the storm duration. The lag time itself is approximated as t<sub>L</sub> = 0.6 × t<sub>c</sub>. The key distinction is that lag time is a fixed property of the watershed, while time to peak changes depending on how long the storm lasts.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q3</div>
+          <div class="cq-body">
+            <div class="cq-question">A classmate says "if I double the storm duration, the peak discharge of the UH doubles." Is this correct? Explain why or why not.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              This is <strong>incorrect</strong>. Doubling the storm duration does not double the peak — it actually <em>decreases</em> the peak ordinate of the UH. A longer storm spreads the same 1 inch of rainfall excess over a longer time period, which means the rate at which water is delivered to the watershed is lower. Using the SCS formula Q<sub>p,UH</sub> = 484 × A / t<sub>p</sub>, a longer duration increases t<sub>p</sub> (since t<sub>p</sub> = t<sub>r</sub>/2 + t<sub>L</sub>), and because t<sub>p</sub> is in the denominator, a larger t<sub>p</sub> produces a smaller peak ordinate. The total runoff volume remains 1 inch over the watershed — it is conserved — but it is spread over a longer time. What the classmate may be confusing is the linearity principle: if you double the rainfall excess depth (not duration) while keeping duration constant, then yes, the peak discharge doubles.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q4</div>
+          <div class="cq-body">
+            <div class="cq-question">What is the purpose of the S-curve in Unit Hydrograph analysis? Describe in words what it represents physically.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The S-curve (or S-hydrograph) is used to <strong>convert a UH of one duration into a UH of a different duration</strong>. Physically, it represents the runoff hydrograph that would result from a continuous, indefinitely long sequence of unit storms, each of duration t<sub>r</sub>, applied back-to-back without interruption. As more and more unit storms are added, their individual hydrographs overlap and accumulate until the total discharge reaches a steady equilibrium value — the resulting shape looks like an S, rising from zero to this constant level. To derive a new-duration UH, you build the S-curve, lag it by the new storm duration, subtract the two S-curves from each other, and scale the result. The lag-and-difference operation isolates the response that would come from exactly one storm of the new duration, and the scaling corrects for the ratio of durations to maintain the 1-inch runoff volume constraint.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q5</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain why the area under a Unit Hydrograph always equals exactly 1 inch of runoff over the watershed, regardless of the watershed's size or shape.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The UH is defined as the response to <strong>exactly 1 inch of uniformly distributed rainfall excess</strong> over the entire watershed. By definition, all of that rainfall excess must eventually leave the watershed as direct surface runoff — it has nowhere else to go once abstractions have been removed. Therefore conservation of mass guarantees that the total volume of the DRH equals 1 inch × watershed area, regardless of the watershed's geometry. The UH's shape — how fast or slow the water arrives at the outlet — depends on watershed characteristics like slope, shape, and drainage density, but the total volume is fixed by definition. This is why the area under any UH (when converted to volume units) always equals exactly one "unit" of runoff, which is also why scaling the UH by a rainfall excess of 2 inches gives a DRH with exactly 2 inches of total runoff volume.
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RATIONAL METHOD QUESTIONS ── -->
+        <h3>Rational Method — Questions 6–10</h3>
+
+        <div class="cq-block">
+          <div class="cq-num">Q6</div>
+          <div class="cq-body">
+            <div class="cq-question">Why is the design storm duration set equal to the time of concentration in the Rational Method? What happens to peak discharge if you use a duration shorter than t<sub>c</sub>? Longer?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The duration is set equal to t<sub>c</sub> because this produces the <strong>maximum possible peak discharge</strong> for a given return period — it is the critical design condition. When storm duration equals t<sub>c</sub>, the entire watershed is contributing runoff to the outlet simultaneously at the moment of peak discharge. If the duration is <em>shorter</em> than t<sub>c</sub>, only part of the watershed has had time to contribute flow to the outlet, so the peak discharge is lower despite the higher intensity (from the IDF curve). If the duration is <em>longer</em> than t<sub>c</sub>, the entire watershed is contributing, but the rainfall intensity decreases as duration increases (per the IDF curve), so peak discharge also decreases. The critical condition — maximum Q — therefore occurs precisely at duration = t<sub>c</sub>, which is why it is the standard design assumption.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q7</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain in physical terms what the runoff coefficient C represents. Why does C increase when a watershed is urbanized?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The runoff coefficient C represents the <strong>fraction of rainfall that becomes surface runoff</strong> — or equivalently, how much of the incoming rainfall is lost to infiltration, interception, depression storage, and other abstractions. A C value of 0.85 means 85% of the rainfall contributes to peak runoff and 15% is lost. C increases with urbanization because the natural pervious surfaces (soil, vegetation, meadows) that allow rainfall to infiltrate are replaced with impervious surfaces such as roads, parking lots, rooftops, and compacted soils. Impervious surfaces prevent infiltration entirely, so nearly all rainfall immediately becomes surface runoff. Additionally, urban drainage systems (gutters, storm sewers, channels) are designed to convey water rapidly to the outlet, reducing the time available for infiltration to occur. The net result is a dramatically higher fraction of rainfall becoming runoff, which is the physical meaning of a higher C.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q8</div>
+          <div class="cq-body">
+            <div class="cq-question">The Rational Method is generally not recommended for watersheds larger than 200 acres. What assumptions break down at larger scales that make it unreliable?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              Several key assumptions deteriorate at larger watershed scales. First, the assumption of <strong>spatially uniform rainfall</strong> becomes increasingly unrealistic — large watersheds are unlikely to receive the same rainfall intensity simultaneously across their entire area. Second, larger watersheds tend to have more <strong>heterogeneous land cover</strong>, making a single composite C value a poor representation of the actual spatial variability. Third, the assumption that the <strong>entire watershed contributes simultaneously</strong> at peak flow (when duration = t<sub>c</sub>) becomes questionable because different parts of a large watershed have very different travel times, and routing effects within the channel network become significant. Finally, the Rational Method produces only a <strong>peak flow with no hydrograph</strong>, but larger watersheds require volume information (for detention design, flood routing, etc.) that the method cannot provide. For large watersheds, methods like the SCS CN procedure combined with UH convolution are more appropriate because they explicitly account for spatial variability and produce a full hydrograph.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q9</div>
+          <div class="cq-body">
+            <div class="cq-question">Two adjacent watersheds have identical area, soil type, and rainfall. Watershed A is flat with long flow paths; Watershed B is steep with short flow paths. Which produces a higher peak discharge under the Rational Method, and why?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              <strong>Watershed B</strong> produces the higher peak discharge. Because Watershed B is steep with short flow paths, water travels quickly to the outlet, resulting in a much shorter time of concentration t<sub>c</sub>. A shorter t<sub>c</sub> means a shorter design storm duration, and from the IDF curve, shorter durations correspond to <em>higher</em> rainfall intensities. Since Q = CiA and C and A are identical for both watersheds, the watershed with the higher intensity (B) produces the higher peak. Physically, the steepness concentrates runoff rapidly — water drains off the hillsides quickly and arrives at the outlet in a short, intense pulse rather than spread over a long time. Watershed A, by contrast, has a longer t<sub>c</sub>, uses a longer (lower intensity) storm for design, and produces a lower peak flow despite receiving the same total rainfall.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q10</div>
+          <div class="cq-body">
+            <div class="cq-question">A student uses the same IDF curve intensity for both a 2-year and a 100-year storm design without changing the duration. What is wrong with this approach?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The error is that <strong>rainfall intensity depends on both duration and return period</strong>. IDF curves show that for the same duration, a 100-year storm has a significantly higher intensity than a 2-year storm — that is the entire purpose of selecting a return period. By using the same intensity for both, the student is either <em>underestimating</em> the 100-year peak (by using 2-year intensity for a 100-year design) or <em>overestimating</em> the 2-year peak (by using 100-year intensity for a routine design). In practice, this mistake most commonly results in under-designed infrastructure for rare storms, which can lead to flooding during events the structure was supposed to handle. The correct approach is to enter the IDF curve at the design duration (= t<sub>c</sub>) <em>and</em> the correct return period, then read the corresponding intensity. Each return period has its own IDF curve or set of curves.
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CN QUESTIONS ── -->
+        <h3>Curve Number — Questions 11–15</h3>
+
+        <div class="cq-block">
+          <div class="cq-num">Q11</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain what the initial abstraction I<sub>a</sub> represents physically. What does it mean that I<sub>a</sub> = 0.2S?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The initial abstraction I<sub>a</sub> is the total depth of rainfall that must fall <strong>before any runoff begins</strong>. It represents the combined effect of interception by vegetation canopies, filling of small surface depressions (puddles, micro-topography), and the initial high rate of infiltration that occurs in dry soil before the infiltration rate decreases. Until all of these "losses" are satisfied, rainfall is being captured and none reaches the drainage network as surface runoff. The relationship I<sub>a</sub> = 0.2S is an empirical approximation developed by the NRCS from analysis of many rainfall-runoff events. It states that the initial abstraction is approximately 20% of the potential maximum retention S. This means a watershed with large storage capacity (low CN, large S) requires more rainfall before runoff begins, which makes physical sense — a dry, sandy, vegetated soil can absorb much more rainfall before generating runoff than a compacted clay or paved surface.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q12</div>
+          <div class="cq-body">
+            <div class="cq-question">Why does the CN method produce zero runoff when P ≤ I<sub>a</sub>, even if it is raining? What is happening to all the rainfall in that scenario?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              When total rainfall P does not exceed the initial abstraction I<sub>a</sub>, all of the rainfall is being consumed by <strong>interception, depression storage, and initial infiltration</strong> before any water has the opportunity to move across the surface as runoff. The rainfall is not disappearing — it is being captured by leaves and stems, filling surface depressions, and infiltrating into the soil profile. The CN method treats I<sub>a</sub> as a threshold: the watershed must "fill up" these initial losses before it can generate any excess rainfall that becomes surface runoff. This is consistent with real watershed behavior — a light rain on a dry day often produces no measurable runoff because the soil and surface features absorb all of it. It is only when rainfall rate and total depth exceed what the watershed can absorb that surface runoff begins. The CN method captures this threshold behavior in a simple, practical way.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q13</div>
+          <div class="cq-body">
+            <div class="cq-question">Describe the difference between Hydrologic Soil Groups A and D in terms of infiltration capacity and runoff potential. Give an example soil type for each.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              <strong>Group A soils</strong> have the <em>highest</em> infiltration capacity and the <em>lowest</em> runoff potential. They are typically deep, well-drained, sandy or gravelly soils that transmit water readily. Even after prolonged wetting, they maintain a relatively high infiltration rate. Examples include clean sands, loamy sands, and sandy gravels. CN values for Group A are the lowest in any land use category. <strong>Group D soils</strong> are the opposite — they have <em>very low</em> infiltration capacity and the <em>highest</em> runoff potential. These are typically clay-heavy soils with poor drainage, shallow soils over nearly impervious layers, or soils that swell significantly when wet and close off pore spaces. Examples include heavy clay, clay loam, and certain expansive soils. When wet, Group D soils behave almost like impervious surfaces, transmitting very little water downward and generating substantial surface runoff. This is why the same land use type (e.g., residential lots) carries a much higher CN on Group D soils than Group A soils.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q14</div>
+          <div class="cq-body">
+            <div class="cq-question">A watershed has two sub-areas with CNs of 60 and 90. A student averages them to get CN = 75. Is this the correct approach? What is wrong or right about it, and does it matter?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              A simple arithmetic average is <strong>only correct if the two sub-areas have exactly equal drainage areas</strong>. The proper approach is an <em>area-weighted</em> average: CN<sub>composite</sub> = (CN<sub>1</sub>×A<sub>1</sub> + CN<sub>2</sub>×A<sub>2</sub>) / (A<sub>1</sub> + A<sub>2</sub>). If the areas happen to be equal, CN = (60+90)/2 = 75 is coincidentally correct. However, if one sub-area is much larger than the other, the simple average can be significantly wrong and will bias the composite CN toward the smaller area's value inappropriately. Whether it matters in practice depends on how far off the result is. Because CN appears in the denominator of the S equation (S = 1000/CN − 10) and the runoff equation is nonlinear, even a modest error in CN can produce a meaningful error in computed runoff depth, especially for moderate storms near the runoff threshold. The area-weighted approach is simple enough that there is no reason not to use it correctly.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q15</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain why the CN method predicts a much larger <em>increase</em> in runoff volume for high-CN watersheds compared to low-CN watersheds for the same storm event.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              This follows from the nonlinear structure of the CN runoff equation. A high-CN watershed has a small S value and a small I<sub>a</sub>, meaning it begins generating runoff almost immediately and retains very little rainfall. Even a small increase in storm size produces a large increase in runoff because the watershed is already near "full." Conversely, a low-CN watershed has a large S and a large I<sub>a</sub> — it can absorb substantial rainfall before runoff begins, and much of even a larger storm is still absorbed as the storm grows. Mathematically, the slope dQ/dP (how fast runoff increases with rainfall) is steeper for high-CN watersheds than for low-CN watersheds. This has important practical implications for urbanization: converting a low-CN natural area (CN ≈ 55–65) to a high-CN urban area (CN ≈ 85–95) dramatically increases not just the amount of runoff, but also the sensitivity of runoff to storm size — meaning urban watersheds experience disproportionately large runoff increases even for moderate storms.
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ROUTING QUESTIONS ── -->
+        <h3>Hydrologic Routing — Questions 16–20</h3>
+
+        <div class="cq-block">
+          <div class="cq-num">Q16</div>
+          <div class="cq-body">
+            <div class="cq-question">Describe in plain language what peak attenuation and peak lag mean. What physical phenomenon inside a reservoir or channel causes both of these effects?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              <strong>Peak attenuation</strong> means the maximum flow rate (peak discharge) is lower at the outlet of the basin or reach than it was at the inlet — the flood peak has been "flattened." <strong>Peak lag</strong> means the peak discharge at the outlet occurs later in time than the peak at the inlet — the flood wave has been "delayed." Both effects are caused by the same underlying phenomenon: <strong>storage</strong>. As the flood wave enters the basin or reach, it fills available storage — the reservoir pool rises, or the channel stores water in its cross-section. While the inflow is filling that storage, not all of the inflow can exit immediately, so the outflow rate is less than the inflow rate and the peak is reduced. The stored water then drains out gradually after the inflow has peaked and begun to recede, which causes the outflow peak to occur later. The two effects are inseparable — any system that attenuates the peak also lags it, because both result from the same temporary storage of water within the routing element.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q17</div>
+          <div class="cq-body">
+            <div class="cq-question">Explain the continuity equation I − O = dS/dt as it applies to routing. What does each term represent, and what law of physics does it express?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              This equation expresses <strong>conservation of mass</strong> (the continuity principle) applied to a control volume such as a reservoir or river reach. <strong>I</strong> is the inflow rate into the system (volume per time, e.g., cfs), representing all water entering the control volume. <strong>O</strong> is the outflow rate (cfs), representing all water leaving. <strong>dS/dt</strong> is the rate of change of storage within the control volume — positive when storage is increasing (filling), negative when storage is decreasing (draining). The equation states that any imbalance between inflow and outflow must be accounted for by a change in storage: if more water enters than leaves, storage increases; if more water leaves than enters, storage decreases. No water is created or destroyed. This is simply a statement of the law of conservation of mass applied to water. All hydrologic routing methods — whether level-pool or Muskingum — are derived from this single equation combined with a relationship between storage and outflow.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q18</div>
+          <div class="cq-body">
+            <div class="cq-question">What is the fundamental difference between reservoir (level-pool) routing and channel (Muskingum) routing? What assumption does level-pool routing make that channel routing does not?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The fundamental difference is in how each method treats the <strong>water surface profile</strong> within the routing element. <strong>Level-pool routing</strong> assumes the water surface is always horizontal — the reservoir or basin is assumed to be wide and still enough that at any instant, every point in the basin has the same water surface elevation. This means outflow is a unique function of storage alone (O = f(S)), and the storage-outflow relationship can be expressed as a single curve. <strong>Muskingum routing</strong>, used for stream channels, does not make this assumption. It recognizes that during flood routing, the water surface in a channel is not horizontal — the rising limb of the wave has a steeper water surface profile than the falling limb (wedge storage), and water can be stored in a "wedge" shape that depends on both inflow and outflow. The Muskingum parameter x accounts for this wedge storage effect. Level-pool routing is appropriate for ponds and reservoirs where the flat-pool assumption is valid; it is not appropriate for rivers and channels where the flood wave moves progressively downstream.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q19</div>
+          <div class="cq-body">
+            <div class="cq-question">In Muskingum routing, what does the parameter x represent? What does it mean physically when x = 0? When x = 0.5?</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              The parameter x is a <strong>dimensionless weighting factor</strong> (ranging from 0 to 0.5) that controls the relative influence of inflow versus outflow on the storage within the channel reach. It appears in the storage equation S = K[x·I + (1−x)·O] and reflects the degree to which inflow "wedge storage" affects total channel storage. When <strong>x = 0</strong>, storage depends entirely on outflow: S = K·O. This is equivalent to level-pool (reservoir) routing — there is no wedge storage effect, and the channel behaves like a simple reservoir that attenuates the peak significantly. This would apply to a very wide, flat reach or a reservoir. When <strong>x = 0.5</strong>, inflow and outflow are weighted equally: S = K·(0.5I + 0.5O). This represents pure translation — the flood wave moves downstream without any change in shape or attenuation, just shifted in time by the travel time K. Values between 0 and 0.5 represent intermediate cases combining both translation and attenuation, which is the realistic condition for most natural river reaches.
+            </div>
+          </div>
+        </div>
+
+        <div class="cq-block">
+          <div class="cq-num">Q20</div>
+          <div class="cq-body">
+            <div class="cq-question">A detention basin routes a post-development peak of 500 cfs down to 200 cfs. A student claims the basin also reduced the total runoff volume. Is this necessarily true? Explain your reasoning using the continuity equation.</div>
+            <div class="cq-answer">
+              <div class="cq-answer-title">Answer</div>
+              No, this is <strong>not necessarily true</strong> — and in most cases it is false. The continuity equation I − O = dS/dt tells us that any difference between inflow and outflow results in a change in storage. Over the full duration of a storm event, as the basin fills and then empties completely, the net change in storage is zero (ΔS = 0, assuming the basin starts and ends empty). If ΔS = 0 over the entire event, then the total inflow volume equals the total outflow volume — no volume has been removed. The detention basin has <em>redistributed</em> the runoff in time (lowering the peak and extending the duration) but has not reduced the total amount of water. Volume reduction would only occur if water were permanently removed from the system — for example, through infiltration into the ground (in an infiltration basin), evaporation, or reuse for irrigation. A conventional concrete detention basin with an impermeable liner and a pipe outlet conserves essentially all volume. This is an important distinction in stormwater management: peak control and volume control are separate goals that require different design approaches.
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 6 (formerly 5) ── -->
+        <h2 id="calculators">Section 6: Interactive Calculators</h2>
+        <p>Use the calculators below to solve problems directly. Each one corresponds to a method covered in this activity. Results update when you click <strong>Calculate</strong>.</p>
+
+        <!-- ── CALCULATOR 1: RATIONAL METHOD ── -->
+        <h3>Calculator 1: Rational Method — Peak Discharge</h3>
+        <p>Enter rainfall intensity and one or more land cover areas. The calculator computes the composite C and peak discharge Q.</p>
+
+        <div class="calc-box" id="calc-rational">
+          <div class="calc-label">Rainfall Intensity</div>
+          <div class="row mb-3">
+            <div class="col-sm-4">
+              <label class="calc-field-label">Intensity i (in/hr)</label>
+              <input type="number" id="rm-intensity" class="calc-input" placeholder="e.g. 4.2" min="0" step="0.01">
+            </div>
+          </div>
+
+          <div class="calc-label">Land Cover Areas</div>
+          <div id="rm-rows">
+            <div class="rm-row row align-items-center mb-2">
+              <div class="col-sm-5">
+                <label class="calc-field-label">Description (optional)</label>
+                <input type="text" class="calc-input rm-desc" placeholder="e.g. Pavement">
+              </div>
+              <div class="col-sm-3">
+                <label class="calc-field-label">Runoff Coeff. C (0–1)</label>
+                <input type="number" class="calc-input rm-c" placeholder="e.g. 0.85" min="0" max="1" step="0.01">
+              </div>
+              <div class="col-sm-3">
+                <label class="calc-field-label">Area (acres)</label>
+                <input type="number" class="calc-input rm-a" placeholder="e.g. 5.0" min="0" step="0.1">
+              </div>
+              <div class="col-sm-1 pt-4">
+                <button class="calc-remove-btn" onclick="removeRow(this, 'rm-rows')" title="Remove row">×</button>
+              </div>
+            </div>
+          </div>
+          <button class="calc-add-btn" onclick="addRMRow()"><i class="fas fa-plus mr-1"></i>Add Land Cover</button>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcRational()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-rational', addRMRow)">Reset</button>
+          </div>
+
+          <div id="rm-result" class="calc-result" style="display:none;">
+            <div class="calc-result-title">Results</div>
+            <div id="rm-result-body"></div>
+          </div>
+          <div id="rm-steps" class="calc-steps" style="display:none;">
+            <div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div>
+            <div id="rm-steps-body"></div>
+          </div>
+          <div id="rm-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 2: CURVE NUMBER ── -->
+        <h3>Calculator 2: Curve Number — Runoff Depth &amp; Volume</h3>
+        <p>Enter sub-area CN values and the total storm rainfall. The calculator computes the composite CN, potential maximum retention S, initial abstraction I<sub>a</sub>, runoff depth Q, and runoff volume.</p>
+
+        <div class="calc-box" id="calc-cn">
+          <div class="calc-label">Storm Rainfall</div>
+          <div class="row mb-3">
+            <div class="col-sm-4">
+              <label class="calc-field-label">Total Rainfall P (inches)</label>
+              <input type="number" id="cn-rainfall" class="calc-input" placeholder="e.g. 4.0" min="0" step="0.01">
+            </div>
+          </div>
+
+          <div class="calc-label">Sub-Area CN Values</div>
+          <div id="cn-rows">
+            <div class="cn-row row align-items-center mb-2">
+              <div class="col-sm-5">
+                <label class="calc-field-label">Description (optional)</label>
+                <input type="text" class="calc-input cn-desc" placeholder="e.g. Residential B soils">
+              </div>
+              <div class="col-sm-3">
+                <label class="calc-field-label">Curve Number CN</label>
+                <input type="number" class="calc-input cn-cn" placeholder="e.g. 75" min="1" max="100" step="1">
+              </div>
+              <div class="col-sm-3">
+                <label class="calc-field-label">Area (acres)</label>
+                <input type="number" class="calc-input cn-area" placeholder="e.g. 200" min="0" step="0.1">
+              </div>
+              <div class="col-sm-1 pt-4">
+                <button class="calc-remove-btn" onclick="removeRow(this, 'cn-rows')" title="Remove row">×</button>
+              </div>
+            </div>
+          </div>
+          <button class="calc-add-btn" onclick="addCNRow()"><i class="fas fa-plus mr-1"></i>Add Sub-Area</button>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcCN()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-cn', addCNRow)">Reset</button>
+          </div>
+
+          <div id="cn-result" class="calc-result" style="display:none;">
+            <div class="calc-result-title">Results</div>
+            <div id="cn-result-body"></div>
+          </div>
+          <div id="cn-steps" class="calc-steps" style="display:none;">
+            <div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div>
+            <div id="cn-steps-body"></div>
+          </div>
+          <div id="cn-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 3: SCS TRIANGULAR UH ── -->
+        <h3>Calculator 3: SCS Triangular Unit Hydrograph</h3>
+        <p>Enter watershed and storm parameters to compute the peak discharge, time to peak, and time base of the SCS Triangular Unit Hydrograph.</p>
+
+        <div class="calc-box" id="calc-uh">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="calc-field-label">Drainage Area A (acres)</label>
+              <input type="number" id="uh-area" class="calc-input" placeholder="e.g. 500" min="0" step="1">
+            </div>
+            <div class="col-sm-3">
+              <label class="calc-field-label">Time of Concentration t<sub>c</sub> (hr)</label>
+              <input type="number" id="uh-tc" class="calc-input" placeholder="e.g. 1.5" min="0" step="0.1">
+            </div>
+            <div class="col-sm-3">
+              <label class="calc-field-label">Storm Duration t<sub>r</sub> (hr)</label>
+              <input type="number" id="uh-tr" class="calc-input" placeholder="e.g. 0.5" min="0" step="0.1">
+            </div>
+            <div class="col-sm-3">
+              <label class="calc-field-label">Rainfall Excess P<sub>e</sub> (inches)</label>
+              <input type="number" id="uh-pe" class="calc-input" placeholder="e.g. 2.0" min="0" step="0.01">
+            </div>
+          </div>
+          <p class="mt-2 mb-1" style="font-size:0.82rem; color:#6c757d;">Note: storm duration t<sub>r</sub> must match the UH duration. The peaking factor of 484 is used (standard NRCS value).</p>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcUH()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-uh', null)">Reset</button>
+          </div>
+
+          <div id="uh-result" class="calc-result" style="display:none;">
+            <div class="calc-result-title">Results</div>
+            <div id="uh-result-body"></div>
+          </div>
+          <div id="uh-steps" class="calc-steps" style="display:none;">
+            <div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div>
+            <div id="uh-steps-body"></div>
+          </div>
+          <div id="uh-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 4: UH CONVOLUTION ── -->
+        <h3>Calculator 4: Unit Hydrograph Convolution</h3>
+        <p>Enter your UH ordinates and rainfall excess values for each time period. The calculator builds the full convolution table and returns the total Direct Runoff Hydrograph (DRH).</p>
+
+        <div class="calc-box" id="calc-conv">
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <label class="calc-field-label">Time Step Δt (hr)</label>
+              <input type="number" id="conv-dt" class="calc-input" placeholder="e.g. 1" min="0.01" step="0.25">
+            </div>
+            <div class="col-sm-3">
+              <label class="calc-field-label">Base Flow (cfs, optional)</label>
+              <input type="number" id="conv-bf" class="calc-input" placeholder="e.g. 10" min="0" step="1" value="0">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="calc-label">UH Ordinates (cfs/in)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Enter one value per line, starting at t=0.</p>
+              <textarea id="conv-uh" class="calc-textarea" placeholder="0&#10;120&#10;380&#10;520&#10;410&#10;280&#10;180&#10;100&#10;50&#10;20&#10;0"></textarea>
+            </div>
+            <div class="col-md-6">
+              <div class="calc-label">Rainfall Excess per Period (inches)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Enter one value per time period. Each period = Δt.</p>
+              <textarea id="conv-pe" class="calc-textarea" placeholder="1.2&#10;0.8&#10;0.4"></textarea>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcConvolution()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetConv()">Reset</button>
+          </div>
+
+          <div id="conv-result" style="display:none; margin-top:1.2rem;">
+            <div class="calc-result-title" style="color:#0075b4; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">Convolution Table</div>
+            <div style="overflow-x:auto;">
+              <table id="conv-table" style="border-collapse:collapse; width:100%; font-size:0.85rem;"></table>
+            </div>
+            <div id="conv-summary" class="calc-result mt-3">
+              <div class="calc-result-title">Summary</div>
+              <div id="conv-summary-body"></div>
+            </div>
+          </div>
+          <div id="conv-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 5: TIME OF CONCENTRATION ── -->
+        <h3>Calculator 5: Time of Concentration</h3>
+        <p>Choose a method, enter watershed parameters, and get t<sub>c</sub> with full step-by-step work.</p>
+        <div class="calc-box" id="calc-tc">
+          <div class="calc-label">Method</div>
+          <div class="method-toggle mb-3">
+            <button class="active" onclick="tcMethodSwitch('kirpich',this)">Kirpich</button>
+            <button onclick="tcMethodSwitch('nrcs',this)">NRCS Lag</button>
+          </div>
+          <input type="hidden" id="tc-selected-method" value="kirpich">
+
+          <div id="tc-kirpich-inputs">
+            <div class="row">
+              <div class="col-sm-4"><label class="calc-field-label">Flow Length L (ft)</label><input type="number" id="tc-L" class="calc-input" placeholder="e.g. 1200" min="0" step="1"></div>
+              <div class="col-sm-4"><label class="calc-field-label">Elevation Difference H (ft)</label><input type="number" id="tc-H" class="calc-input" placeholder="e.g. 24" min="0" step="0.1"></div>
+            </div>
+            <p class="mt-2 mb-0" style="font-size:0.82rem;color:#6c757d;">Formula: t<sub>c</sub> [min] = 0.0078 × L<sup>0.77</sup> × (H/L)<sup>-0.385</sup></p>
+          </div>
+
+          <div id="tc-nrcs-inputs" style="display:none;">
+            <div class="row">
+              <div class="col-sm-4"><label class="calc-field-label">Hydraulic Length L (ft)</label><input type="number" id="tc-L-nrcs" class="calc-input" placeholder="e.g. 2000" min="0" step="1"></div>
+              <div class="col-sm-4"><label class="calc-field-label">Avg. Watershed Slope Y (%)</label><input type="number" id="tc-Y" class="calc-input" placeholder="e.g. 2.5" min="0" step="0.1"></div>
+              <div class="col-sm-4"><label class="calc-field-label">Curve Number CN</label><input type="number" id="tc-CN" class="calc-input" placeholder="e.g. 75" min="1" max="100" step="1"></div>
+            </div>
+            <p class="mt-2 mb-0" style="font-size:0.82rem;color:#6c757d;">Formula: t<sub>L</sub> [hr] = L<sup>0.8</sup>(S+1)<sup>0.7</sup> / (1900·Y<sup>0.5</sup>); &nbsp; t<sub>c</sub> = t<sub>L</sub> / 0.6</p>
+          </div>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcTC()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-tc')">Reset</button>
+          </div>
+          <div id="tc-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="tc-result-body"></div></div>
+          <div id="tc-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="tc-steps-body"></div></div>
+          <div id="tc-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 6: IDF INTENSITY ── -->
+        <h3>Calculator 6: IDF Rainfall Intensity Estimator</h3>
+        <p>Enter your region's IDF curve coefficients and a storm duration (or t<sub>c</sub>) to get design rainfall intensity. Coefficients come from local drainage manuals or NOAA Atlas 14.</p>
+        <div class="calc-box" id="calc-idf">
+          <div class="calc-label">Equation Form</div>
+          <div class="method-toggle mb-3">
+            <button class="active" onclick="idfMethodSwitch('sherman',this)">Sherman &nbsp; i = a/(t+b)^c</button>
+            <button onclick="idfMethodSwitch('power',this)">Power Law &nbsp; i = a/t^b</button>
+          </div>
+          <input type="hidden" id="idf-selected-method" value="sherman">
+
+          <div id="idf-3param">
+            <div class="row">
+              <div class="col-sm-3"><label class="calc-field-label">Coefficient a</label><input type="number" id="idf-a" class="calc-input" placeholder="e.g. 104" step="any"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Coefficient b</label><input type="number" id="idf-b" class="calc-input" placeholder="e.g. 8.2" step="any"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Coefficient c</label><input type="number" id="idf-c" class="calc-input" placeholder="e.g. 0.76" step="any"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Duration / t<sub>c</sub> (minutes)</label><input type="number" id="idf-tc" class="calc-input" placeholder="e.g. 30" min="0" step="1"></div>
+            </div>
+          </div>
+          <div id="idf-2param" style="display:none;">
+            <div class="row">
+              <div class="col-sm-3"><label class="calc-field-label">Coefficient a</label><input type="number" id="idf-a2" class="calc-input" placeholder="e.g. 60" step="any"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Coefficient b</label><input type="number" id="idf-b2" class="calc-input" placeholder="e.g. 0.65" step="any"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Duration / t<sub>c</sub> (minutes)</label><input type="number" id="idf-tc2" class="calc-input" placeholder="e.g. 30" min="0" step="1"></div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcIDF()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-idf')">Reset</button>
+          </div>
+          <div id="idf-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="idf-result-body"></div></div>
+          <div id="idf-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="idf-steps-body"></div></div>
+          <div id="idf-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 7: COMPOSITE CN QUICK ── -->
+        <h3>Calculator 7: Composite CN (Quick)</h3>
+        <p>Quickly compute a weighted CN from multiple sub-areas — without committing to a rainfall depth yet.</p>
+        <div class="calc-box" id="calc-cn2">
+          <div id="cn2-rows">
+            <div class="cn2-row row align-items-center mb-2">
+              <div class="col-sm-5"><label class="calc-field-label">Description (optional)</label><input type="text" class="calc-input cn2-desc" placeholder="e.g. Residential, HSG B"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Curve Number CN</label><input type="number" class="calc-input cn2-cn" placeholder="e.g. 75" min="1" max="100" step="1"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Area (acres)</label><input type="number" class="calc-input cn2-area" placeholder="e.g. 200" min="0" step="0.1"></div>
+              <div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,'cn2-rows')" title="Remove">×</button></div>
+            </div>
+          </div>
+          <button class="calc-add-btn" onclick="addCN2Row()"><i class="fas fa-plus mr-1"></i>Add Sub-Area</button>
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcCN2()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-cn2')">Reset</button>
+          </div>
+          <div id="cn2-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="cn2-result-body"></div></div>
+          <div id="cn2-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="cn2-steps-body"></div></div>
+          <div id="cn2-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 8: S-CURVE UH DURATION CHANGE ── -->
+        <h3>Calculator 8: UH Duration Change (S-Curve Method)</h3>
+        <p>Convert a UH of one duration to a UH of a different duration using the S-curve lag-and-difference method.</p>
+        <div class="calc-box" id="calc-sc">
+          <div class="row mb-3">
+            <div class="col-sm-3"><label class="calc-field-label">Time Step Δt (hr)</label><input type="number" id="sc-dt" class="calc-input" placeholder="e.g. 0.5" min="0.01" step="0.25"></div>
+            <div class="col-sm-3"><label class="calc-field-label">Original Duration t<sub>r1</sub> (hr)</label><input type="number" id="sc-tr1" class="calc-input" placeholder="e.g. 1.0" min="0" step="0.25"></div>
+            <div class="col-sm-3"><label class="calc-field-label">New Duration t<sub>r2</sub> (hr)</label><input type="number" id="sc-tr2" class="calc-input" placeholder="e.g. 2.0" min="0" step="0.25"></div>
+          </div>
+          <div class="calc-label">Original UH Ordinates (cfs/in) — one per line, starting at t=0</div>
+          <textarea id="sc-uh" class="calc-textarea" style="min-height:120px;" placeholder="0&#10;210&#10;450&#10;380&#10;270&#10;160&#10;80&#10;30&#10;0"></textarea>
+          <p style="font-size:0.82rem;color:#6c757d;margin-top:0.3rem;">Note: tr1 must be a whole multiple of Δt.</p>
+          <div class="mt-2">
+            <button class="calc-btn" onclick="calcSCurve()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-sc')">Reset</button>
+          </div>
+          <div id="sc-result" style="display:none; margin-top:1.2rem;">
+            <div class="calc-result-title" style="color:#0075b4;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">S-Curve &amp; New UH Table</div>
+            <div style="overflow-x:auto;"><div id="sc-table-container"></div></div>
+            <div class="calc-result mt-3"><div class="calc-result-title">Summary</div><div id="sc-summary-body"></div></div>
+          </div>
+          <div id="sc-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="sc-steps-body"></div></div>
+          <div id="sc-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 9: LEVEL-POOL ROUTING ── -->
+        <h3>Calculator 9: Level-Pool (Modified Puls) Routing</h3>
+        <p>Route an inflow hydrograph through a detention basin or reservoir. Enter a storage-outflow (S-O) relationship and the inflow hydrograph to get the routed outflow.</p>
+        <div class="calc-box" id="calc-rout">
+          <div class="row mb-3">
+            <div class="col-sm-3"><label class="calc-field-label">Time Step Δt (hr)</label><input type="number" id="rout-dt" class="calc-input" placeholder="e.g. 0.5" min="0.01" step="0.25"></div>
+            <div class="col-sm-3"><label class="calc-field-label">Initial Storage S₀ (ac-ft)</label><input type="number" id="rout-S0" class="calc-input" placeholder="0 if empty" min="0" step="0.01" value="0"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="calc-label">Inflow Hydrograph (cfs)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">One value per line, starting at t=0.</p>
+              <textarea id="rout-inflow" class="calc-textarea" placeholder="0&#10;50&#10;180&#10;320&#10;410&#10;380&#10;290&#10;200&#10;120&#10;60&#10;20&#10;0"></textarea>
+            </div>
+            <div class="col-md-4">
+              <div class="calc-label">Outflow O (cfs) — S-O Table</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Sorted low to high.</p>
+              <textarea id="rout-so-O" class="calc-textarea" placeholder="0&#10;10&#10;25&#10;45&#10;70&#10;100&#10;135"></textarea>
+            </div>
+            <div class="col-md-4">
+              <div class="calc-label">Storage S (ac-ft) — S-O Table</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Matching rows with O column.</p>
+              <textarea id="rout-so-S" class="calc-textarea" placeholder="0&#10;0.5&#10;1.2&#10;2.1&#10;3.3&#10;4.8&#10;6.5"></textarea>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcRouting()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-rout')">Reset</button>
+          </div>
+          <div id="rout-result" style="display:none; margin-top:1.2rem;">
+            <div class="calc-result-title" style="color:#0075b4;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Routing Table</div>
+            <div id="rout-table-container"></div>
+            <div class="calc-result mt-3"><div class="calc-result-title">Summary</div><div id="rout-summary-body"></div></div>
+          </div>
+          <div id="rout-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="rout-steps-body"></div></div>
+          <div id="rout-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 10: BACK-CALCULATE PEAK FROM VOLUME ── -->
+        <h3>Calculator 10: Back-Calculate Peak Discharge from Volume</h3>
+        <p>Given a known runoff volume and time base (or time to peak), solve for the peak discharge implied by the triangular hydrograph shape.</p>
+        <div class="calc-box" id="calc-bp">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <label class="calc-field-label">Runoff Volume V</label>
+              <input type="number" id="bp-volume" class="calc-input" placeholder="e.g. 150" min="0" step="any">
+            </div>
+            <div class="col-sm-3">
+              <label class="calc-field-label">Volume Units</label>
+              <select id="bp-vunits" class="calc-input">
+                <option value="acin">acre-inches (ac-in)</option>
+                <option value="acft">acre-feet (ac-ft)</option>
+                <option value="ft3">cubic feet (ft³)</option>
+              </select>
+            </div>
+          </div>
+          <div class="calc-label">Time Parameter — choose one</div>
+          <div class="row mb-2 align-items-end">
+            <div class="col-sm-4">
+              <label class="calc-field-label">Provide</label>
+              <select id="bp-tpoption" class="calc-input" onchange="bpToggle()">
+                <option value="tb">Time Base T<sub>b</sub> (hr)</option>
+                <option value="tp">Time to Peak t<sub>p</sub> (hr)</option>
+              </select>
+            </div>
+            <div class="col-sm-4" id="bp-tb-group">
+              <label class="calc-field-label">Time Base T<sub>b</sub> (hr)</label>
+              <input type="number" id="bp-tb" class="calc-input" placeholder="e.g. 8.0" min="0" step="0.1">
+            </div>
+            <div class="col-sm-4" id="bp-tp-group" style="display:none;">
+              <label class="calc-field-label">Time to Peak t<sub>p</sub> (hr)</label>
+              <input type="number" id="bp-tp" class="calc-input" placeholder="e.g. 3.0" min="0" step="0.1">
+            </div>
+          </div>
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcBackPeak()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-bp')">Reset</button>
+          </div>
+          <div id="bp-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="bp-result-body"></div></div>
+          <div id="bp-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="bp-steps-body"></div></div>
+          <div id="bp-error" class="calc-error" style="display:none;"></div>
+        </div>
+
       </div>
       <!-- END CONTENT -->
-
-      <!-- Navigation -->
-      <div class="unit-navigation d-flex">
-        <button type="button" class="btn btn-outline-secondary mr-2">
-          <i class="fas fa-chevron-left fa-sm mr-1"></i>Previous
-        </button>
-        <button type="button" class="btn btn-outline-primary">
-          Next<i class="fas fa-chevron-right fa-sm ml-1"></i>
-        </button>
-      </div>
 
     </div><!-- .unit -->
 
@@ -777,5 +1506,596 @@
 </footer>
 
 </div></div>
+
+<script>
+// ─── SHARED UTILITIES ───────────────────────────────────────────────────────
+function showError(id,msg){var el=document.getElementById(id);el.textContent='⚠ '+msg;el.style.display='block';}
+function hideError(id){var el=document.getElementById(id);if(el)el.style.display='none';}
+function showEl(id){var el=document.getElementById(id);if(el)el.style.display='block';}
+function hideEl(id){var el=document.getElementById(id);if(el)el.style.display='none';}
+
+function resultRow(label,value){
+  return '<div class="calc-result-row"><span class="calc-result-label">'+label+'</span><span class="calc-result-value">'+value+'</span></div>';
+}
+
+function stepBlock(num,label,formula,sub,answer){
+  return '<div class="calc-step"><span class="step-num">'+num+'</span><div class="step-body">'
+    +'<div class="step-label">'+label+'</div>'
+    +(formula?'<div class="step-formula">'+formula+'</div>':'')
+    +(sub?'<div class="step-sub">'+sub+'</div>':'')
+    +'<div class="step-answer">→ '+answer+'</div>'
+    +'</div></div>';
+}
+
+function showSteps(stepsId,bodyId,html){
+  showEl(stepsId);
+  document.getElementById(bodyId).innerHTML=html;
+}
+
+function linInterp(xArr,yArr,xTarget){
+  if(xTarget<=xArr[0])return yArr[0];
+  if(xTarget>=xArr[xArr.length-1])return yArr[yArr.length-1];
+  for(var i=0;i<xArr.length-1;i++){
+    if(xTarget>=xArr[i]&&xTarget<=xArr[i+1]){
+      var t=(xTarget-xArr[i])/(xArr[i+1]-xArr[i]);
+      return yArr[i]+t*(yArr[i+1]-yArr[i]);
+    }
+  }
+  return yArr[yArr.length-1];
+}
+
+function removeRow(btn,containerId){
+  var container=document.getElementById(containerId);
+  if(container.children.length>1)btn.closest('.row').remove();
+}
+
+function resetCalc(boxId){
+  var box=document.getElementById(boxId);
+  box.querySelectorAll('input[type=number],input[type=text]').forEach(function(el){el.value='';});
+  box.querySelectorAll('textarea').forEach(function(el){el.value='';});
+  box.querySelectorAll('.calc-result,.calc-error,.calc-steps').forEach(function(el){el.style.display='none';});
+  ['rm-rows','cn-rows','cn2-rows'].forEach(function(id){
+    var c=document.getElementById(id);if(!c)return;
+    while(c.children.length>1)c.lastElementChild.remove();
+    c.querySelectorAll('input').forEach(function(el){el.value='';});
+  });
+  ['sc-result','rout-result','conv-result'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.style.display='none';
+  });
+}
+
+// ─── CALCULATOR 1: RATIONAL METHOD ──────────────────────────────────────────
+function addRMRow(){
+  var container=document.getElementById('rm-rows');
+  var div=document.createElement('div');
+  div.className='rm-row row align-items-center mb-2';
+  div.innerHTML='<div class="col-sm-5"><label class="calc-field-label">Description (optional)</label><input type="text" class="calc-input rm-desc" placeholder="e.g. Lawn"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">C (0–1)</label><input type="number" class="calc-input rm-c" placeholder="0.30" min="0" max="1" step="0.01"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">Area (acres)</label><input type="number" class="calc-input rm-a" placeholder="3.0" min="0" step="0.1"></div>'
+    +'<div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,\'rm-rows\')" title="Remove">×</button></div>';
+  container.appendChild(div);
+}
+
+function calcRational(){
+  hideError('rm-error'); hideEl('rm-result'); hideEl('rm-steps');
+  var i=parseFloat(document.getElementById('rm-intensity').value);
+  if(isNaN(i)||i<=0){showError('rm-error','Enter a valid intensity i (in/hr).');return;}
+  var rows=document.querySelectorAll('#rm-rows .rm-row');
+  var sumCA=0,sumA=0,valid=true,rowData=[];
+  rows.forEach(function(row){
+    var desc=row.querySelector('.rm-desc').value||'Area';
+    var c=parseFloat(row.querySelector('.rm-c').value);
+    var a=parseFloat(row.querySelector('.rm-a').value);
+    if(isNaN(c)||isNaN(a)||c<0||c>1||a<=0){valid=false;return;}
+    sumCA+=c*a; sumA+=a; rowData.push({desc:desc,c:c,a:a});
+  });
+  if(!valid||sumA===0){showError('rm-error','Check all rows — C must be 0–1 and area > 0.');return;}
+  var Ccomp=sumCA/sumA, Q=Ccomp*i*sumA;
+  var resHtml=rowData.map(function(r){return resultRow(r.desc+' (C='+r.c.toFixed(3)+', '+r.a.toFixed(2)+' ac)','C×A = '+(r.c*r.a).toFixed(3));}).join('')
+    +'<div style="border-top:2px solid #c3e6cb;margin:0.4rem 0;"></div>'
+    +resultRow('Total Area A',sumA.toFixed(2)+' acres')
+    +resultRow('Composite C',Ccomp.toFixed(3))
+    +resultRow('Intensity i',i.toFixed(2)+' in/hr')
+    +resultRow('Peak Discharge Q = C·i·A',Q.toFixed(2)+' cfs');
+  document.getElementById('rm-result-body').innerHTML=resHtml;
+  showEl('rm-result');
+  var steps='';
+  if(rowData.length>1){
+    var subStr=rowData.map(function(r){return '('+r.c.toFixed(3)+'×'+r.a.toFixed(2)+')';}).join(' + ');
+    steps+=stepBlock(1,'Composite Runoff Coefficient','C = (ΣCᵢAᵢ) / ΣAᵢ',
+      'C = ['+subStr+'] / '+sumA.toFixed(2),
+      'C = '+sumCA.toFixed(3)+' / '+sumA.toFixed(2)+' = '+Ccomp.toFixed(3));
+  } else {
+    steps+=stepBlock(1,'Runoff Coefficient','Single land cover — use C directly',null,'C = '+Ccomp.toFixed(3));
+  }
+  steps+=stepBlock(2,'Rational Formula','Q = C · i · A',
+    'Q = '+Ccomp.toFixed(3)+' × '+i.toFixed(2)+' in/hr × '+sumA.toFixed(2)+' acres',
+    'Q = '+Q.toFixed(2)+' cfs');
+  showSteps('rm-steps','rm-steps-body',steps);
+}
+
+// ─── CALCULATOR 2: CURVE NUMBER ─────────────────────────────────────────────
+function addCNRow(){
+  var container=document.getElementById('cn-rows');
+  var div=document.createElement('div');
+  div.className='cn-row row align-items-center mb-2';
+  div.innerHTML='<div class="col-sm-5"><label class="calc-field-label">Description (optional)</label><input type="text" class="calc-input cn-desc" placeholder="e.g. Woods HSG C"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">CN (1–100)</label><input type="number" class="calc-input cn-cn" placeholder="70" min="1" max="100" step="1"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">Area (acres)</label><input type="number" class="calc-input cn-area" placeholder="200" min="0" step="0.1"></div>'
+    +'<div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,\'cn-rows\')" title="Remove">×</button></div>';
+  container.appendChild(div);
+}
+
+function calcCN(){
+  hideError('cn-error'); hideEl('cn-result'); hideEl('cn-steps');
+  var P=parseFloat(document.getElementById('cn-rainfall').value);
+  if(isNaN(P)||P<=0){showError('cn-error','Enter total rainfall depth P (inches).');return;}
+  var rows=document.querySelectorAll('#cn-rows .cn-row');
+  var sumCNA=0,sumA=0,valid=true,rowData=[];
+  rows.forEach(function(row){
+    var desc=row.querySelector('.cn-desc').value||'Sub-area';
+    var cn=parseFloat(row.querySelector('.cn-cn').value);
+    var a=parseFloat(row.querySelector('.cn-area').value);
+    if(isNaN(cn)||isNaN(a)||cn<1||cn>100||a<=0){valid=false;return;}
+    sumCNA+=cn*a; sumA+=a; rowData.push({desc:desc,cn:cn,a:a});
+  });
+  if(!valid||sumA===0){showError('cn-error','Check rows — CN 1–100, area > 0.');return;}
+  var CNcomp=sumCNA/sumA, S=(1000/CNcomp)-10, Ia=0.2*S;
+  var Q=0,noRunoff=P<=Ia;
+  if(!noRunoff)Q=Math.pow(P-Ia,2)/(P-Ia+S);
+  var Vac_in=Q*sumA, Vac_ft=Vac_in/12, Vft3=Vac_in*3630;
+  document.getElementById('cn-result-body').innerHTML=
+    resultRow('Total Area',sumA.toFixed(1)+' acres')
+    +resultRow('Composite CN',CNcomp.toFixed(2))
+    +resultRow('S = (1000/CN)−10',S.toFixed(3)+' in')
+    +resultRow('Iₐ = 0.2S',Ia.toFixed(3)+' in')
+    +resultRow('Rainfall P',P.toFixed(2)+' in')
+    +(noRunoff?resultRow('Condition','P ≤ Iₐ — No runoff occurs'):'')
+    +resultRow('Runoff Depth Q',Q.toFixed(3)+' in')
+    +resultRow('Volume (acre-in)',Vac_in.toFixed(2)+' ac-in')
+    +resultRow('Volume (acre-ft)',Vac_ft.toFixed(3)+' ac-ft')
+    +resultRow('Volume (ft³)',Vft3.toFixed(0)+' ft³');
+  showEl('cn-result');
+  var subStr=rowData.map(function(r){return '('+r.cn+'×'+r.a.toFixed(1)+')';}).join(' + ');
+  var steps=stepBlock(1,'Composite CN','CN = ΣCNᵢAᵢ / ΣAᵢ',
+    'CN = ['+subStr+'] / '+sumA.toFixed(1),
+    'CN = '+sumCNA.toFixed(1)+' / '+sumA.toFixed(1)+' = '+CNcomp.toFixed(2));
+  steps+=stepBlock(2,'Potential Maximum Retention','S = (1000/CN) − 10',
+    'S = (1000/'+CNcomp.toFixed(2)+') − 10 = '+(1000/CNcomp).toFixed(3)+' − 10',
+    'S = '+S.toFixed(3)+' in');
+  steps+=stepBlock(3,'Initial Abstraction','Iₐ = 0.2 × S',
+    'Iₐ = 0.2 × '+S.toFixed(3),'Iₐ = '+Ia.toFixed(3)+' in');
+  steps+=stepBlock(4,'Check Runoff Condition','Runoff if P > Iₐ',
+    'P = '+P.toFixed(2)+' in,  Iₐ = '+Ia.toFixed(3)+' in',
+    P>Ia?'P > Iₐ ✓ — Runoff occurs':'P ≤ Iₐ — No runoff (Q = 0)');
+  if(!noRunoff){
+    steps+=stepBlock(5,'Runoff Depth','Q = (P − Iₐ)² / (P − Iₐ + S)',
+      'Q = ('+P.toFixed(2)+'−'+Ia.toFixed(3)+')² / ('+P.toFixed(2)+'−'+Ia.toFixed(3)+'+'+S.toFixed(3)+')',
+      'Q = ('+(P-Ia).toFixed(3)+')² / '+(P-Ia+S).toFixed(3)+' = '+Q.toFixed(3)+' in');
+    steps+=stepBlock(6,'Runoff Volume','V = Q × A',
+      'V = '+Q.toFixed(3)+' in × '+sumA.toFixed(1)+' acres',
+      'V = '+Vac_in.toFixed(2)+' ac-in = '+Vac_ft.toFixed(3)+' ac-ft = '+Vft3.toFixed(0)+' ft³');
+  }
+  showSteps('cn-steps','cn-steps-body',steps);
+}
+
+// ─── CALCULATOR 3: SCS TRIANGULAR UH ────────────────────────────────────────
+function calcUH(){
+  hideError('uh-error'); hideEl('uh-result'); hideEl('uh-steps');
+  var A=parseFloat(document.getElementById('uh-area').value);
+  var tc=parseFloat(document.getElementById('uh-tc').value);
+  var tr=parseFloat(document.getElementById('uh-tr').value);
+  var Pe=parseFloat(document.getElementById('uh-pe').value);
+  if(isNaN(A)||A<=0){showError('uh-error','Enter drainage area A (acres).');return;}
+  if(isNaN(tc)||tc<=0){showError('uh-error','Enter tc (hours).');return;}
+  if(isNaN(tr)||tr<=0){showError('uh-error','Enter storm duration tr (hours).');return;}
+  if(isNaN(Pe)||Pe<=0){showError('uh-error','Enter rainfall excess Pe (inches).');return;}
+  var A_mi2=A/640, tL=0.6*tc, tp=tr/2+tL;
+  var Qp_uh=(484*A_mi2)/tp, Qp=Qp_uh*Pe, Tb=2.67*tp, Vol=Pe*A;
+  document.getElementById('uh-result-body').innerHTML=
+    resultRow('Area',A.toFixed(1)+' acres ('+A_mi2.toFixed(5)+' mi²)')
+    +resultRow('Lag Time tL = 0.6·tc',tL.toFixed(3)+' hr')
+    +resultRow('Time to Peak tp = tr/2 + tL',tp.toFixed(3)+' hr')
+    +resultRow('UH Peak Ordinate (484·A/tp)',Qp_uh.toFixed(2)+' cfs/in')
+    +resultRow('Rainfall Excess Pe',Pe.toFixed(2)+' in')
+    +resultRow('Peak Discharge Qp = Qp,UH × Pe',Qp.toFixed(2)+' cfs')
+    +resultRow('Time Base Tb = 2.67·tp',Tb.toFixed(3)+' hr')
+    +resultRow('Runoff Volume Pe·A',Vol.toFixed(2)+' acre-in');
+  showEl('uh-result');
+  var steps=stepBlock(1,'Convert Area','A [mi²] = A [acres] / 640',
+    'A = '+A.toFixed(1)+' / 640','A = '+A_mi2.toFixed(5)+' mi²');
+  steps+=stepBlock(2,'Lag Time','tL = 0.6 × tc',
+    'tL = 0.6 × '+tc.toFixed(2),'tL = '+tL.toFixed(3)+' hr');
+  steps+=stepBlock(3,'Time to Peak','tp = tr/2 + tL',
+    'tp = '+tr.toFixed(2)+'/2 + '+tL.toFixed(3)+' = '+(tr/2).toFixed(3)+' + '+tL.toFixed(3),
+    'tp = '+tp.toFixed(3)+' hr');
+  steps+=stepBlock(4,'UH Peak Ordinate','Qp,UH = 484 × A[mi²] / tp',
+    'Qp,UH = 484 × '+A_mi2.toFixed(5)+' / '+tp.toFixed(3),
+    'Qp,UH = '+Qp_uh.toFixed(2)+' cfs/in');
+  steps+=stepBlock(5,'Actual Peak Discharge','Qp = Qp,UH × Pe',
+    'Qp = '+Qp_uh.toFixed(2)+' × '+Pe.toFixed(2),'Qp = '+Qp.toFixed(2)+' cfs');
+  steps+=stepBlock(6,'Time Base','Tb = 2.67 × tp',
+    'Tb = 2.67 × '+tp.toFixed(3),'Tb = '+Tb.toFixed(3)+' hr');
+  steps+=stepBlock(7,'Runoff Volume','V = Pe × A',
+    'V = '+Pe.toFixed(2)+' in × '+A.toFixed(1)+' acres','V = '+Vol.toFixed(2)+' acre-in');
+  showSteps('uh-steps','uh-steps-body',steps);
+}
+
+// ─── CALCULATOR 4: CONVOLUTION ──────────────────────────────────────────────
+function resetConv(){
+  ['conv-dt','conv-bf','conv-uh','conv-pe'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=id==='conv-bf'?'0':'';});
+  hideEl('conv-result'); hideEl('conv-error');
+}
+
+function calcConvolution(){
+  hideError('conv-error'); hideEl('conv-result');
+  var dt=parseFloat(document.getElementById('conv-dt').value);
+  var bf=parseFloat(document.getElementById('conv-bf').value)||0;
+  if(isNaN(dt)||dt<=0){showError('conv-error','Enter a valid time step Δt (hours).');return;}
+  var uhRaw=document.getElementById('conv-uh').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var peRaw=document.getElementById('conv-pe').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  if(uhRaw.some(isNaN)||uhRaw.length<2){showError('conv-error','UH ordinates: one number per line, at least 2.');return;}
+  if(peRaw.some(isNaN)||peRaw.length<1){showError('conv-error','Rainfall excess: one number per line.');return;}
+  var nUH=uhRaw.length,nPe=peRaw.length,nTotal=nUH+nPe-1;
+  var lagged=[];
+  for(var j=0;j<nPe;j++){var col=new Array(nTotal).fill(0);for(var k=0;k<nUH;k++)col[j+k]=uhRaw[k]*peRaw[j];lagged.push(col);}
+  var drh=new Array(nTotal).fill(0);
+  for(var t=0;t<nTotal;t++)for(var j=0;j<nPe;j++)drh[t]+=lagged[j][t];
+  var total=drh.map(function(q){return q+bf;});
+  var table=document.getElementById('conv-table');
+  var hdr='<tr><th class="conv-table-header">Time (hr)</th>';
+  for(var j=0;j<nPe;j++)hdr+='<th class="conv-table-header">Pe'+(j+1)+'='+peRaw[j].toFixed(2)+'in<br><small>lag '+(j*dt).toFixed(2)+'hr</small></th>';
+  hdr+='<th class="conv-table-header">DRH (cfs)</th>';
+  if(bf!==0)hdr+='<th class="conv-table-header">Base Flow</th>';
+  hdr+='<th class="conv-table-header">Total Q (cfs)</th></tr>';
+  table.innerHTML=hdr;
+  for(var t=0;t<nTotal;t++){
+    var row='<tr><td class="conv-table-cell time">'+(t*dt).toFixed(2)+'</td>';
+    for(var j=0;j<nPe;j++){var v=lagged[j][t];row+='<td class="conv-table-cell drh">'+(v>0?v.toFixed(2):'—')+'</td>';}
+    row+='<td class="conv-table-cell drh" style="font-weight:600;">'+drh[t].toFixed(2)+'</td>';
+    if(bf!==0)row+='<td class="conv-table-cell">'+bf.toFixed(2)+'</td>';
+    row+='<td class="conv-table-cell total">'+total[t].toFixed(2)+'</td></tr>';
+    table.innerHTML+=row;
+  }
+  var peakDRH=Math.max.apply(null,drh),peakTotal=Math.max.apply(null,total);
+  var peakTime=drh.indexOf(peakDRH)*dt,volDRH=drh.reduce(function(a,b){return a+b;},0)*dt*3600;
+  document.getElementById('conv-summary-body').innerHTML=
+    resultRow('Time Step Δt',dt.toFixed(2)+' hr')
+    +resultRow('Pe periods × UH ordinates',nPe+' × '+nUH+' = '+nTotal+' time steps')
+    +resultRow('Peak DRH',peakDRH.toFixed(2)+' cfs at t = '+peakTime.toFixed(2)+' hr')
+    +resultRow('Peak Total Hydrograph',peakTotal.toFixed(2)+' cfs')
+    +resultRow('Approx. DRH Volume',volDRH.toFixed(0)+' ft³');
+  showEl('conv-result');
+}
+
+// ─── CALCULATOR 5: TIME OF CONCENTRATION ────────────────────────────────────
+function tcMethodSwitch(method,btn){
+  document.getElementById('tc-kirpich-inputs').style.display=method==='kirpich'?'block':'none';
+  document.getElementById('tc-nrcs-inputs').style.display=method==='nrcs'?'block':'none';
+  document.getElementById('tc-selected-method').value=method;
+  btn.closest('.method-toggle').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+function calcTC(){
+  hideError('tc-error'); hideEl('tc-result'); hideEl('tc-steps');
+  var method=document.getElementById('tc-selected-method').value;
+  var steps='',resHtml='';
+  if(method==='kirpich'){
+    var L=parseFloat(document.getElementById('tc-L').value);
+    var H=parseFloat(document.getElementById('tc-H').value);
+    if(isNaN(L)||L<=0){showError('tc-error','Enter channel length L (ft).');return;}
+    if(isNaN(H)||H<=0){showError('tc-error','Enter elevation difference H (ft).');return;}
+    var S=H/L,Lpow=Math.pow(L,0.77),Spow=Math.pow(S,-0.385),tc_min=0.0078*Lpow*Spow,tc_hr=tc_min/60;
+    resHtml=resultRow('L',L.toFixed(1)+' ft')+resultRow('H',H.toFixed(2)+' ft')+resultRow('S = H/L',S.toFixed(5)+' ft/ft')
+      +resultRow('L^0.77',Lpow.toFixed(3))+resultRow('S^-0.385',Spow.toFixed(3))
+      +resultRow('tc (Kirpich)',tc_min.toFixed(2)+' min = '+tc_hr.toFixed(3)+' hr');
+    steps=stepBlock(1,'Compute Slope S','S = H / L','S = '+H.toFixed(2)+' / '+L.toFixed(1),'S = '+S.toFixed(5)+' ft/ft');
+    steps+=stepBlock(2,'Raise L to power 0.77','L^0.77','('+L.toFixed(1)+')^0.77','= '+Lpow.toFixed(3));
+    steps+=stepBlock(3,'Raise S to power −0.385','S^-0.385 = 1 / S^0.385','('+S.toFixed(5)+')^-0.385','= '+Spow.toFixed(3));
+    steps+=stepBlock(4,'Kirpich Formula','tc [min] = 0.0078 × L^0.77 × S^-0.385',
+      'tc = 0.0078 × '+Lpow.toFixed(3)+' × '+Spow.toFixed(3),'tc = '+tc_min.toFixed(2)+' min');
+    steps+=stepBlock(5,'Convert to Hours','tc [hr] = tc [min] / 60','tc = '+tc_min.toFixed(2)+' / 60','tc = '+tc_hr.toFixed(3)+' hr');
+  } else {
+    var Ln=parseFloat(document.getElementById('tc-L-nrcs').value);
+    var Y=parseFloat(document.getElementById('tc-Y').value);
+    var CN=parseFloat(document.getElementById('tc-CN').value);
+    if(isNaN(Ln)||Ln<=0){showError('tc-error','Enter hydraulic length L (ft).');return;}
+    if(isNaN(Y)||Y<=0){showError('tc-error','Enter slope Y (%).');return;}
+    if(isNaN(CN)||CN<1||CN>100){showError('tc-error','Enter CN (1–100).');return;}
+    var Scn=(1000/CN)-10,Lpow=Math.pow(Ln,0.8),Spow=Math.pow(Scn+1,0.7),Ypow=Math.pow(Y,0.5);
+    var tL=(Lpow*Spow)/(1900*Ypow),tc_hr=tL/0.6,tc_min=tc_hr*60;
+    resHtml=resultRow('L',Ln.toFixed(1)+' ft')+resultRow('Y',Y.toFixed(2)+'%')+resultRow('CN',CN.toFixed(0))
+      +resultRow('S_cn = (1000/CN)−10',Scn.toFixed(3)+' in')+resultRow('L^0.8',Lpow.toFixed(3))
+      +resultRow('(S_cn+1)^0.7',Spow.toFixed(3))+resultRow('Y^0.5',Ypow.toFixed(3))
+      +resultRow('Lag Time tL',tL.toFixed(3)+' hr')
+      +resultRow('tc = tL / 0.6',tc_hr.toFixed(3)+' hr = '+tc_min.toFixed(1)+' min');
+    steps=stepBlock(1,'CN Retention Param','S_cn = (1000/CN) − 10','S_cn = (1000/'+CN+') − 10','S_cn = '+Scn.toFixed(3)+' in');
+    steps+=stepBlock(2,'Raise L to 0.8','L^0.8','('+Ln.toFixed(1)+')^0.8','= '+Lpow.toFixed(3));
+    steps+=stepBlock(3,'Raise (S_cn+1) to 0.7','(S_cn + 1)^0.7','('+Scn.toFixed(3)+'+1)^0.7 = ('+(Scn+1).toFixed(3)+')^0.7','= '+Spow.toFixed(3));
+    steps+=stepBlock(4,'Square Root of Slope','Y^0.5 = √Y','√'+Y.toFixed(2),'= '+Ypow.toFixed(3));
+    steps+=stepBlock(5,'NRCS Lag Equation','tL [hr] = L^0.8 (S_cn+1)^0.7 / (1900 Y^0.5)',
+      'tL = '+Lpow.toFixed(3)+' × '+Spow.toFixed(3)+' / (1900 × '+Ypow.toFixed(3)+')',
+      'tL = '+(Lpow*Spow).toFixed(3)+' / '+(1900*Ypow).toFixed(1)+' = '+tL.toFixed(3)+' hr');
+    steps+=stepBlock(6,'Time of Concentration','tc = tL / 0.6','tc = '+tL.toFixed(3)+' / 0.6','tc = '+tc_hr.toFixed(3)+' hr = '+tc_min.toFixed(1)+' min');
+  }
+  document.getElementById('tc-result-body').innerHTML=resHtml;
+  showEl('tc-result');
+  showSteps('tc-steps','tc-steps-body',steps);
+}
+
+// ─── CALCULATOR 6: IDF INTENSITY ─────────────────────────────────────────────
+function idfMethodSwitch(method,btn){
+  document.getElementById('idf-3param').style.display=method==='sherman'?'block':'none';
+  document.getElementById('idf-2param').style.display=method==='power'?'block':'none';
+  document.getElementById('idf-selected-method').value=method;
+  btn.closest('.method-toggle').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+function calcIDF(){
+  hideError('idf-error'); hideEl('idf-result'); hideEl('idf-steps');
+  var method=document.getElementById('idf-selected-method').value;
+  var tc=parseFloat(document.getElementById(method==='sherman'?'idf-tc':'idf-tc2').value);
+  if(isNaN(tc)||tc<=0){showError('idf-error','Enter duration / tc (minutes).');return;}
+  var i_result,steps='',resHtml='';
+  if(method==='sherman'){
+    var a=parseFloat(document.getElementById('idf-a').value);
+    var b=parseFloat(document.getElementById('idf-b').value);
+    var c=parseFloat(document.getElementById('idf-c').value);
+    if(isNaN(a)||isNaN(b)||isNaN(c)){showError('idf-error','Enter all three coefficients a, b, c.');return;}
+    var denom=Math.pow(tc+b,c); i_result=a/denom;
+    resHtml=resultRow('Equation','i = a / (t + b)^c')+resultRow('a, b, c','a='+a+', b='+b+', c='+c)
+      +resultRow('t (duration)','t = '+tc.toFixed(2)+' min')+resultRow('(t+b)^c','('+tc.toFixed(2)+'+'+b+')^'+c+' = '+denom.toFixed(3))
+      +resultRow('Intensity i',i_result.toFixed(3)+' in/hr');
+    steps=stepBlock(1,'Sherman IDF Equation','i = a / (t + b)^c','a='+a+', b='+b+', c='+c+', t='+tc.toFixed(2)+' min','Substitute values');
+    steps+=stepBlock(2,'Compute Denominator','(t + b)^c','('+tc.toFixed(2)+'+'+b+')^'+c+' = ('+(tc+b).toFixed(3)+')^'+c,'= '+denom.toFixed(4));
+    steps+=stepBlock(3,'Divide','i = a / (t+b)^c','i = '+a+' / '+denom.toFixed(4),'i = '+i_result.toFixed(3)+' in/hr');
+  } else {
+    var a2=parseFloat(document.getElementById('idf-a2').value);
+    var b2=parseFloat(document.getElementById('idf-b2').value);
+    if(isNaN(a2)||isNaN(b2)){showError('idf-error','Enter both coefficients a and b.');return;}
+    var denom2=Math.pow(tc,b2); i_result=a2/denom2;
+    resHtml=resultRow('Equation','i = a / t^b')+resultRow('a, b','a='+a2+', b='+b2)
+      +resultRow('t (duration)','t = '+tc.toFixed(2)+' min')+resultRow('t^b','('+tc.toFixed(2)+')^'+b2+' = '+denom2.toFixed(3))
+      +resultRow('Intensity i',i_result.toFixed(3)+' in/hr');
+    steps=stepBlock(1,'Power Law IDF Equation','i = a / t^b','a='+a2+', b='+b2+', t='+tc.toFixed(2)+' min','Substitute values');
+    steps+=stepBlock(2,'Compute t^b','t^b = ('+tc.toFixed(2)+')^'+b2,'Raise duration to power b','= '+denom2.toFixed(4));
+    steps+=stepBlock(3,'Divide','i = a / t^b','i = '+a2+' / '+denom2.toFixed(4),'i = '+i_result.toFixed(3)+' in/hr');
+  }
+  document.getElementById('idf-result-body').innerHTML=resHtml;
+  showEl('idf-result');
+  showSteps('idf-steps','idf-steps-body',steps);
+}
+
+// ─── CALCULATOR 7: COMPOSITE CN QUICK ───────────────────────────────────────
+function addCN2Row(){
+  var container=document.getElementById('cn2-rows');
+  var div=document.createElement('div');
+  div.className='cn2-row row align-items-center mb-2';
+  div.innerHTML='<div class="col-sm-5"><label class="calc-field-label">Description (optional)</label><input type="text" class="calc-input cn2-desc" placeholder="e.g. Commercial HSG B"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">CN (1–100)</label><input type="number" class="calc-input cn2-cn" placeholder="85" min="1" max="100" step="1"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">Area (acres)</label><input type="number" class="calc-input cn2-area" placeholder="150" min="0" step="0.1"></div>'
+    +'<div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,\'cn2-rows\')" title="Remove">×</button></div>';
+  container.appendChild(div);
+}
+
+function calcCN2(){
+  hideError('cn2-error'); hideEl('cn2-result'); hideEl('cn2-steps');
+  var rows=document.querySelectorAll('#cn2-rows .cn2-row');
+  var sumCNA=0,sumA=0,valid=true,rowData=[];
+  rows.forEach(function(row){
+    var desc=row.querySelector('.cn2-desc').value||'Sub-area';
+    var cn=parseFloat(row.querySelector('.cn2-cn').value);
+    var a=parseFloat(row.querySelector('.cn2-area').value);
+    if(isNaN(cn)||isNaN(a)||cn<1||cn>100||a<=0){valid=false;return;}
+    sumCNA+=cn*a; sumA+=a; rowData.push({desc:desc,cn:cn,a:a});
+  });
+  if(!valid||sumA===0){showError('cn2-error','Check rows — CN 1–100, area > 0.');return;}
+  var CNcomp=sumCNA/sumA, CNr=Math.round(CNcomp), S=(1000/CNr)-10;
+  document.getElementById('cn2-result-body').innerHTML=
+    rowData.map(function(r){return resultRow(r.desc+' (CN='+r.cn+', '+r.a.toFixed(1)+' ac)','CN×A = '+(r.cn*r.a).toFixed(1));}).join('')
+    +'<div style="border-top:2px solid #c3e6cb;margin:0.4rem 0;"></div>'
+    +resultRow('Total Area',sumA.toFixed(1)+' acres')
+    +resultRow('ΣCNᵢAᵢ',sumCNA.toFixed(1))
+    +resultRow('Composite CN (exact)',CNcomp.toFixed(2))
+    +resultRow('Composite CN (rounded)',CNr)
+    +resultRow('Corresponding S = (1000/CN)−10',S.toFixed(3)+' in');
+  showEl('cn2-result');
+  var subStr=rowData.map(function(r){return '('+r.cn+'×'+r.a.toFixed(1)+')';}).join(' + ');
+  var steps=stepBlock(1,'Weighted CN×Area Products','ΣCNᵢAᵢ = '+subStr,
+    'Sum = '+sumCNA.toFixed(1),'ΣCNᵢAᵢ = '+sumCNA.toFixed(1));
+  steps+=stepBlock(2,'Area-Weighted Average CN','CN = ΣCNᵢAᵢ / ΣAᵢ',
+    'CN = '+sumCNA.toFixed(1)+' / '+sumA.toFixed(1),
+    'CN = '+CNcomp.toFixed(2)+' → rounded to '+CNr);
+  steps+=stepBlock(3,'Corresponding S (reference only)','S = (1000/CN) − 10',
+    'S = (1000/'+CNr+') − 10 = '+(1000/CNr).toFixed(3)+' − 10','S = '+S.toFixed(3)+' in');
+  showSteps('cn2-steps','cn2-steps-body',steps);
+}
+
+// ─── CALCULATOR 8: S-CURVE UH DURATION CHANGE ───────────────────────────────
+function calcSCurve(){
+  hideError('sc-error'); hideEl('sc-steps');
+  document.getElementById('sc-result').style.display='none';
+  var dt=parseFloat(document.getElementById('sc-dt').value);
+  var tr1=parseFloat(document.getElementById('sc-tr1').value);
+  var tr2=parseFloat(document.getElementById('sc-tr2').value);
+  if(isNaN(dt)||dt<=0){showError('sc-error','Enter valid Δt (hours).');return;}
+  if(isNaN(tr1)||tr1<=0){showError('sc-error','Enter original duration tr1 (hours).');return;}
+  if(isNaN(tr2)||tr2<=0){showError('sc-error','Enter new duration tr2 (hours).');return;}
+  var uhRaw=document.getElementById('sc-uh').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  if(uhRaw.some(isNaN)||uhRaw.length<2){showError('sc-error','UH ordinates: one number per line, at least 2 values.');return;}
+  var n1=Math.round(tr1/dt),n2=Math.round(tr2/dt);
+  if(n1<1){showError('sc-error','tr1 must be ≥ Δt.');return;}
+  if(n2<1){showError('sc-error','tr2 must be ≥ Δt.');return;}
+  var nUH=uhRaw.length,nTotal=nUH+Math.max(n1,n2)+2;
+  var sCurve=new Array(nTotal).fill(0);
+  for(var t=0;t<nTotal;t++){var s=0;for(var k=0;k*n1<=t;k++){var idx=t-k*n1;if(idx<nUH)s+=uhRaw[idx];}sCurve[t]=s;}
+  var sCurveLag=new Array(nTotal).fill(0);
+  for(var t=n2;t<nTotal;t++)sCurveLag[t]=sCurve[t-n2];
+  var newUH=new Array(nTotal).fill(0);
+  for(var t=0;t<nTotal;t++)newUH[t]=(sCurve[t]-sCurveLag[t])*(tr1/tr2);
+  var last=nTotal-1;
+  while(last>0&&Math.abs(newUH[last])<0.01)last--;
+  newUH=newUH.slice(0,last+1); sCurve=sCurve.slice(0,last+1); sCurveLag=sCurveLag.slice(0,last+1);
+  var tbl='<div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:0.82rem;">'
+    +'<tr><th class="conv-table-header">Time (hr)</th><th class="conv-table-header">Orig UH (cfs/in)</th>'
+    +'<th class="conv-table-header">S-Curve</th><th class="conv-table-header">S-Curve Lag '+tr2+'hr</th>'
+    +'<th class="conv-table-header">Difference</th><th class="conv-table-header" style="background:#28a745;">New UH '+tr2+'hr (cfs/in)</th></tr>';
+  for(var t=0;t<newUH.length;t++){
+    var orig=t<nUH?uhRaw[t].toFixed(2):'0.00';
+    tbl+='<tr><td class="conv-table-cell time">'+(t*dt).toFixed(2)+'</td><td class="conv-table-cell">'+orig+'</td>'
+      +'<td class="conv-table-cell drh">'+sCurve[t].toFixed(2)+'</td><td class="conv-table-cell drh">'+sCurveLag[t].toFixed(2)+'</td>'
+      +'<td class="conv-table-cell">'+(sCurve[t]-sCurveLag[t]).toFixed(2)+'</td>'
+      +'<td class="conv-table-cell total">'+newUH[t].toFixed(2)+'</td></tr>';
+  }
+  tbl+='</table></div>';
+  var peakNew=Math.max.apply(null,newUH),peakNewT=newUH.indexOf(peakNew)*dt;
+  document.getElementById('sc-table-container').innerHTML=tbl;
+  document.getElementById('sc-summary-body').innerHTML=
+    resultRow('Original Duration tr1',tr1.toFixed(2)+' hr ('+n1+' steps)')
+    +resultRow('New Duration tr2',tr2.toFixed(2)+' hr ('+n2+' steps)')
+    +resultRow('Scale Factor tr1/tr2',(tr1/tr2).toFixed(4))
+    +resultRow('New UH Peak',peakNew.toFixed(2)+' cfs/in at t = '+peakNewT.toFixed(2)+' hr')
+    +resultRow('New UH Ordinates',newUH.map(function(v){return v.toFixed(1);}).join(', '));
+  document.getElementById('sc-result').style.display='block';
+  var steps=stepBlock(1,'Determine Steps Per Duration','n1 = tr1/Δt,  n2 = tr2/Δt',
+    'n1 = '+tr1+'/'+dt+' = '+n1+' steps,   n2 = '+tr2+'/'+dt+' = '+n2+' steps',
+    'Original UH repeats every n1 time steps in the S-curve');
+  steps+=stepBlock(2,'Build S-Curve','S[t] = Σ u[t − k·n1]  for k = 0, 1, 2, ...',
+    'At each time step, sum all non-negative-index copies of the original UH',
+    'S-curve rises and levels off at ΣUH ordinates');
+  steps+=stepBlock(3,'Lag S-Curve by n2 Steps','S_lag[t] = S[t − n2]  (= 0 for t < n2)',
+    'Shift entire S-curve forward by '+n2+' steps (= '+tr2+' hr)',
+    'Creates a second S-curve offset by the new storm duration');
+  steps+=stepBlock(4,'Difference the Curves','D[t] = S[t] − S_lag[t]',
+    'Subtract lagged from original at every time step',
+    'D[t] represents the response to a unit rainfall of duration tr2');
+  steps+=stepBlock(5,'Scale to New UH','New UH[t] = D[t] × (tr1 / tr2)',
+    'New UH[t] = D[t] × ('+ tr1+'/'+tr2+') = D[t] × '+(tr1/tr2).toFixed(4),
+    'Scaling ensures new UH still represents exactly 1 inch of runoff');
+  showSteps('sc-steps','sc-steps-body',steps);
+}
+
+// ─── CALCULATOR 9: LEVEL-POOL ROUTING ───────────────────────────────────────
+function calcRouting(){
+  hideError('rout-error'); hideEl('rout-steps');
+  document.getElementById('rout-result').style.display='none';
+  var dt_hr=parseFloat(document.getElementById('rout-dt').value);
+  if(isNaN(dt_hr)||dt_hr<=0){showError('rout-error','Enter Δt (hours).');return;}
+  var dt_s=dt_hr*3600;
+  var I=document.getElementById('rout-inflow').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var O_arr=document.getElementById('rout-so-O').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var S_arr=document.getElementById('rout-so-S').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  if(I.some(isNaN)||I.length<2){showError('rout-error','Inflow: one cfs value per line, at least 2.');return;}
+  if(O_arr.some(isNaN)||S_arr.some(isNaN)||O_arr.length<2||O_arr.length!==S_arr.length){
+    showError('rout-error','S-O table: equal number of O and S values, at least 2 pairs.');return;}
+  var S_ft3=S_arr.map(function(s){return s*43560;});
+  var rc=S_ft3.map(function(s,i){return 2*s/dt_s+O_arr[i];});
+  var pairs=rc.map(function(r,i){return{rc:r,O:O_arr[i],S:S_arr[i]};});
+  pairs.sort(function(a,b){return a.rc-b.rc;});
+  var rcSorted=pairs.map(function(p){return p.rc;}),OSorted=pairs.map(function(p){return p.O;});
+  var S0_in=parseFloat(document.getElementById('rout-S0').value);
+  var S0_ft3=isNaN(S0_in)?0:S0_in*43560;
+  var O0=linInterp(S_ft3,O_arr,S0_ft3);
+  var outflow=[O0],storage=[S0_ft3/43560],indicator=[2*S0_ft3/dt_s+O0],lhs=[2*S0_ft3/dt_s-O0];
+  for(var t=0;t<I.length-1;t++){
+    var rhs=I[t]+I[t+1]+lhs[t];
+    var O2=linInterp(rcSorted,OSorted,rhs);
+    var lhs2=rhs-2*O2,S2=(rhs-O2)*dt_s/2;
+    outflow.push(O2); storage.push(S2/43560); indicator.push(rhs); lhs.push(lhs2);
+  }
+  var tbl='<div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:0.82rem;">'
+    +'<tr><th class="conv-table-header">Time (hr)</th><th class="conv-table-header">Inflow I (cfs)</th>'
+    +'<th class="conv-table-header">2S/Δt−O (cfs)</th><th class="conv-table-header">2S/Δt+O (cfs)</th>'
+    +'<th class="conv-table-header" style="background:#28a745;">Outflow O (cfs)</th><th class="conv-table-header">Storage (ac-ft)</th></tr>';
+  for(var t=0;t<outflow.length;t++){
+    var iVal=t<I.length?I[t].toFixed(2):'—';
+    tbl+='<tr><td class="conv-table-cell time">'+(t*dt_hr).toFixed(2)+'</td>'
+      +'<td class="conv-table-cell">'+iVal+'</td>'
+      +'<td class="conv-table-cell drh">'+lhs[t].toFixed(2)+'</td>'
+      +'<td class="conv-table-cell drh">'+indicator[t].toFixed(2)+'</td>'
+      +'<td class="conv-table-cell total">'+outflow[t].toFixed(2)+'</td>'
+      +'<td class="conv-table-cell">'+storage[t].toFixed(3)+'</td></tr>';
+  }
+  tbl+='</table></div>';
+  var peakI=Math.max.apply(null,I),peakO=Math.max.apply(null,outflow);
+  var peakIt=I.indexOf(peakI)*dt_hr,peakOt=outflow.indexOf(peakO)*dt_hr;
+  var atten=((peakI-peakO)/peakI*100).toFixed(1);
+  document.getElementById('rout-table-container').innerHTML=tbl;
+  document.getElementById('rout-summary-body').innerHTML=
+    resultRow('Peak Inflow',peakI.toFixed(2)+' cfs at t = '+peakIt.toFixed(2)+' hr')
+    +resultRow('Peak Outflow',peakO.toFixed(2)+' cfs at t = '+peakOt.toFixed(2)+' hr')
+    +resultRow('Peak Attenuation',atten+'%')
+    +resultRow('Peak Lag',(peakOt-peakIt).toFixed(2)+' hr')
+    +resultRow('Max Storage',Math.max.apply(null,storage).toFixed(3)+' ac-ft');
+  document.getElementById('rout-result').style.display='block';
+  var rcSample=pairs.slice(0,Math.min(4,pairs.length)).map(function(p){return 'O='+p.O.toFixed(0)+', S='+p.S.toFixed(2)+'ac-ft → '+p.rc.toFixed(1)+' cfs';}).join('; ');
+  var steps=stepBlock(1,'Build Routing Curve','For each (O,S) pair: 2S/Δt + O  [cfs]',
+    'S [ac-ft] × 43560 → ft³; Δt [hr] × 3600 → sec; then 2S[ft³]/Δt[s] + O[cfs]',
+    'Sample pairs: '+rcSample);
+  steps+=stepBlock(2,'Initial Condition','O₁ from initial storage S₀',
+    'S₀ = '+(isNaN(S0_in)?0:S0_in.toFixed(3))+' ac-ft → O₀ = '+O0.toFixed(2)+' cfs (interpolated from S-O table)',
+    '2S₀/Δt − O₀ = '+lhs[0].toFixed(2)+' cfs');
+  steps+=stepBlock(3,'Routing Step','(2S₂/Δt + O₂) = I₁ + I₂ + (2S₁/Δt − O₁)',
+    'RHS is known; interpolate routing curve to find O₂; then carry forward (2S₂/Δt − O₂) = RHS − 2O₂',
+    'Repeat for each time step through the inflow hydrograph');
+  steps+=stepBlock(4,'Results','Peak attenuation and lag',
+    'Peak in = '+peakI.toFixed(2)+' cfs at t = '+peakIt.toFixed(2)+' hr; Peak out = '+peakO.toFixed(2)+' cfs at t = '+peakOt.toFixed(2)+' hr',
+    'Attenuation = '+atten+'%,  Lag = '+(peakOt-peakIt).toFixed(2)+' hr');
+  showSteps('rout-steps','rout-steps-body',steps);
+}
+
+// ─── CALCULATOR 10: BACK-CALCULATE PEAK FROM VOLUME ─────────────────────────
+function bpToggle(){
+  var opt=document.getElementById('bp-tpoption').value;
+  document.getElementById('bp-tb-group').style.display=opt==='tb'?'block':'none';
+  document.getElementById('bp-tp-group').style.display=opt==='tp'?'block':'none';
+}
+
+function calcBackPeak(){
+  hideError('bp-error'); hideEl('bp-result'); hideEl('bp-steps');
+  var V=parseFloat(document.getElementById('bp-volume').value);
+  var vUnits=document.getElementById('bp-vunits').value;
+  var tpOption=document.getElementById('bp-tpoption').value;
+  if(isNaN(V)||V<=0){showError('bp-error','Enter a valid runoff volume V.');return;}
+  var Tb_hr,tp_hr;
+  if(tpOption==='tb'){
+    Tb_hr=parseFloat(document.getElementById('bp-tb').value);
+    if(isNaN(Tb_hr)||Tb_hr<=0){showError('bp-error','Enter time base Tb (hours).');return;}
+    tp_hr=Tb_hr/2.67;
+  } else {
+    tp_hr=parseFloat(document.getElementById('bp-tp').value);
+    if(isNaN(tp_hr)||tp_hr<=0){showError('bp-error','Enter time to peak tp (hours).');return;}
+    Tb_hr=2.67*tp_hr;
+  }
+  var V_ft3,vLabel;
+  if(vUnits==='acin'){V_ft3=V*3630;vLabel=V.toFixed(3)+' ac-in';}
+  else if(vUnits==='acft'){V_ft3=V*43560;vLabel=V.toFixed(3)+' ac-ft';}
+  else{V_ft3=V;vLabel=V.toFixed(0)+' ft³';}
+  var Qp=2*V_ft3/(Tb_hr*3600);
+  document.getElementById('bp-result-body').innerHTML=
+    resultRow('Volume V',vLabel+' = '+V_ft3.toFixed(0)+' ft³')
+    +resultRow('Time to Peak tp',tp_hr.toFixed(3)+' hr')
+    +resultRow('Time Base Tb',Tb_hr.toFixed(3)+' hr')
+    +resultRow('Peak Discharge Qp',Qp.toFixed(2)+' cfs');
+  showEl('bp-result');
+  var convStep=vUnits!=='ft3'
+    ?stepBlock(1,'Convert Volume to ft³',vUnits==='acin'?'1 ac-in = 3,630 ft³':'1 ac-ft = 43,560 ft³',
+        'V = '+V.toFixed(3)+' × '+(vUnits==='acin'?'3,630':'43,560'),'V = '+V_ft3.toFixed(0)+' ft³')
+    :stepBlock(1,'Volume','Already in ft³',null,'V = '+V_ft3.toFixed(0)+' ft³');
+  var tbStep=tpOption==='tb'
+    ?stepBlock(2,'Time to Peak from Tb','tp = Tb / 2.67','tp = '+Tb_hr.toFixed(3)+' / 2.67','tp = '+tp_hr.toFixed(3)+' hr')
+    :stepBlock(2,'Time Base from tp','Tb = 2.67 × tp','Tb = 2.67 × '+tp_hr.toFixed(3),'Tb = '+Tb_hr.toFixed(3)+' hr');
+  var steps=convStep+tbStep
+    +stepBlock(3,'Triangular Hydrograph Geometry','V [ft³] = ½ × Qp [cfs] × Tb [hr] × 3600 s/hr',
+        'Area of triangle = ½ base × height (in consistent units)',
+        'Rearrange: Qp = 2V / (Tb × 3600)')
+    +stepBlock(4,'Solve for Peak Discharge','Qp = 2 × V [ft³] / (Tb [hr] × 3600)',
+        'Qp = 2 × '+V_ft3.toFixed(0)+' / ('+Tb_hr.toFixed(3)+' × 3600) = '+(2*V_ft3).toFixed(0)+' / '+(Tb_hr*3600).toFixed(0),
+        'Qp = '+Qp.toFixed(2)+' cfs');
+  showSteps('bp-steps','bp-steps-body',steps);
+}
+</script>
 </body>
 </html>
