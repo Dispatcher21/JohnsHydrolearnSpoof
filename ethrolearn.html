@@ -56,6 +56,10 @@
   .fig-placeholder .fig-filename { font-family:"Courier New",monospace; font-size:0.82rem; background:#fff; border:1px solid #dee2e6; border-radius:3px; padding:0.15rem 0.5rem; display:inline-block; margin:0.3rem 0; color:#212529; }
   .fig-placeholder .fig-caption-text { font-size:0.82rem; margin-top:0.5rem; font-style:italic; color:#495057; }
 
+  .fig-container { margin:1.25rem auto; text-align:center; max-width:700px; }
+  .fig-container img { max-width:100%; border-radius:4px; }
+  .fig-container .fig-caption-text { font-size:0.82rem; margin-top:0.5rem; font-style:italic; color:#495057; display:block; }
+
   #toc { background:#f4f8fc; border:1px solid #c8dff0; border-left:4px solid #0075b4; border-radius:4px; padding:1.1rem 1.4rem; margin-bottom:2rem; }
   .toc-title { font-weight:700; font-size:0.95rem; color:#0075b4; margin-bottom:0.75rem; }
   .toc-list { margin:0; padding-left:1.25rem; }
@@ -191,12 +195,7 @@
         <strong>Textbook Notation Note:</strong> In the Bedient 6th ed. textbook used in this course, t<sub>p</sub> denotes lag time and t<sub>c</sub> denotes time of concentration — opposite to some other references. Be aware of this when reading between sources.
       </div>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-chart-line"></i></div>
-        <div>Replace with Figure 19 from course materials</div>
-        <div class="fig-filename">figure19_hydrograph_lag_tc.png</div>
-        <div class="fig-caption-text">Figure 19. Storm hydrograph for a watershed in response to excess rainfall, showing lag time t<sub>L</sub> and time of concentration t<sub>C</sub>. When the excess rainfall equals 1 unit, this hydrograph is a Unit Hydrograph with duration t<sub>r</sub>.</div>
-      </div>
+      <div class="fig-container"><img src="figure19_hydrograph_lag_tc.png" alt="Figure 19 hydrograph lag time tc" style="max-width:100%;"><p class="fig-caption-text">Figure 19. Storm hydrograph for a watershed in response to excess rainfall, showing lag time t<sub>L</sub> and time of concentration t<sub>C</sub>. When the excess rainfall equals 1 unit, this hydrograph is a Unit Hydrograph with duration t<sub>r</sub>.</p></div>
 
       <p>For ungauged watersheds, t<sub>L</sub> and t<sub>C</sub> must be estimated from physical watershed characteristics. Watt and Chow (1985) developed the following regression equation from data collected across many gauged North American watersheds, relating lag time to stream length L and channel slope S<sub>c</sub>:</p>
 
@@ -226,12 +225,7 @@
       <h3 id="uh-convolution">Application Example — Convolution</h3>
       <p>The example below demonstrates how to derive the total direct runoff hydrograph (Total DRH) from a four-period storm using a known watershed UH. Precipitation values have a constant abstraction of 0.3 in/hr subtracted to produce excess precipitation (P<sub>e</sub>) values. Each P<sub>e</sub> value scales a copy of the UH offset by one time step, producing individual direct runoff hydrographs DRH1 through DRH4. These are summed at each time step to get the Total DRH.</p>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-chart-area"></i></div>
-        <div>Replace with Figure 21 from course materials</div>
-        <div class="fig-filename">figure21_convolution_illustration.png</div>
-        <div class="fig-caption-text">Figure 21. Event hydrograph (right) derived by summing four direct runoff hydrographs DRH1–DRH4. Each DRH is the UH (top plot) scaled by an excess precipitation value (left bar chart) and started at the beginning of that time period.</div>
-      </div>
+      <div class="fig-container"><img src="figure21_convolution_illustration.png" alt="Figure 21 convolution illustration" style="max-width:100%;"><p class="fig-caption-text">Figure 21. Event hydrograph (right) derived by summing four direct runoff hydrographs DRH1–DRH4. Each DRH is the UH (top plot) scaled by an excess precipitation value (left bar chart) and started at the beginning of that time period.</p></div>
 
       <h4>Unit Hydrograph for Watershed</h4>
       <div class="tbl">
@@ -276,12 +270,7 @@
 
       <p>DRH1 = UH &times; 0.2, starting at t = 1 hr. DRH2 = UH &times; 0.7, lagged to start at t = 2 hr. DRH3 = UH &times; 1.2, starting at t = 3 hr. DRH4 = UH &times; 0.2, starting at t = 4 hr. The Total DRH at any time step is the row sum across all active DRH columns.</p>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-chart-bar"></i></div>
-        <div>Replace with Figure 22 from course materials</div>
-        <div class="fig-filename">figure22_uh_application_example.png</div>
-        <div class="fig-caption-text">Figure 22. Unit Hydrograph Application Example. Left: excess precipitation bar chart for the four time periods (DRH1 red, DRH2 green, DRH3 blue, DRH4 purple). Right: individual DRH contributions and total DRH (black).</div>
-      </div>
+      <div class="fig-container"><img src="figure22_uh_application_example.png" alt="Figure 22 UH application example" style="max-width:100%;"><p class="fig-caption-text">Figure 22. Unit Hydrograph Application Example. Left: excess precipitation bar chart for the four time periods (DRH1 red, DRH2 green, DRH3 blue, DRH4 purple). Right: individual DRH contributions and total DRH (black).</p></div>
 
       <h3 id="uh-assumptions">Key Assumptions and Limitations</h3>
       <p>The unit hydrograph approach rests on six foundational assumptions:</p>
@@ -344,12 +333,7 @@
       <h3 id="scs-table">Scaling the SCS Dimensionless UH</h3>
       <p>Once t<sub>p</sub> and q<sub>p</sub> are known, the dimensionless SCS UH (Figure 23) is scaled by multiplying the normalized time axis by t<sub>p</sub> and the normalized discharge axis by q<sub>p</sub> to produce the actual UH ordinates at desired time intervals for that specific watershed.</p>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-chart-line"></i></div>
-        <div>Replace with Figure 23 from course materials</div>
-        <div class="fig-filename">figure23_scs_dimensionless_uh.png</div>
-        <div class="fig-caption-text">Figure 23. SCS Dimensionless Unit Hydrograph showing q/q<sub>p</sub> vs t/t<sub>p</sub>, with key time relationships annotated. The tabular ratios alongside the figure are used to scale this shape to a specific watershed.</div>
-      </div>
+      <div class="fig-container"><img src="figure23_scs_dimensionless_uh.png" alt="Figure 23 SCS dimensionless UH" style="max-width:100%;"><p class="fig-caption-text">Figure 23. SCS Dimensionless Unit Hydrograph showing q/q<sub>p</sub> vs t/t<sub>p</sub>, with key time relationships annotated. The tabular ratios alongside the figure are used to scale this shape to a specific watershed.</p></div>
 
       <h4>SCS Dimensionless UH — Time and Discharge Ratios</h4>
       <div class="tbl">
@@ -496,12 +480,7 @@
 
       <p>The NRCS developed a widely-used procedure for partitioning total storm rainfall into three components: <strong>initial abstraction I<sub>a</sub></strong> (interception, depression storage, and early infiltration before runoff begins), <strong>continuing infiltration F</strong> after runoff starts, and <strong>effective rainfall P<sub>e</sub></strong> that becomes direct runoff.</p>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-chart-bar"></i></div>
-        <div>Replace with Figure 2 from course materials (NRCS hyetograph components)</div>
-        <div class="fig-filename">figure2_nrcs_hyetograph_components.png</div>
-        <div class="fig-caption-text">Figure 2. NRCS components of the rainfall hyetograph. Total rainfall P is split into Initial Abstraction I<sub>a</sub>, continuing Infiltration F, and Effective Rainfall P<sub>e</sub> which becomes direct runoff.</div>
-      </div>
+      <div class="fig-container"><img src="figure2_nrcs_hyetograph_components.png" alt="Figure 2 NRCS hyetograph components" style="max-width:100%;"><p class="fig-caption-text">Figure 2. NRCS components of the rainfall hyetograph. Total rainfall P is split into Initial Abstraction I<sub>a</sub>, continuing Infiltration F, and Effective Rainfall P<sub>e</sub> which becomes direct runoff.</p></div>
 
       <p>From conservation of mass: P<sub>e</sub> = (P &minus; I<sub>a</sub>) &minus; F. The SCS method assumes the ratio of actual retention to maximum possible retention S equals the ratio of effective rainfall to maximum possible effective rainfall:</p>
 
@@ -610,12 +589,7 @@
       <h3 id="outfalls">Outfalls</h3>
       <p>An outfall is the discharge point of the project watershed — the location where water exits the drainage network. Any water reaching the outfall is removed from the model and not tracked further. The most critical attribute of an outfall is its <strong>invert elevation</strong>, which sets the water surface boundary condition at the outlet.</p>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-image"></i></div>
-        <div>Replace with Figure 1 outfall photo</div>
-        <div class="fig-filename">figure1_outfall_storm_sewer.jpg</div>
-        <div class="fig-caption-text">Figure 1. A corrugated metal storm sewer discharging murky stormwater runoff into a creek during a storm event. This pipe end represents the outfall node in a drainage network model.</div>
-      </div>
+      <div class="fig-container"><img src="figure1_outfall_storm_sewer.jpg" alt="Figure 1 outfall storm sewer" style="max-width:100%;"><p class="fig-caption-text">Figure 1. A corrugated metal storm sewer discharging murky stormwater runoff into a creek during a storm event. This pipe end represents the outfall node in a drainage network model.</p></div>
 
       <h3 id="junctions">Junctions</h3>
       <p>A junction is a point element representing either a <strong>storm sewer inlet</strong> — where surface runoff enters the underground pipe network — or a <strong>manhole</strong> — where pipes connect, change direction, or change size. In practice, a junction is placed wherever conduits need to be linked or wherever subcatchment runoff is discharged into the network.</p>
@@ -628,29 +602,14 @@
 
       <div class="row">
         <div class="col-md-6">
-          <div class="fig-placeholder">
-            <div class="fig-icon"><i class="fas fa-image"></i></div>
-            <div>Replace with Figure 2 — grate inlet photo</div>
-            <div class="fig-filename">figure2_grate_inlet.jpg</div>
-            <div class="fig-caption-text">Figure 2. A grate inlet — a common junction type where surface runoff enters the underground storm sewer network.</div>
-          </div>
+          <div class="fig-container"><img src="figure2_grate_inlet.jpg" alt="Figure 2 grate inlet" style="max-width:100%;"><p class="fig-caption-text">Figure 2. A grate inlet — a common junction type where surface runoff enters the underground storm sewer network.</p></div>
         </div>
         <div class="col-md-6">
-          <div class="fig-placeholder">
-            <div class="fig-icon"><i class="fas fa-image"></i></div>
-            <div>Replace with Figure 3 — curb inlet photo</div>
-            <div class="fig-filename">figure3_curb_inlet.jpg</div>
-            <div class="fig-caption-text">Figure 3. A curb inlet accepting sheet flow runoff from a street during a storm event.</div>
-          </div>
+          <div class="fig-container"><img src="figure3_curb_inlet.jpg" alt="Figure 3 curb inlet" style="max-width:100%;"><p class="fig-caption-text">Figure 3. A curb inlet accepting sheet flow runoff from a street during a storm event.</p></div>
         </div>
       </div>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-image"></i></div>
-        <div>Replace with Figure 4 — open manhole photo</div>
-        <div class="fig-filename">figure4_open_manhole.jpg</div>
-        <div class="fig-caption-text">Figure 4. An open manhole providing access to a below-grade sewer junction where pipes connect underground.</div>
-      </div>
+      <div class="fig-container"><img src="figure4_open_manhole.jpg" alt="Figure 4 open manhole" style="max-width:100%;"><p class="fig-caption-text">Figure 4. An open manhole providing access to a below-grade sewer junction where pipes connect underground.</p></div>
 
       <h3 id="conduits">Conduits and Connectivity</h3>
       <p>A conduit is a pipe or open channel connecting two junction nodes. In most urban settings, conduits are <strong>circular precast concrete pipes</strong> — the simplest case to model because geometry is fully defined by a single diameter. Conduits can also be natural or engineered channels with irregular cross-sections, which are more complex to characterize.</p>
@@ -664,29 +623,14 @@
 
       <div class="row">
         <div class="col-md-6">
-          <div class="fig-placeholder">
-            <div class="fig-icon"><i class="fas fa-image"></i></div>
-            <div>Replace with Figure 5 — concrete pipe installation photo</div>
-            <div class="fig-filename">figure5_concrete_pipe.jpg</div>
-            <div class="fig-caption-text">Figure 5. Precast concrete pipe being laid into a trench — the most common conduit type in urban storm sewer systems.</div>
-          </div>
+          <div class="fig-container"><img src="figure5_concrete_pipe.jpg" alt="Figure 5 concrete pipe" style="max-width:100%;"><p class="fig-caption-text">Figure 5. Precast concrete pipe being laid into a trench — the most common conduit type in urban storm sewer systems.</p></div>
         </div>
         <div class="col-md-6">
-          <div class="fig-placeholder">
-            <div class="fig-icon"><i class="fas fa-image"></i></div>
-            <div>Replace with Figure 6 — concrete-lined channel photo</div>
-            <div class="fig-filename">figure6_concrete_channel.jpg</div>
-            <div class="fig-caption-text">Figure 6. A concrete-lined trapezoidal channel — an engineered open channel conduit type in PCSWMM.</div>
-          </div>
+          <div class="fig-container"><img src="figure6_concrete_channel.jpg" alt="Figure 6 concrete channel" style="max-width:100%;"><p class="fig-caption-text">Figure 6. A concrete-lined trapezoidal channel — an engineered open channel conduit type in PCSWMM.</p></div>
         </div>
       </div>
 
-      <div class="fig-placeholder">
-        <div class="fig-icon"><i class="fas fa-image"></i></div>
-        <div>Replace with Figure 7 — natural channel photo</div>
-        <div class="fig-filename">figure7_natural_channel.jpg</div>
-        <div class="fig-caption-text">Figure 7. A rocky natural channel carrying flow — an example of an irregular, natural conduit that requires more effort to characterize in a PCSWMM model.</div>
-      </div>
+      <div class="fig-container"><img src="figure7_natural_channel.jpg" alt="Figure 7 natural channel" style="max-width:100%;"><p class="fig-caption-text">Figure 7. A rocky natural channel carrying flow — an example of an irregular, natural conduit that requires more effort to characterize in a PCSWMM model.</p></div>
 
       <h4>Link-and-Node System and Connectivity</h4>
       <p>PCSWMM operates as a <strong>link-and-node</strong> system. Junctions and outfalls are the <em>nodes</em> — point objects that store and release water. Conduits are the <em>links</em> — objects that connect nodes and convey water between them. Together they form the complete drainage network.</p>
@@ -716,7 +660,7 @@
 <footer role="contentinfo" class="footer border-top py-3 px-4">
   <div class="container-fluid d-flex">
     <a href="#" aria-label="Home">
-      <img src="ETHROLEARN_LOGO_HERE.png" alt="Ethrolearn" style="max-height:45px;">
+      <img src="Ethrolearn.png" alt="Ethrolearn" style="max-height:45px;">
     </a>
   </div>
 </footer>
