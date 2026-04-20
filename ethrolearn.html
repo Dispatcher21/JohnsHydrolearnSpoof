@@ -2,27 +2,24 @@
 <html lang="en-us" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<title>EthroLearn | ENCE4321c</title>
+<title>Ethrolearn | ENCE4321c — Runoff Methods &amp; PCSWMM Hydraulics</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
   :root { --primary: #0075b4; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color:#212529; }
   a { color: var(--primary); }
 
-  /* Header */
   .learning-header { background:#fff; border-bottom:1px solid #e9ecef; position:sticky; top:0; z-index:100; }
   .learning-header .logo img { height:40px; }
   .course-title { font-size:0.95rem; font-weight:700; }
 
-  /* Site switcher */
   .site-switcher { display:flex; border:1px solid #dee2e6; border-radius:20px; overflow:hidden; font-size:0.7rem; }
-  .site-switcher-btn { padding:0.15rem 0.6rem; text-decoration:none; color:#6c757d; background:#fff; white-space:nowrap; transition:background 0.15s, color 0.15s; }
+  .site-switcher-btn { padding:0.15rem 0.6rem; text-decoration:none; color:#6c757d; background:#fff; white-space:nowrap; transition:background 0.15s,color 0.15s; }
   .site-switcher-btn:hover { background:#f0f0f0; color:#212529; text-decoration:none; }
   .site-switcher-btn.active { background:#0075b4; color:#fff; font-weight:600; }
 
-  /* Content */
   .unit h1.h3 { font-size:1.4rem; font-weight:700; }
   .ck-content h2 { font-size:1.4rem; font-weight:700; margin-top:2rem; margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:2px solid #dee2e6; color:#212529; }
   .ck-content h3 { font-size:1.15rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:#0075b4; }
@@ -30,36 +27,35 @@
   .ck-content ul, .ck-content ol { padding-left:1.6rem; margin-bottom:1rem; }
   .ck-content li { margin-bottom:0.3rem; line-height:1.65; }
   .ck-content p { margin-bottom:0.85rem; line-height:1.65; }
-  .ck-content .table { width:100%; margin:1rem 0; }
-  .ck-content .table table { border-collapse:collapse; width:100%; }
-  .ck-content .table table td, .ck-content .table table th { padding:0.5em 0.75em; border:1px solid #bfbfbf; font-size:0.9rem; }
-  .ck-content .table table thead th { background:#0075b4; color:#fff; font-weight:700; }
-  .ck-content .table table tbody tr:nth-child(even) { background:#f4f8fc; }
 
-  /* Callout boxes */
+  .ck-content .tbl { width:100%; margin:1rem 0; overflow-x:auto; }
+  .ck-content .tbl table { border-collapse:collapse; width:100%; }
+  .ck-content .tbl table td, .ck-content .tbl table th { padding:0.45em 0.75em; border:1px solid #bfbfbf; font-size:0.88rem; vertical-align:top; }
+  .ck-content .tbl table thead th { background:#0075b4; color:#fff; font-weight:700; }
+  .ck-content .tbl table tbody tr:nth-child(even) { background:#f4f8fc; }
+  .ck-content .tbl table .subhead td { background:#e8f4fb; font-style:italic; font-weight:600; color:#0075b4; }
+
   .callout { border-left:4px solid var(--primary); background:#e8f4fb; padding:0.9rem 1.1rem; margin:1.2rem 0; border-radius:0 4px 4px 0; }
   .callout.callout-warning { border-color:#f0ad4e; background:#fff8ec; }
   .callout.callout-success { border-color:#28a745; background:#edf7f0; }
-  .callout.callout-formula { border-color:#6f42c1; background:#f3f0fa; font-family:"Courier New",monospace; font-size:1.05rem; }
+  .callout.callout-formula { border-color:#6f42c1; background:#f3f0fa; }
   .callout-title { font-weight:700; margin-bottom:0.3rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em; }
   .callout.callout-formula .callout-title { color:#6f42c1; }
   .callout.callout-warning .callout-title { color:#856404; }
   .callout.callout-success .callout-title { color:#155724; }
+  .callout-formula p, .callout-formula li { font-family:"Courier New",monospace; font-size:0.95rem; margin-bottom:0.3rem; }
 
-  /* Worked example */
-  .worked-example { border:2px solid #0075b4; border-radius:6px; padding:1.1rem 1.2rem; margin:1.5rem 0; background:#fff; }
-  .worked-example .we-title { font-weight:700; color:#0075b4; font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
-  .worked-example .we-step { margin-bottom:0.6rem; padding-left:1rem; border-left:3px solid #dee2e6; }
-  .worked-example .we-answer { background:#edf7f0; border:1px solid #28a745; border-radius:4px; padding:0.5rem 0.75rem; margin-top:0.75rem; font-weight:600; color:#155724; }
+  .eq-block { text-align:center; margin:1.2rem 0; padding:0.75rem 1rem; background:#f8f9fa; border-radius:4px; font-size:1.05rem; border-left:3px solid #6f42c1; }
+  .eq-block .eq-label { font-size:0.8rem; color:#6c757d; display:block; margin-top:0.4rem; font-style:italic; font-family:inherit; }
 
-  /* Term card */
-  .term-card { background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:0.8rem 1rem; margin-bottom:0.6rem; }
-  .term-card .term-name { font-weight:700; color:#0075b4; font-size:1rem; }
-  .term-card .term-symbol { font-family:"Courier New",monospace; font-size:0.9rem; color:#6f42c1; margin-left:0.5rem; }
-  .term-card .term-def { margin-top:0.25rem; margin-bottom:0; font-size:0.95rem; }
-  .term-card .term-units { font-size:0.8rem; color:#6c757d; margin-top:0.2rem; }
+  .notation-alert { background:#fff3cd; border:1px solid #ffc107; border-left:4px solid #e0a800; border-radius:0 4px 4px 0; padding:0.75rem 1rem; margin:1rem 0; font-size:0.9rem; }
+  .notation-alert strong { color:#856404; }
 
-  /* Table of contents */
+  .fig-placeholder { background:#f0f4f8; border:2px dashed #adb5bd; border-radius:6px; padding:1.5rem 1rem; text-align:center; margin:1.25rem auto; color:#6c757d; max-width:700px; }
+  .fig-placeholder .fig-icon { font-size:2rem; margin-bottom:0.4rem; opacity:0.35; }
+  .fig-placeholder .fig-filename { font-family:"Courier New",monospace; font-size:0.82rem; background:#fff; border:1px solid #dee2e6; border-radius:3px; padding:0.15rem 0.5rem; display:inline-block; margin:0.3rem 0; color:#212529; }
+  .fig-placeholder .fig-caption-text { font-size:0.82rem; margin-top:0.5rem; font-style:italic; color:#495057; }
+
   #toc { background:#f4f8fc; border:1px solid #c8dff0; border-left:4px solid #0075b4; border-radius:4px; padding:1.1rem 1.4rem; margin-bottom:2rem; }
   .toc-title { font-weight:700; font-size:0.95rem; color:#0075b4; margin-bottom:0.75rem; }
   .toc-list { margin:0; padding-left:1.25rem; }
@@ -69,26 +65,10 @@
   .toc-list a { color:#0075b4; text-decoration:none; }
   .toc-list a:hover { text-decoration:underline; }
 
-  /* Concept questions */
-  .cq-block { display:flex; gap:1rem; margin-bottom:1.5rem; background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:1rem 1.1rem; }
-  .cq-num { background:#0075b4; color:#fff; border-radius:50%; width:32px; height:32px; min-width:32px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; margin-top:2px; flex-shrink:0; }
-  .cq-body { flex:1; }
-  .cq-question { font-weight:600; font-size:0.95rem; color:#212529; margin-bottom:0.75rem; line-height:1.5; }
-  .cq-answer { background:#f4f8fc; border-left:3px solid #0075b4; padding:0.8rem 1rem; border-radius:0 4px 4px 0; font-size:0.9rem; line-height:1.65; }
-  .cq-answer-title { font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.4rem; }
-
-  /* Calculators */
-  .calc-box { background:#f8f9fa; border:1px solid #dee2e6; border-radius:6px; padding:1.25rem 1.4rem; margin-bottom:1.5rem; }
-  .calc-label { font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.6rem; margin-top:0.75rem; }
-  .calc-label:first-child { margin-top:0; }
-  .calc-field-label { font-size:0.82rem; color:#495057; margin-bottom:0.2rem; display:block; }
-  .calc-input { width:100%; padding:0.4rem 0.6rem; border:1px solid #ced4da; border-radius:4px; font-size:0.9rem; background:#fff; }
-  .calc-btn { background:#0075b4; color:#fff; border:none; border-radius:4px; padding:0.45rem 1.2rem; font-size:0.9rem; font-weight:600; cursor:pointer; margin-right:0.5rem; }
-  .calc-btn:hover { background:#005f94; }
-  .calc-reset-btn { background:#fff; color:#6c757d; border:1px solid #ced4da; border-radius:4px; padding:0.45rem 1rem; font-size:0.9rem; cursor:pointer; }
-  .calc-result { background:#edf7f0; border:1px solid #28a745; border-radius:4px; padding:0.9rem 1.1rem; margin-top:1rem; }
-  .calc-result-title { font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em; color:#155724; margin-bottom:0.5rem; }
-  .calc-error { background:#fff3cd; border:1px solid #ffc107; border-radius:4px; padding:0.6rem 0.9rem; margin-top:0.75rem; color:#856404; font-size:0.88rem; }
+  .quiz-banner { background:#fff; border:1px solid #dee2e6; border-left:4px solid #0075b4; border-radius:0 6px 6px 0; padding:1rem 1.25rem; margin-bottom:1.5rem; }
+  .quiz-banner h4 { color:#0075b4; font-size:0.95rem; margin-bottom:0.6rem; }
+  .quiz-banner ul { margin:0; padding-left:1.25rem; }
+  .quiz-banner ul li { font-size:0.9rem; margin-bottom:0.25rem; }
 
   footer.footer { background:#fff; }
   footer.footer img { max-height:45px; }
@@ -97,93 +77,646 @@
 <body>
 <div id="root"><div>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header class="learning-header">
   <div class="container-xl py-2 d-flex align-items-center">
     <div class="d-flex flex-column align-items-center mr-3">
       <a href="ethrolearn.html" class="logo">
-        <!-- Replace with Ethrolearn logo when ready -->
-        <img class="d-block" src="Ethrolearn.png" alt="EthrOLearn">
+        <img class="d-block" src="ETHROLEARN_LOGO_HERE.png" alt="Ethrolearn">
       </a>
       <div class="site-switcher mt-1">
-        <a href="index.html" class="site-switcher-btn">JohndroLearn</a>
-        <a href="ethrolearn.html" class="site-switcher-btn active">EthroLearn</a>
+        <a href="index.html" class="site-switcher-btn">Johndrolearn</a>
+        <a href="ethrolearn.html" class="site-switcher-btn active">Ethrolearn</a>
       </div>
     </div>
     <div class="flex-grow-1 px-3" style="line-height:1;">
-      <span class="d-block small m-0">COURSE ORGANIZATION &amp; CODE HERE</span>
-      <span class="d-block m-0 course-title">COURSE TITLE HERE</span>
+      <span class="d-block small m-0">UniversityOfNewOrleansCivilEngineering ENCE4321c</span>
+      <span class="d-block m-0 course-title">ENCE4321_c SP26 Rational Method to PCSWMM: Matching Models to Situations</span>
     </div>
     <a class="text-muted mr-3" href="#">Help</a>
     <div class="dropdown">
-      <button type="button" class="dropdown-toggle btn btn-outline-primary">USERNAME HERE</button>
+      <button type="button" class="dropdown-toggle btn btn-outline-primary">HydroIdiot#1</button>
     </div>
   </div>
 </header>
 
-<!-- ===== MAIN ===== -->
+<!-- MAIN -->
 <main class="d-flex flex-column flex-grow-1">
-  <div class="container-xl">
+<div class="container-xl">
 
-    <!-- Breadcrumb -->
-    <nav class="my-4">
-      <ol class="list-unstyled d-flex flex-nowrap align-items-center m-0">
-        <li><a class="text-primary" href="#"><i class="fas fa-home mr-2"></i>Course</a></li>
-        <li class="mx-2 text-muted">/</li>
-        <li class="text-muted">PAGE TITLE HERE</li>
-      </ol>
-    </nav>
+  <nav class="my-4">
+    <ol class="list-unstyled d-flex flex-nowrap align-items-center m-0">
+      <li><a class="text-primary" href="#"><i class="fas fa-home mr-2"></i>Course</a></li>
+      <li class="mx-2 text-muted">/</li>
+      <li class="text-muted">Runoff Methods &amp; PCSWMM Hydraulics</li>
+    </ol>
+  </nav>
 
-    <!-- Unit content -->
-    <div class="unit">
-      <h1 class="mb-1 h3">PAGE TITLE HERE</h1>
-      <button class="btn btn-link btn-sm text-primary px-0 mb-3">
-        <i class="far fa-bookmark mr-1"></i>Bookmark this page
-      </button>
+  <div class="unit">
+    <h1 class="mb-1 h3">Runoff Methods &amp; PCSWMM Hydraulics — Course Notes</h1>
+    <button class="btn btn-link btn-sm text-primary px-0 mb-3">
+      <i class="far fa-bookmark mr-1"></i>Bookmark this page
+    </button>
 
-      <!-- TABLE OF CONTENTS — fill in once content is decided -->
-      <div id="toc">
-        <div class="toc-title"><i class="fas fa-list mr-2"></i>Contents</div>
-        <ol class="toc-list">
-          <li><a href="#section1">Section 1 Title Here</a></li>
-          <li><a href="#section2">Section 2 Title Here</a></li>
-          <!-- Add more as needed -->
-        </ol>
-      </div>
-
-      <!-- ============================================================
-           MAIN CONTENT AREA — add sections below
-           ============================================================ -->
-      <div class="ck-content">
-
-        <h2 id="section1">Section 1: Title Here</h2>
-        <p>Content goes here.</p>
-
-        <h2 id="section2">Section 2: Title Here</h2>
-        <p>Content goes here.</p>
-
-      </div>
-      <!-- END CONTENT -->
-
-    </div><!-- .unit -->
-
-    <div class="text-right small py-3 text-muted">
-      <a class="text-muted text-decoration-none" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-creative-commons mr-1"></i>
-        <i class="fab fa-creative-commons-by mr-1"></i>
-        <i class="fab fa-creative-commons-sa mr-1"></i>
-        Some Rights Reserved
-      </a>
+    <div class="quiz-banner">
+      <h4><i class="fas fa-clipboard-list mr-2"></i>Quiz 2 Topics</h4>
+      <ul>
+        <li>Identify terms associated with Unit Hydrograph (UH) theory, Curve Number, and Rational Method.</li>
+        <li>Given a UH figure and data, choose the correct runoff value.</li>
+        <li>Answer short UH questions about runoff (peak, time, volume) given a simple UH and needed info.</li>
+        <li>Answer questions about the Rational Method and calculate peak flow using Q = CiA.</li>
+        <li>Answer questions associated with the Curve Number (CN) procedure; calculate average CN and runoff volume.</li>
+        <li>Describe the process of Hydrologic Routing.</li>
+      </ul>
     </div>
 
-  </div><!-- .container-xl -->
+    <div id="toc">
+      <div class="toc-title"><i class="fas fa-list mr-2"></i>Contents</div>
+      <ol class="toc-list">
+        <li><a href="#lag-tc">Lag Time and Time of Concentration</a></li>
+        <li><a href="#uh">Unit Hydrograph</a>
+          <ol>
+            <li><a href="#uh">Definition and Overview</a></li>
+            <li><a href="#uh-convolution">Application — Convolution Example</a></li>
+            <li><a href="#uh-assumptions">Key Assumptions and Limitations</a></li>
+          </ol>
+        </li>
+        <li><a href="#scs-uh">Synthetic Unit Hydrograph — NRCS/SCS Method</a>
+          <ol>
+            <li><a href="#scs-uh">Lag Time Equations</a></li>
+            <li><a href="#scs-peak">Unit Peak Discharge</a></li>
+            <li><a href="#scs-table">Dimensionless UH Table</a></li>
+          </ol>
+        </li>
+        <li><a href="#rational">The Rational Method</a>
+          <ol>
+            <li><a href="#rational">Q = CiA</a></li>
+            <li><a href="#c-values">Runoff Coefficient Table</a></li>
+            <li><a href="#idf">Intensity and IDF Curves</a></li>
+            <li><a href="#tc-kinematic">Time of Concentration — Kinematic Equation</a></li>
+          </ol>
+        </li>
+        <li><a href="#cn">SCS Curve Number Method</a>
+          <ol>
+            <li><a href="#cn">Equations</a></li>
+            <li><a href="#cn-table">CN Table for Urban Areas</a></li>
+            <li><a href="#amc">Antecedent Moisture Condition</a></li>
+            <li><a href="#avg-cn">Area-Averaged Composite CN</a></li>
+          </ol>
+        </li>
+        <li><a href="#pcswmm">PCSWMM Hydraulics</a>
+          <ol>
+            <li><a href="#outfalls">Outfalls</a></li>
+            <li><a href="#junctions">Junctions</a></li>
+            <li><a href="#conduits">Conduits and Connectivity</a></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ck-content">
+
+      <!-- ====================================================
+           SECTION 1: LAG TIME AND TIME OF CONCENTRATION
+           ==================================================== -->
+      <h2 id="lag-tc">Section 1: Lag Time and Time of Concentration</h2>
+
+      <p>Two fundamental time parameters describe how quickly a watershed responds to a storm: <strong>lag time</strong> and <strong>time of concentration</strong>. Both are critical inputs for unit hydrograph analysis and for estimating peak discharge.</p>
+
+      <p>The <strong>lag time</strong>, t<sub>L</sub>, is the time from the center of mass of the excess rainfall hyetograph to the peak discharge of the streamflow hydrograph. It represents the average travel time across the watershed.</p>
+
+      <p>The <strong>time of concentration</strong>, t<sub>C</sub>, is the total response time of the watershed — the time needed for rainfall at the most remote point to reach the outlet. It is formally defined as the time from the center of mass of excess rainfall to the inflection point on the falling limb of the hydrograph.</p>
+
+      <div class="notation-alert">
+        <strong>Textbook Notation Note:</strong> In the Bedient 6th ed. textbook used in this course, t<sub>p</sub> denotes lag time and t<sub>c</sub> denotes time of concentration — opposite to some other references. Be aware of this when reading between sources.
+      </div>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-chart-line"></i></div>
+        <div>Replace with Figure 19 from course materials</div>
+        <div class="fig-filename">figure19_hydrograph_lag_tc.png</div>
+        <div class="fig-caption-text">Figure 19. Storm hydrograph for a watershed in response to excess rainfall, showing lag time t<sub>L</sub> and time of concentration t<sub>C</sub>. When the excess rainfall equals 1 unit, this hydrograph is a Unit Hydrograph with duration t<sub>r</sub>.</div>
+      </div>
+
+      <p>For ungauged watersheds, t<sub>L</sub> and t<sub>C</sub> must be estimated from physical watershed characteristics. Watt and Chow (1985) developed the following regression equation from data collected across many gauged North American watersheds, relating lag time to stream length L and channel slope S<sub>c</sub>:</p>
+
+      <div class="eq-block">
+        t<sub>L</sub> = 0.000326 (L / &radic;S<sub>c</sub>)<sup>0.79</sup>
+        <span class="eq-label">t<sub>L</sub> = lag time (hr) &nbsp;|&nbsp; L = length of main stream (m) &nbsp;|&nbsp; S<sub>c</sub> = sine of main channel slope angle (dimensionless)</span>
+      </div>
+
+      <div class="eq-block">
+        t<sub>C</sub> = (5/3) &times; t<sub>L</sub>
+        <span class="eq-label">t<sub>C</sub> = time of concentration (hr)</span>
+      </div>
+
+      <p>Longer watersheds and shallower slopes both increase travel time — and therefore t<sub>L</sub> and t<sub>C</sub> — because flow velocities are slower and the path water must travel is longer.</p>
+
+
+      <!-- ====================================================
+           SECTION 2: UNIT HYDROGRAPH
+           ==================================================== -->
+      <h2 id="uh">Section 2: Unit Hydrograph</h2>
+
+      <h3>Definition and Overview</h3>
+      <p>A <strong>Unit Hydrograph (UH)</strong> is the direct runoff hydrograph that results from exactly 1 inch (or 1 cm) of excess rainfall generated uniformly across a watershed at a constant rate over a specified effective duration. The UH captures the hydraulic signature of the watershed in a reusable form.</p>
+
+      <p>The UH method treats the watershed as a linear system: the runoff response to any multi-period storm can be computed by scaling the UH by each rainfall excess increment, offsetting each scaled copy in time, and summing the results. This superposition process is called <strong>convolution</strong>. It makes the UH a powerful tool for predicting storm hydrographs without solving complex hydraulic equations.</p>
+
+      <h3 id="uh-convolution">Application Example — Convolution</h3>
+      <p>The example below demonstrates how to derive the total direct runoff hydrograph (Total DRH) from a four-period storm using a known watershed UH. Precipitation values have a constant abstraction of 0.3 in/hr subtracted to produce excess precipitation (P<sub>e</sub>) values. Each P<sub>e</sub> value scales a copy of the UH offset by one time step, producing individual direct runoff hydrographs DRH1 through DRH4. These are summed at each time step to get the Total DRH.</p>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-chart-area"></i></div>
+        <div>Replace with Figure 21 from course materials</div>
+        <div class="fig-filename">figure21_convolution_illustration.png</div>
+        <div class="fig-caption-text">Figure 21. Event hydrograph (right) derived by summing four direct runoff hydrographs DRH1–DRH4. Each DRH is the UH (top plot) scaled by an excess precipitation value (left bar chart) and started at the beginning of that time period.</div>
+      </div>
+
+      <h4>Unit Hydrograph for Watershed</h4>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Time (hr)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+          <tbody><tr><td>Unit Hydrograph (cfs/in)</td><td>10</td><td>100</td><td>200</td><td>150</td><td>100</td><td>50</td></tr></tbody>
+        </table>
+      </div>
+
+      <h4>Rain Event</h4>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Time (hr)</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+          <tbody>
+            <tr><td>Precipitation (in)</td><td>0.5</td><td>1.0</td><td>1.5</td><td>0.5</td></tr>
+            <tr><td>Abstractions (in)</td><td>0.3</td><td>0.3</td><td>0.3</td><td>0.3</td></tr>
+            <tr><td>P<sub>e</sub> = Precip &minus; Abstractions (in)</td><td>0.2</td><td>0.7</td><td>1.2</td><td>0.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Calculating the Hydrograph for the Event</h4>
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr><th>Time (hr)</th><th>UH (cfs/in)</th><th>DRH1<br><small>P<sub>e</sub>=0.2</small></th><th>DRH2<br><small>P<sub>e</sub>=0.7</small></th><th>DRH3<br><small>P<sub>e</sub>=1.2</small></th><th>DRH4<br><small>P<sub>e</sub>=0.2</small></th><th>Total DRH</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>10</td><td>2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>2</td></tr>
+            <tr><td>2</td><td>100</td><td>20</td><td>7</td><td>&mdash;</td><td>&mdash;</td><td>27</td></tr>
+            <tr><td>3</td><td>200</td><td>40</td><td>70</td><td>12</td><td>&mdash;</td><td>122</td></tr>
+            <tr><td>4</td><td>150</td><td>30</td><td>140</td><td>120</td><td>2</td><td>292</td></tr>
+            <tr><td>5</td><td>100</td><td>20</td><td>105</td><td>240</td><td>20</td><td>385</td></tr>
+            <tr><td>6</td><td>50</td><td>10</td><td>70</td><td>180</td><td>40</td><td>300</td></tr>
+            <tr><td>7</td><td>&mdash;</td><td>0</td><td>35</td><td>120</td><td>30</td><td>185</td></tr>
+            <tr><td>8</td><td>&mdash;</td><td>&mdash;</td><td>0</td><td>60</td><td>20</td><td>80</td></tr>
+            <tr><td>9</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>0</td><td>10</td><td>10</td></tr>
+            <tr><td>10</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>0</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>DRH1 = UH &times; 0.2, starting at t = 1 hr. DRH2 = UH &times; 0.7, lagged to start at t = 2 hr. DRH3 = UH &times; 1.2, starting at t = 3 hr. DRH4 = UH &times; 0.2, starting at t = 4 hr. The Total DRH at any time step is the row sum across all active DRH columns.</p>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-chart-bar"></i></div>
+        <div>Replace with Figure 22 from course materials</div>
+        <div class="fig-filename">figure22_uh_application_example.png</div>
+        <div class="fig-caption-text">Figure 22. Unit Hydrograph Application Example. Left: excess precipitation bar chart for the four time periods (DRH1 red, DRH2 green, DRH3 blue, DRH4 purple). Right: individual DRH contributions and total DRH (black).</div>
+      </div>
+
+      <h3 id="uh-assumptions">Key Assumptions and Limitations</h3>
+      <p>The unit hydrograph approach rests on six foundational assumptions:</p>
+      <ol>
+        <li><strong>Excess rainfall has a constant intensity within the effective duration.</strong></li>
+        <li><strong>Excess rainfall is uniformly distributed over the entire watershed.</strong></li>
+        <li><strong>The total time of the direct runoff hydrograph from any excess rainfall increment is constant.</strong></li>
+        <li><strong>DRH ordinates are directly proportional to the amount of direct runoff produced.</strong></li>
+        <li><strong>The total runoff hydrograph is formed by summing the individual incremental DRH ordinates at each time step.</strong></li>
+        <li><strong>For a given watershed, the hydrograph shape from a given excess rainfall reflects the fixed, unchanging characteristics of that watershed.</strong></li>
+      </ol>
+
+      <p>These assumptions have real limitations. Variable rainfall intensity within a storm (violating #1), or rainfall concentrated over only part of the watershed (#2), can cause the actual response to differ from the UH prediction. The proportionality assumption (#4) ignores the fact that deeper flow moves faster — a nonlinear effect the UH cannot represent. The assumption of a fixed base time (#3) and unchanged watershed characteristics (#6) similarly overlook how flow velocity and watershed wetness change with storm magnitude. Despite these shortcomings, the UH method remains one of the most widely used approaches in applied engineering hydrology.</p>
+
+
+      <!-- ====================================================
+           SECTION 3: SYNTHETIC UH — SCS/NRCS METHOD
+           ==================================================== -->
+      <h2 id="scs-uh">Section 3: Synthetic Unit Hydrograph — NRCS/SCS Method</h2>
+
+      <p>A <strong>synthetic unit hydrograph</strong> is derived entirely from physical watershed characteristics rather than from observed streamflow records. This makes it applicable wherever no flow data exist. The SCS dimensionless unit hydrograph, developed by the U.S. Soil Conservation Service (now NRCS), is the most commonly used synthetic UH in practice. It has a fixed standard shape that is scaled using watershed-specific lag time and drainage area to produce the actual UH for a given watershed.</p>
+
+      <p>In the SCS approach, lag time is computed from three watershed properties: main stream length L, maximum retention S (from the CN method), and average watershed percent slope Y:</p>
+
+      <div class="eq-block">
+        t<sub>L</sub> = L<sup>0.8</sup>(S + 1)<sup>0.7</sup> / (1900 &times; Y<sup>0.5</sup>)
+        <span class="eq-label">t<sub>L</sub> = lag time (hr) &nbsp;|&nbsp; L = hydraulic length (ft) &nbsp;|&nbsp; S = (1000/CN) &minus; 10 (in) &nbsp;|&nbsp; Y = avg watershed slope (%)</span>
+      </div>
+
+      <p>When soil and land use information are unavailable and CN cannot be determined, the Watt and Chow equation from Section 1 is used instead.</p>
+
+      <p>Once lag time is established, all other SCS time parameters follow:</p>
+
+      <div class="callout callout-formula">
+        <div class="callout-title">SCS Time Parameter Relationships</div>
+        <p>t<sub>p</sub> = t<sub>L</sub> / 0.9 &nbsp;&nbsp;&nbsp;&nbsp; (t<sub>p</sub> = time to peak)</p>
+        <p>t<sub>c</sub> = (5/3) t<sub>L</sub> = 1.5 t<sub>p</sub> &nbsp;&nbsp;&nbsp;&nbsp; (t<sub>c</sub> = time of concentration)</p>
+        <p>t<sub>R</sub> = 0.2 t<sub>p</sub> = 0.133 t<sub>c</sub> &nbsp;&nbsp;&nbsp;&nbsp; (t<sub>R</sub> = effective storm duration)</p>
+      </div>
+
+      <div class="notation-alert">
+        <strong>Textbook Notation Note:</strong> In Bedient 6th ed., T<sub>R</sub> = effective duration (called t<sub>r</sub> generally), t<sub>p</sub> in Bedient = lag time (called t<sub>L</sub> generally), and D in Bedient = effective duration (called t<sub>R</sub> in SCS notation above).
+      </div>
+
+      <h3 id="scs-peak">Unit Peak Discharge</h3>
+      <p>Because the UH represents a response to 1 unit of rainfall, its peak ordinate must be scaled so the volume under the UH equals 1 unit of rainfall times watershed area. In Imperial units:</p>
+
+      <div class="eq-block">
+        q<sub>p</sub> = (484 &times; A) / t<sub>p</sub>
+        <span class="eq-label">q<sub>p</sub> = unit peak discharge (cfs/in) &nbsp;|&nbsp; A = watershed area (mi&sup2;) &nbsp;|&nbsp; t<sub>p</sub> = time to peak (hr)</span>
+      </div>
+
+      <p>In SI units:</p>
+
+      <div class="eq-block">
+        q<sub>p</sub> = (2.08 &times; A) / t<sub>p</sub>
+        <span class="eq-label">q<sub>p</sub> = unit peak discharge (cms/cm) &nbsp;|&nbsp; A = watershed area (km&sup2;) &nbsp;|&nbsp; t<sub>p</sub> = time to peak (hr)</span>
+      </div>
+
+      <h3 id="scs-table">Scaling the SCS Dimensionless UH</h3>
+      <p>Once t<sub>p</sub> and q<sub>p</sub> are known, the dimensionless SCS UH (Figure 23) is scaled by multiplying the normalized time axis by t<sub>p</sub> and the normalized discharge axis by q<sub>p</sub> to produce the actual UH ordinates at desired time intervals for that specific watershed.</p>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-chart-line"></i></div>
+        <div>Replace with Figure 23 from course materials</div>
+        <div class="fig-filename">figure23_scs_dimensionless_uh.png</div>
+        <div class="fig-caption-text">Figure 23. SCS Dimensionless Unit Hydrograph showing q/q<sub>p</sub> vs t/t<sub>p</sub>, with key time relationships annotated. The tabular ratios alongside the figure are used to scale this shape to a specific watershed.</div>
+      </div>
+
+      <h4>SCS Dimensionless UH — Time and Discharge Ratios</h4>
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr><th>t / t<sub>p</sub></th><th>q / q<sub>p</sub></th><th>t / t<sub>p</sub></th><th>q / q<sub>p</sub></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0</td><td>1.1</td><td>0.99</td></tr>
+            <tr><td>0.1</td><td>0.03</td><td>1.2</td><td>0.93</td></tr>
+            <tr><td>0.2</td><td>0.10</td><td>1.3</td><td>0.86</td></tr>
+            <tr><td>0.3</td><td>0.19</td><td>1.4</td><td>0.78</td></tr>
+            <tr><td>0.4</td><td>0.31</td><td>1.5</td><td>0.68</td></tr>
+            <tr><td>0.5</td><td>0.47</td><td>1.6</td><td>0.56</td></tr>
+            <tr><td>0.6</td><td>0.66</td><td>1.7</td><td>0.46</td></tr>
+            <tr><td>0.7</td><td>0.82</td><td>1.8</td><td>0.39</td></tr>
+            <tr><td>0.8</td><td>0.93</td><td>1.9</td><td>0.33</td></tr>
+            <tr><td>0.9</td><td>0.99</td><td>2.0</td><td>0.28</td></tr>
+            <tr><td>1.0</td><td>1.00</td><td>2.2</td><td>0.207</td></tr>
+            <tr><td></td><td></td><td>2.4</td><td>0.147</td></tr>
+            <tr><td></td><td></td><td>2.6</td><td>0.107</td></tr>
+            <tr><td></td><td></td><td>2.8</td><td>0.077</td></tr>
+            <tr><td></td><td></td><td>3.0</td><td>0.055</td></tr>
+            <tr><td></td><td></td><td>3.2</td><td>0.040</td></tr>
+            <tr><td></td><td></td><td>3.4</td><td>0.029</td></tr>
+            <tr><td></td><td></td><td>3.6</td><td>0.021</td></tr>
+            <tr><td></td><td></td><td>3.8</td><td>0.015</td></tr>
+            <tr><td></td><td></td><td>4.0</td><td>0.011</td></tr>
+            <tr><td></td><td></td><td>4.5</td><td>0.005</td></tr>
+            <tr><td></td><td></td><td>5.0</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 4: RATIONAL METHOD
+           ==================================================== -->
+      <h2 id="rational">Section 4: The Rational Method</h2>
+
+      <p>The simplest and most widely used method for estimating peak runoff in urban hydrology is the <strong>Rational Method</strong>. While a full hydrograph provides more information, many design situations (inlet sizing, storm drain design, small culverts) only require the peak discharge, and the Rational Method delivers this efficiently with minimal data requirements.</p>
+
+      <div class="eq-block">
+        Q = C &times; i &times; A
+        <span class="eq-label">Q = peak runoff rate (cfs) &nbsp;|&nbsp; C = runoff coefficient (dimensionless) &nbsp;|&nbsp; i = rainfall intensity (in/hr) &nbsp;|&nbsp; A = drainage area (acres)</span>
+      </div>
+
+      <p>A unit conversion factor of 1.008 technically applies (1 ac&middot;in/hr &asymp; 1.008 cfs), but it is so close to unity that most engineers drop it in hand calculations. Computer programs typically include it automatically.</p>
+
+      <p>The Rational Method assumes rainfall is uniform and constant in intensity across the entire catchment for a duration at least equal to the time of concentration — the point at which every part of the catchment contributes runoff simultaneously. Because of this, the method is only reliable for <strong>smaller catchments, generally up to 200 acres</strong>. The runoff coefficient C accounts for all catchment abstractions.</p>
+
+      <h3 id="c-values">Runoff Coefficient C</h3>
+      <p>C is selected from established tables based on land cover, surface type, and slope. The values below are typical for 2–10 year return periods; higher return periods warrant higher C values.</p>
+
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Description of Area</th><th>Runoff Coefficient C</th></tr></thead>
+          <tbody>
+            <tr class="subhead"><td colspan="2">Business</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Downtown areas</td><td>0.70 – 0.95</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Neighborhood areas</td><td>0.50 – 0.70</td></tr>
+            <tr class="subhead"><td colspan="2">Residential</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Single-family areas</td><td>0.30 – 0.50</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Multi-units, detached</td><td>0.40 – 0.60</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Multi-units, attached</td><td>0.60 – 0.75</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Residential, suburban</td><td>0.25 – 0.40</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Apartment dwelling areas</td><td>0.50 – 0.70</td></tr>
+            <tr class="subhead"><td colspan="2">Industrial</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Light areas</td><td>0.50 – 0.80</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Heavy areas</td><td>0.60 – 0.90</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Parks, cemeteries</td><td>0.10 – 0.25</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Playgrounds</td><td>0.20 – 0.35</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Railroad yard areas</td><td>0.20 – 0.40</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Unimproved areas</td><td>0.10 – 0.30</td></tr>
+            <tr class="subhead"><td colspan="2">Streets</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Asphalt</td><td>0.70 – 0.95</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Concrete</td><td>0.80 – 0.95</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Brick</td><td>0.70 – 0.85</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Drives and walks</td><td>0.75 – 0.85</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Roofs</td><td>0.75 – 0.95</td></tr>
+            <tr class="subhead"><td colspan="2">Lawns, sandy soil</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Flat, &lt;2%</td><td>0.05 – 0.10</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Average, 2%–7%</td><td>0.10 – 0.15</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Steep, &gt;7%</td><td>0.15 – 0.20</td></tr>
+            <tr class="subhead"><td colspan="2">Lawns, heavy soil</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Flat, &lt;2%</td><td>0.13 – 0.17</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Average, 2%–7%</td><td>0.18 – 0.22</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;Steep, &gt;7%</td><td>0.25 – 0.35</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.8rem;color:#6c757d;">Source: ASCE and WPCF (1969). Higher values apply for return periods above 10 years.</p>
+
+      <p>For catchments with mixed land use, use an area-weighted composite C:</p>
+
+      <div class="eq-block">
+        C = &Sigma;[Area<sub>i</sub> &times; C<sub>i</sub>] / &Sigma;Area
+      </div>
+
+      <h3 id="idf">Rainfall Intensity and IDF Curves</h3>
+      <p>Peak runoff in the Rational Method is maximized when the storm duration equals the time of concentration — at that moment, every part of the catchment contributes simultaneously. This duration is paired with the design return period to select the design intensity i from an <strong>Intensity-Duration-Frequency (IDF) curve</strong>.</p>
+
+      <p>IDF curves are statistical summaries of historical rainfall data, showing how intensity varies with duration and exceedance probability. Design intensities for this course are taken from <strong>NOAA Atlas 14 Point Precipitation Frequency Estimates</strong> (hdsc.nws.noaa.gov/pfds/). When Atlas 14 is unavailable, locally developed IDF equations from the DOTD Hydraulics Manual may be used as a backup, though they may underestimate intensities relative to the more current Atlas 14 data.</p>
+
+      <div class="callout callout-warning">
+        <div class="callout-title">Duration Selection</div>
+        If storm duration is shorter than t<sub>c</sub>, only part of the watershed contributes — this overestimates the intensity needed but underestimates the contributing area, producing an incorrect result. If duration is longer than t<sub>c</sub>, the intensity used will be lower than the critical value, underestimating peak flow. Only duration = t<sub>c</sub> produces the correct maximum peak.
+      </div>
+
+      <h3 id="tc-kinematic">Time of Concentration — Kinematic Wave Equation</h3>
+      <p>This module uses the physically-based <strong>Kinematic Wave Equation</strong> for t<sub>c</sub>, which represents a wave traveling downstream through overland flow, open channels, and closed conduits. It gives a shorter and more realistic t<sub>c</sub> for urban sites than empirical length-based methods.</p>
+
+      <div class="eq-block">
+        t<sub>c</sub> = (L / (&alpha; &times; i<sub>e</sub><sup>m&minus;1</sup>))<sup>1/m</sup>
+        <span class="eq-label">L = overland flow length (ft) &nbsp;|&nbsp; i<sub>e</sub> = effective rainfall excess C&times;i (in/hr, convert to ft/s for unit consistency) &nbsp;|&nbsp; &alpha;, m = kinematic wave parameters</span>
+      </div>
+
+      <div class="callout callout-formula">
+        <div class="callout-title">Kinematic Wave Parameters</div>
+        <p><strong>Turbulent flow</strong> (m = 5/3): &nbsp; &alpha; = 1.49&radic;S / n</p>
+        <p><strong>Laminar flow</strong> (m = 3): &nbsp; &alpha; = gS / 3&nu;</p>
+        <p>S = overland slope &nbsp;|&nbsp; n = Manning's roughness &nbsp;|&nbsp; g = gravity &nbsp;|&nbsp; &nu; = kinematic viscosity</p>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-title">Iterative Solution Required</div>
+        The Kinematic Equation contains i<sub>e</sub>, which itself depends on t<sub>c</sub> through the IDF curve. This creates a circular dependency — the equation must be solved iteratively. In Excel, the <strong>Goal Seek</strong> function is the most efficient approach: set up a cell computing t<sub>r</sub> &minus; t<sub>c</sub>, target it to zero by adjusting the t<sub>r</sub> input cell. Also note that i<sub>e</sub> in in/hr must be converted to ft/s, and t<sub>c</sub> is divided by 60 s/min to obtain minutes.
+      </div>
+
+      <p>Overland sheet flow — the shallow surface runoff that feeds into defined channels — occurs in the uppermost segment of the drainage path, just downstream of the watershed divide. Its length is taken as the shorter of: the distance from the divide to the top of a defined channel, or 300 feet. Beyond 300 feet in urban areas, the flow usually transitions to shallow concentrated flow or enters a defined channel, and the kinematic wave equation is no longer appropriate.</p>
+
+      <p>In open channel and conduit flow, flood waves travel at the <strong>dynamic wave speed</strong>:</p>
+
+      <div class="eq-block">
+        c = V &plusmn; &radic;(gA/B)
+        <span class="eq-label">c = dynamic wave speed &nbsp;|&nbsp; V = conduit velocity &nbsp;|&nbsp; g = gravity &nbsp;|&nbsp; A = conduit half-full cross-section &nbsp;|&nbsp; B = surface width</span>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 5: SCS CURVE NUMBER METHOD
+           ==================================================== -->
+      <h2 id="cn">Section 5: SCS Curve Number (CN) Method</h2>
+
+      <p>The NRCS developed a widely-used procedure for partitioning total storm rainfall into three components: <strong>initial abstraction I<sub>a</sub></strong> (interception, depression storage, and early infiltration before runoff begins), <strong>continuing infiltration F</strong> after runoff starts, and <strong>effective rainfall P<sub>e</sub></strong> that becomes direct runoff.</p>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-chart-bar"></i></div>
+        <div>Replace with Figure 2 from course materials (NRCS hyetograph components)</div>
+        <div class="fig-filename">figure2_nrcs_hyetograph_components.png</div>
+        <div class="fig-caption-text">Figure 2. NRCS components of the rainfall hyetograph. Total rainfall P is split into Initial Abstraction I<sub>a</sub>, continuing Infiltration F, and Effective Rainfall P<sub>e</sub> which becomes direct runoff.</div>
+      </div>
+
+      <p>From conservation of mass: P<sub>e</sub> = (P &minus; I<sub>a</sub>) &minus; F. The SCS method assumes the ratio of actual retention to maximum possible retention S equals the ratio of effective rainfall to maximum possible effective rainfall:</p>
+
+      <div class="eq-block">
+        F / S = P<sub>e</sub> / (P &minus; I<sub>a</sub>)
+      </div>
+
+      <p>Solving for P<sub>e</sub>:</p>
+
+      <div class="eq-block">
+        P<sub>e</sub> = (P &minus; I<sub>a</sub>)&sup2; / [(P &minus; I<sub>a</sub>) + S]
+        <span class="eq-label">Valid when P &gt; I<sub>a</sub> only. If P &le; I<sub>a</sub>, then P<sub>e</sub> = 0 (no runoff occurs).</span>
+      </div>
+
+      <p>From NRCS data analysis, initial abstraction is approximately 20% of maximum potential retention:</p>
+
+      <div class="eq-block">I<sub>a</sub> = 0.2S</div>
+
+      <p>Substituting gives the standard simplified SCS runoff equation:</p>
+
+      <div class="eq-block">
+        P<sub>e</sub> = (P &minus; 0.2S)&sup2; / (P + 0.8S)
+        <span class="eq-label">The standard SCS runoff equation</span>
+      </div>
+
+      <p>Maximum potential retention S is computed from the Curve Number:</p>
+
+      <div class="eq-block">
+        S = (1000 / CN) &minus; 10
+        <span class="eq-label">S in inches &nbsp;|&nbsp; CN ranges from 25 to 98</span>
+      </div>
+
+      <p>Higher CN values (80–98) represent impervious or poorly draining surfaces with high runoff potential. Lower CN values represent pervious, well-draining surfaces that absorb most rainfall. CN is tabulated by the NRCS as a function of land use and hydrologic soil group for standard AMC II (average antecedent moisture) conditions.</p>
+
+      <h3 id="cn-table">CN Table for Urban Areas (NRCS Table 2-2a)</h3>
+      <p>The following CN values apply to fully developed urban areas under AMC II conditions with I<sub>a</sub> = 0.2S. Source: NRCS National Engineering Handbook, 2004, Chapter 09.</p>
+
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:44%;">Cover Type and Condition</th>
+              <th style="width:12%;">Avg % Impervious</th>
+              <th>HSG A</th><th>HSG B</th><th>HSG C</th><th>HSG D</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="subhead"><td colspan="6">Open space (lawns, parks, golf courses, cemeteries)</td></tr>
+            <tr><td>&nbsp;&nbsp;Poor condition (grass &lt;50%)</td><td></td><td>68</td><td>79</td><td>86</td><td>89</td></tr>
+            <tr><td>&nbsp;&nbsp;Fair condition (grass 50–75%)</td><td></td><td>49</td><td>69</td><td>79</td><td>84</td></tr>
+            <tr><td>&nbsp;&nbsp;Good condition (grass &gt;75%)</td><td></td><td>39</td><td>61</td><td>74</td><td>80</td></tr>
+            <tr class="subhead"><td colspan="6">Impervious areas</td></tr>
+            <tr><td>&nbsp;&nbsp;Paved parking lots, roofs, driveways (excl. ROW)</td><td></td><td>98</td><td>98</td><td>98</td><td>98</td></tr>
+            <tr class="subhead"><td colspan="6">Streets and roads</td></tr>
+            <tr><td>&nbsp;&nbsp;Paved; curbs and storm sewers (excl. ROW)</td><td></td><td>98</td><td>98</td><td>98</td><td>98</td></tr>
+            <tr><td>&nbsp;&nbsp;Paved; open ditches (incl. ROW)</td><td></td><td>83</td><td>89</td><td>92</td><td>93</td></tr>
+            <tr><td>&nbsp;&nbsp;Gravel (incl. ROW)</td><td></td><td>76</td><td>85</td><td>89</td><td>91</td></tr>
+            <tr><td>&nbsp;&nbsp;Dirt (incl. ROW)</td><td></td><td>72</td><td>82</td><td>87</td><td>89</td></tr>
+            <tr class="subhead"><td colspan="6">Urban districts</td></tr>
+            <tr><td>&nbsp;&nbsp;Commercial and business</td><td>85%</td><td>89</td><td>92</td><td>94</td><td>95</td></tr>
+            <tr><td>&nbsp;&nbsp;Industrial</td><td>72%</td><td>81</td><td>88</td><td>91</td><td>93</td></tr>
+            <tr class="subhead"><td colspan="6">Residential — by average lot size</td></tr>
+            <tr><td>&nbsp;&nbsp;1/8 acre or less (town houses)</td><td>65%</td><td>77</td><td>85</td><td>90</td><td>92</td></tr>
+            <tr><td>&nbsp;&nbsp;1/4 acre</td><td>38%</td><td>61</td><td>75</td><td>83</td><td>87</td></tr>
+            <tr><td>&nbsp;&nbsp;1/3 acre</td><td>30%</td><td>57</td><td>72</td><td>81</td><td>86</td></tr>
+            <tr><td>&nbsp;&nbsp;1/2 acre</td><td>25%</td><td>54</td><td>70</td><td>80</td><td>85</td></tr>
+            <tr><td>&nbsp;&nbsp;1 acre</td><td>20%</td><td>51</td><td>68</td><td>79</td><td>84</td></tr>
+            <tr><td>&nbsp;&nbsp;2 acres</td><td>12%</td><td>46</td><td>65</td><td>77</td><td>82</td></tr>
+            <tr class="subhead"><td colspan="6">Developing urban areas</td></tr>
+            <tr><td>&nbsp;&nbsp;Newly graded (pervious only, no vegetation)</td><td></td><td>77</td><td>86</td><td>91</td><td>94</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.8rem;color:#6c757d;">Source: NRCS NEH 2004, Ch. 09. AMC II; I<sub>a</sub> = 0.2S. Additional CN tables: nrcs.usda.gov</p>
+
+      <h3 id="amc">Antecedent Moisture Condition</h3>
+      <p>The CN table values above assume <strong>AMC II</strong> — average antecedent moisture. If conditions are drier (AMC I) or wetter (AMC III), CN is adjusted using these empirical equations (Chow, Maidment, and Mays, 1988):</p>
+
+      <div class="eq-block">
+        CN<sub>I</sub> = (4.2 &times; CN<sub>II</sub>) / (10 &minus; 0.058 &times; CN<sub>II</sub>)
+        <span class="eq-label">AMC I — dry conditions, lower runoff potential</span>
+      </div>
+
+      <div class="eq-block">
+        CN<sub>III</sub> = (23 &times; CN<sub>II</sub>) / (10 + 0.13 &times; CN<sub>II</sub>)
+        <span class="eq-label">AMC III — wet/saturated conditions, higher runoff potential</span>
+      </div>
+
+      <h3 id="avg-cn">Area-Averaged Composite CN</h3>
+      <p>When a watershed contains multiple land use and soil type combinations, each sub-area receives a CN from the table. A single composite CN is then computed by area-weighting:</p>
+
+      <div class="eq-block">
+        CN<sub>avg</sub> = &Sigma;[Area<sub>i</sub> &times; CN<sub>i</sub>] / &Sigma;Area
+      </div>
+
+      <p>Engineering judgment is needed when deciding whether to treat a site as one composite catchment or to subdivide it into separate sub-catchments. Sub-areas with very extreme CN values (very high or very low) relative to the rest of the watershed can unrealistically pull the composite value if the areas involved are small.</p>
+
+
+      <!-- ====================================================
+           SECTION 6: PCSWMM HYDRAULICS
+           ==================================================== -->
+      <h2 id="pcswmm">Section 6: PCSWMM Hydraulics</h2>
+
+      <p>Runoff generated by subcatchments in PCSWMM is routed through a network of drainage elements toward an outfall. PCSWMM includes a built-in solver for open-channel hydraulics that calculates water depths and flow rates throughout the network. Three element types form every drainage network in PCSWMM: <strong>outfalls</strong>, <strong>junctions</strong>, and <strong>conduits</strong>.</p>
+
+      <h3 id="outfalls">Outfalls</h3>
+      <p>An outfall is the discharge point of the project watershed — the location where water exits the drainage network. Any water reaching the outfall is removed from the model and not tracked further. The most critical attribute of an outfall is its <strong>invert elevation</strong>, which sets the water surface boundary condition at the outlet.</p>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-image"></i></div>
+        <div>Replace with Figure 1 outfall photo</div>
+        <div class="fig-filename">figure1_outfall_storm_sewer.jpg</div>
+        <div class="fig-caption-text">Figure 1. A corrugated metal storm sewer discharging murky stormwater runoff into a creek during a storm event. This pipe end represents the outfall node in a drainage network model.</div>
+      </div>
+
+      <h3 id="junctions">Junctions</h3>
+      <p>A junction is a point element representing either a <strong>storm sewer inlet</strong> — where surface runoff enters the underground pipe network — or a <strong>manhole</strong> — where pipes connect, change direction, or change size. In practice, a junction is placed wherever conduits need to be linked or wherever subcatchment runoff is discharged into the network.</p>
+
+      <p>PCSWMM models a junction as a vertical cylinder that water can fill. Its two defining attributes are:</p>
+      <ul>
+        <li><strong>Invert elevation</strong> — the bottom of the cylinder, corresponding to the pipe invert at that location.</li>
+        <li><strong>Depth</strong> — the vertical distance from the invert to the top of the structure (ground surface or manhole lid). If water rises above this depth, <strong>flooding occurs</strong> and water is lost from the model — representing overland ponding or surface overflow.</li>
+      </ul>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="fig-placeholder">
+            <div class="fig-icon"><i class="fas fa-image"></i></div>
+            <div>Replace with Figure 2 — grate inlet photo</div>
+            <div class="fig-filename">figure2_grate_inlet.jpg</div>
+            <div class="fig-caption-text">Figure 2. A grate inlet — a common junction type where surface runoff enters the underground storm sewer network.</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fig-placeholder">
+            <div class="fig-icon"><i class="fas fa-image"></i></div>
+            <div>Replace with Figure 3 — curb inlet photo</div>
+            <div class="fig-filename">figure3_curb_inlet.jpg</div>
+            <div class="fig-caption-text">Figure 3. A curb inlet accepting sheet flow runoff from a street during a storm event.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-image"></i></div>
+        <div>Replace with Figure 4 — open manhole photo</div>
+        <div class="fig-filename">figure4_open_manhole.jpg</div>
+        <div class="fig-caption-text">Figure 4. An open manhole providing access to a below-grade sewer junction where pipes connect underground.</div>
+      </div>
+
+      <h3 id="conduits">Conduits and Connectivity</h3>
+      <p>A conduit is a pipe or open channel connecting two junction nodes. In most urban settings, conduits are <strong>circular precast concrete pipes</strong> — the simplest case to model because geometry is fully defined by a single diameter. Conduits can also be natural or engineered channels with irregular cross-sections, which are more complex to characterize.</p>
+
+      <p>The three key conduit attributes in PCSWMM are:</p>
+      <ul>
+        <li><strong>Length</strong> — the physical pipe or channel length.</li>
+        <li><strong>Manning's roughness coefficient n</strong> — determined by material; governs flow resistance and velocity.</li>
+        <li><strong>Geometry</strong> — for circular pipes, the "Geom 1" attribute is the pipe diameter. For other shapes, the Cross-Section attribute and associated geometry parameters define the flow cross-section.</li>
+      </ul>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="fig-placeholder">
+            <div class="fig-icon"><i class="fas fa-image"></i></div>
+            <div>Replace with Figure 5 — concrete pipe installation photo</div>
+            <div class="fig-filename">figure5_concrete_pipe.jpg</div>
+            <div class="fig-caption-text">Figure 5. Precast concrete pipe being laid into a trench — the most common conduit type in urban storm sewer systems.</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fig-placeholder">
+            <div class="fig-icon"><i class="fas fa-image"></i></div>
+            <div>Replace with Figure 6 — concrete-lined channel photo</div>
+            <div class="fig-filename">figure6_concrete_channel.jpg</div>
+            <div class="fig-caption-text">Figure 6. A concrete-lined trapezoidal channel — an engineered open channel conduit type in PCSWMM.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-placeholder">
+        <div class="fig-icon"><i class="fas fa-image"></i></div>
+        <div>Replace with Figure 7 — natural channel photo</div>
+        <div class="fig-filename">figure7_natural_channel.jpg</div>
+        <div class="fig-caption-text">Figure 7. A rocky natural channel carrying flow — an example of an irregular, natural conduit that requires more effort to characterize in a PCSWMM model.</div>
+      </div>
+
+      <h4>Link-and-Node System and Connectivity</h4>
+      <p>PCSWMM operates as a <strong>link-and-node</strong> system. Junctions and outfalls are the <em>nodes</em> — point objects that store and release water. Conduits are the <em>links</em> — objects that connect nodes and convey water between them. Together they form the complete drainage network.</p>
+
+      <p>A critical rule: <strong>elevation information is entered at the nodes, not the conduits</strong>. PCSWMM automatically calculates each conduit's slope from the invert elevations of its upstream and downstream junctions combined with the conduit's length. This means accurate junction invert elevations are essential — any error there propagates directly into pipe slopes and all downstream hydraulic calculations.</p>
+
+      <div class="callout callout-success">
+        <div class="callout-title">Key Modeling Rule</div>
+        When building a PCSWMM model: (1) set outfall invert elevation, (2) define junction invert elevations and depths, (3) input conduit lengths, roughness, and geometry. The model computes pipe slopes automatically. If flooding is reported at a junction, the water level has exceeded that junction's depth — investigate whether the conduit is undersized or the invert elevation is incorrect.
+      </div>
+
+    </div><!-- .ck-content -->
+  </div><!-- .unit -->
+
+  <div class="text-right small py-3 text-muted">
+    <a class="text-muted text-decoration-none" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-creative-commons mr-1"></i>
+      <i class="fab fa-creative-commons-by mr-1"></i>
+      <i class="fab fa-creative-commons-sa mr-1"></i>
+      Some Rights Reserved
+    </a>
+  </div>
+
+</div><!-- .container-xl -->
 </main>
 
-<!-- ===== FOOTER ===== -->
 <footer role="contentinfo" class="footer border-top py-3 px-4">
   <div class="container-fluid d-flex">
     <a href="#" aria-label="Home">
-      <img src="ETHROLEARN_LOGO_HERE.png" alt="EthrOLearn" style="max-height:45px;">
+      <img src="ETHROLEARN_LOGO_HERE.png" alt="Ethrolearn" style="max-height:45px;">
     </a>
   </div>
 </footer>
