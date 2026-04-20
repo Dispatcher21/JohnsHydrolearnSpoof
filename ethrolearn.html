@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>EthrOLearn | ENCE4321c</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  :root { --primary: #0075b4; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  a { color: var(--primary); }
+
+  /* Header */
+  .learning-header { background:#fff; border-bottom:1px solid #e9ecef; position:sticky; top:0; z-index:100; }
+  .learning-header .logo img { height:40px; }
+  .course-title { font-size:0.95rem; font-weight:700; }
+
+  /* Site switcher */
+  .site-switcher { display:flex; border:1px solid #dee2e6; border-radius:20px; overflow:hidden; font-size:0.7rem; }
+  .site-switcher-btn { padding:0.15rem 0.6rem; text-decoration:none; color:#6c757d; background:#fff; white-space:nowrap; transition:background 0.15s, color 0.15s; }
+  .site-switcher-btn:hover { background:#f0f0f0; color:#212529; text-decoration:none; }
+  .site-switcher-btn.active { background:#0075b4; color:#fff; font-weight:600; }
+
+  /* Content */
+  .unit h1.h3 { font-size:1.4rem; font-weight:700; }
+  .ck-content h2 { font-size:1.4rem; font-weight:700; margin-top:2rem; margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:2px solid #dee2e6; color:#212529; }
+  .ck-content h3 { font-size:1.15rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:#0075b4; }
+  .ck-content h4 { font-size:1rem; font-weight:700; margin-top:1.1rem; margin-bottom:0.4rem; color:#343a40; }
+  .ck-content ul, .ck-content ol { padding-left:1.6rem; margin-bottom:1rem; }
+  .ck-content li { margin-bottom:0.3rem; line-height:1.65; }
+  .ck-content p { margin-bottom:0.85rem; line-height:1.65; }
+  .ck-content .table { width:100%; margin:1rem 0; }
+  .ck-content .table table { border-collapse:collapse; width:100%; }
+  .ck-content .table table td, .ck-content .table table th { padding:0.5em 0.75em; border:1px solid #bfbfbf; font-size:0.9rem; }
+  .ck-content .table table thead th { background:#0075b4; color:#fff; font-weight:700; }
+  .ck-content .table table tbody tr:nth-child(even) { background:#f4f8fc; }
+
+  /* Callout boxes */
+  .callout { border-left:4px solid var(--primary); background:#e8f4fb; padding:0.9rem 1.1rem; margin:1.2rem 0; border-radius:0 4px 4px 0; }
+  .callout.callout-warning { border-color:#f0ad4e; background:#fff8ec; }
+  .callout.callout-success { border-color:#28a745; background:#edf7f0; }
+  .callout.callout-formula { border-color:#6f42c1; background:#f3f0fa; font-family:"Courier New",monospace; font-size:1.05rem; }
+  .callout-title { font-weight:700; margin-bottom:0.3rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .callout.callout-formula .callout-title { color:#6f42c1; }
+  .callout.callout-warning .callout-title { color:#856404; }
+  .callout.callout-success .callout-title { color:#155724; }
+
+  /* Worked example */
+  .worked-example { border:2px solid #0075b4; border-radius:6px; padding:1.1rem 1.2rem; margin:1.5rem 0; background:#fff; }
+  .worked-example .we-title { font-weight:700; color:#0075b4; font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+  .worked-example .we-step { margin-bottom:0.6rem; padding-left:1rem; border-left:3px solid #dee2e6; }
+  .worked-example .we-answer { background:#edf7f0; border:1px solid #28a745; border-radius:4px; padding:0.5rem 0.75rem; margin-top:0.75rem; font-weight:600; color:#155724; }
+
+  /* Term card */
+  .term-card { background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:0.8rem 1rem; margin-bottom:0.6rem; }
+  .term-card .term-name { font-weight:700; color:#0075b4; font-size:1rem; }
+  .term-card .term-symbol { font-family:"Courier New",monospace; font-size:0.9rem; color:#6f42c1; margin-left:0.5rem; }
+  .term-card .term-def { margin-top:0.25rem; margin-bottom:0; font-size:0.95rem; }
+  .term-card .term-units { font-size:0.8rem; color:#6c757d; margin-top:0.2rem; }
+
+  /* Table of contents */
+  #toc { background:#f4f8fc; border:1px solid #c8dff0; border-left:4px solid #0075b4; border-radius:4px; padding:1.1rem 1.4rem; margin-bottom:2rem; }
+  .toc-title { font-weight:700; font-size:0.95rem; color:#0075b4; margin-bottom:0.75rem; }
+  .toc-list { margin:0; padding-left:1.25rem; }
+  .toc-list li { margin-bottom:0.3rem; font-size:0.92rem; }
+  .toc-list ol { padding-left:1.25rem; margin-top:0.2rem; }
+  .toc-list ol li { font-size:0.85rem; color:#495057; margin-bottom:0.15rem; }
+  .toc-list a { color:#0075b4; text-decoration:none; }
+  .toc-list a:hover { text-decoration:underline; }
+
+  /* Concept questions */
+  .cq-block { display:flex; gap:1rem; margin-bottom:1.5rem; background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:1rem 1.1rem; }
+  .cq-num { background:#0075b4; color:#fff; border-radius:50%; width:32px; height:32px; min-width:32px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; margin-top:2px; flex-shrink:0; }
+  .cq-body { flex:1; }
+  .cq-question { font-weight:600; font-size:0.95rem; color:#212529; margin-bottom:0.75rem; line-height:1.5; }
+  .cq-answer { background:#f4f8fc; border-left:3px solid #0075b4; padding:0.8rem 1rem; border-radius:0 4px 4px 0; font-size:0.9rem; line-height:1.65; }
+  .cq-answer-title { font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.4rem; }
+
+  /* Calculators */
+  .calc-box { background:#f8f9fa; border:1px solid #dee2e6; border-radius:6px; padding:1.25rem 1.4rem; margin-bottom:1.5rem; }
+  .calc-label { font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#0075b4; margin-bottom:0.6rem; margin-top:0.75rem; }
+  .calc-label:first-child { margin-top:0; }
+  .calc-field-label { font-size:0.82rem; color:#495057; margin-bottom:0.2rem; display:block; }
+  .calc-input { width:100%; padding:0.4rem 0.6rem; border:1px solid #ced4da; border-radius:4px; font-size:0.9rem; background:#fff; }
+  .calc-btn { background:#0075b4; color:#fff; border:none; border-radius:4px; padding:0.45rem 1.2rem; font-size:0.9rem; font-weight:600; cursor:pointer; margin-right:0.5rem; }
+  .calc-btn:hover { background:#005f94; }
+  .calc-reset-btn { background:#fff; color:#6c757d; border:1px solid #ced4da; border-radius:4px; padding:0.45rem 1rem; font-size:0.9rem; cursor:pointer; }
+  .calc-result { background:#edf7f0; border:1px solid #28a745; border-radius:4px; padding:0.9rem 1.1rem; margin-top:1rem; }
+  .calc-result-title { font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em; color:#155724; margin-bottom:0.5rem; }
+  .calc-error { background:#fff3cd; border:1px solid #ffc107; border-radius:4px; padding:0.6rem 0.9rem; margin-top:0.75rem; color:#856404; font-size:0.88rem; }
+
+  footer.footer { background:#fff; }
+  footer.footer img { max-height:45px; }
+</style>
+</head>
+<body>
+<div id="root"><div>
+
+<!-- ===== HEADER ===== -->
+<header class="learning-header">
+  <div class="container-xl py-2 d-flex align-items-center">
+    <div class="d-flex flex-column align-items-center mr-3">
+      <a href="ethrolearn.html" class="logo">
+        <!-- Replace with Ethrolearn logo when ready -->
+        <img class="d-block" src="ETHROLEARN_LOGO_HERE.png" alt="EthrOLearn">
+      </a>
+      <div class="site-switcher mt-1">
+        <a href="index.html" class="site-switcher-btn">JohndrOLearn</a>
+        <a href="ethrolearn.html" class="site-switcher-btn active">EthrOLearn</a>
+      </div>
+    </div>
+    <div class="flex-grow-1 px-3" style="line-height:1;">
+      <span class="d-block small m-0">COURSE ORGANIZATION &amp; CODE HERE</span>
+      <span class="d-block m-0 course-title">COURSE TITLE HERE</span>
+    </div>
+    <a class="text-muted mr-3" href="#">Help</a>
+    <div class="dropdown">
+      <button type="button" class="dropdown-toggle btn btn-outline-primary">USERNAME HERE</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="d-flex flex-column flex-grow-1">
+  <div class="container-xl">
+
+    <!-- Breadcrumb -->
+    <nav class="my-4">
+      <ol class="list-unstyled d-flex flex-nowrap align-items-center m-0">
+        <li><a class="text-primary" href="#"><i class="fas fa-home mr-2"></i>Course</a></li>
+        <li class="mx-2 text-muted">/</li>
+        <li class="text-muted">PAGE TITLE HERE</li>
+      </ol>
+    </nav>
+
+    <!-- Unit content -->
+    <div class="unit">
+      <h1 class="mb-1 h3">PAGE TITLE HERE</h1>
+      <button class="btn btn-link btn-sm text-primary px-0 mb-3">
+        <i class="far fa-bookmark mr-1"></i>Bookmark this page
+      </button>
+
+      <!-- TABLE OF CONTENTS — fill in once content is decided -->
+      <div id="toc">
+        <div class="toc-title"><i class="fas fa-list mr-2"></i>Contents</div>
+        <ol class="toc-list">
+          <li><a href="#section1">Section 1 Title Here</a></li>
+          <li><a href="#section2">Section 2 Title Here</a></li>
+          <!-- Add more as needed -->
+        </ol>
+      </div>
+
+      <!-- ============================================================
+           MAIN CONTENT AREA — add sections below
+           ============================================================ -->
+      <div class="ck-content">
+
+        <h2 id="section1">Section 1: Title Here</h2>
+        <p>Content goes here.</p>
+
+        <h2 id="section2">Section 2: Title Here</h2>
+        <p>Content goes here.</p>
+
+      </div>
+      <!-- END CONTENT -->
+
+    </div><!-- .unit -->
+
+    <div class="text-right small py-3 text-muted">
+      <a class="text-muted text-decoration-none" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-creative-commons mr-1"></i>
+        <i class="fab fa-creative-commons-by mr-1"></i>
+        <i class="fab fa-creative-commons-sa mr-1"></i>
+        Some Rights Reserved
+      </a>
+    </div>
+
+  </div><!-- .container-xl -->
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo" class="footer border-top py-3 px-4">
+  <div class="container-fluid d-flex">
+    <a href="#" aria-label="Home">
+      <img src="ETHROLEARN_LOGO_HERE.png" alt="EthrOLearn" style="max-height:45px;">
+    </a>
+  </div>
+</footer>
+
+</div></div>
+</body>
+</html>

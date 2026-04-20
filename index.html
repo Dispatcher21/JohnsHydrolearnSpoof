@@ -13,6 +13,12 @@
 
   .learning-header { background:#fff; border-bottom:1px solid #e9ecef; position:sticky; top:0; z-index:100; }
   .learning-header .logo img { height:40px; }
+
+  /* Site switcher */
+  .site-switcher { display:flex; border:1px solid #dee2e6; border-radius:20px; overflow:hidden; font-size:0.7rem; }
+  .site-switcher-btn { padding:0.15rem 0.6rem; text-decoration:none; color:#6c757d; background:#fff; white-space:nowrap; transition:background 0.15s, color 0.15s; }
+  .site-switcher-btn:hover { background:#f0f0f0; color:#212529; text-decoration:none; }
+  .site-switcher-btn.active { background:#0075b4; color:#fff; font-weight:600; }
   .course-title { font-size:0.95rem; font-weight:700; }
 
   .unit h1.h3 { font-size:1.4rem; font-weight:700; }
@@ -136,9 +142,15 @@
 <!-- ===== HEADER ===== -->
 <header class="learning-header">
   <div class="container-xl py-2 d-flex align-items-center">
-    <a href="#" class="logo">
-      <img class="d-block" src="Johndrolearn.png" alt="HydroLearn">
-    </a>
+    <div class="d-flex flex-column align-items-center mr-3">
+      <a href="index.html" class="logo">
+        <img class="d-block" src="Johndrolearn.png" alt="JohndrOLearn">
+      </a>
+      <div class="site-switcher mt-1">
+        <a href="index.html" class="site-switcher-btn active">JohndrOLearn</a>
+        <a href="ethrolearn.html" class="site-switcher-btn">EthrOLearn</a>
+      </div>
+    </div>
     <div class="flex-grow-1 px-3" style="line-height:1;">
       <span class="d-block small m-0">UniversityOfNewOrleansCivilEngineering ENCE4321c</span>
       <span class="d-block m-0 course-title">ENCE4321_c SP26 Rational Method to PCSWMM: Matching Models to Situations</span>
