@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Search | ENCE4321c</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  :root { --primary: #0075b4; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background:#f8f9fa; color:#212529; }
+  a { color: var(--primary); }
+
+  .learning-header { background:#fff; border-bottom:1px solid #e9ecef; position:sticky; top:0; z-index:100; }
+  .learning-header .logo img { height:40px; }
+  .course-title { font-size:0.95rem; font-weight:700; }
+
+  .site-switcher { display:flex; border:1px solid #dee2e6; border-radius:20px; overflow:hidden; font-size:0.7rem; }
+  .site-switcher-btn { padding:0.15rem 0.6rem; text-decoration:none; color:#6c757d; background:#fff; white-space:nowrap; transition:background 0.15s,color 0.15s; }
+  .site-switcher-btn:hover { background:#f0f0f0; color:#212529; text-decoration:none; }
+  .site-switcher-btn.active { background:#0075b4; color:#fff; font-weight:600; }
+
+  .search-form { margin:0; }
+  .search-wrap { display:flex; border:1px solid #ced4da; border-radius:20px; overflow:hidden; background:#fff; }
+  .search-input { border:none; outline:none; padding:0.3rem 0.75rem; font-size:0.82rem; width:180px; background:transparent; }
+  .search-btn { background:none; border:none; padding:0.3rem 0.6rem; color:#6c757d; cursor:pointer; }
+  .search-btn:hover { color:#0075b4; }
+
+  /* Search page specific */
+  .search-hero { background:#fff; border-bottom:1px solid #dee2e6; padding:2rem 0 1.5rem; }
+  .search-hero-input-wrap { display:flex; border:2px solid #0075b4; border-radius:30px; overflow:hidden; background:#fff; max-width:600px; }
+  .search-hero-input { border:none; outline:none; padding:0.6rem 1.25rem; font-size:1rem; flex:1; background:transparent; }
+  .search-hero-btn { background:#0075b4; border:none; padding:0.6rem 1.25rem; color:#fff; font-size:1rem; cursor:pointer; }
+  .search-hero-btn:hover { background:#005f94; }
+
+  .results-area { padding:2rem 0; }
+  .result-count { font-size:0.88rem; color:#6c757d; margin-bottom:1.25rem; }
+
+  .result-card { background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:1rem 1.25rem; margin-bottom:0.85rem; transition:border-color 0.15s, box-shadow 0.15s; }
+  .result-card:hover { border-color:#0075b4; box-shadow:0 2px 8px rgba(0,117,180,0.1); }
+  .result-card a { text-decoration:none; }
+  .result-source { display:inline-block; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:0.15rem 0.55rem; border-radius:20px; margin-bottom:0.4rem; }
+  .result-source.johndro { background:#e8f4fb; color:#0075b4; }
+  .result-source.ethro { background:#edf7f0; color:#155724; }
+  .result-title { font-size:1rem; font-weight:700; color:#212529; margin-bottom:0.3rem; }
+  .result-title mark { background:#fff3cd; border-radius:2px; padding:0 2px; }
+  .result-excerpt { font-size:0.88rem; color:#495057; line-height:1.6; margin-bottom:0.35rem; }
+  .result-excerpt mark { background:#fff3cd; border-radius:2px; padding:0 2px; }
+  .result-url { font-size:0.78rem; color:#6c757d; }
+
+  .no-results { text-align:center; padding:3rem 1rem; color:#6c757d; }
+  .no-results i { font-size:3rem; opacity:0.25; margin-bottom:1rem; }
+
+  .search-tips { background:#fff; border:1px solid #dee2e6; border-radius:6px; padding:1rem 1.25rem; margin-top:1.5rem; font-size:0.88rem; }
+  .search-tips h6 { font-weight:700; color:#0075b4; margin-bottom:0.5rem; }
+  .search-tips ul { margin:0; padding-left:1.25rem; color:#495057; }
+  .search-tips ul li { margin-bottom:0.2rem; }
+
+  footer.footer { background:#fff; }
+</style>
+</head>
+<body>
+<div id="root"><div>
+
+<!-- HEADER -->
+<header class="learning-header">
+  <div class="container-xl py-2 d-flex align-items-center">
+    <div class="d-flex flex-column align-items-center mr-3">
+      <a href="index.html" class="logo">
+        <img class="d-block" src="Johndrolearn.png" alt="Johndrolearn">
+      </a>
+      <div class="site-switcher mt-1">
+        <a href="index.html" class="site-switcher-btn">Johndrolearn</a>
+        <a href="ethrolearn.html" class="site-switcher-btn">Ethrolearn</a>
+      </div>
+    </div>
+    <div class="flex-grow-1 px-3" style="line-height:1;">
+      <span class="d-block small m-0">UniversityOfNewOrleansCivilEngineering ENCE4321c</span>
+      <span class="d-block m-0 course-title">ENCE4321_c SP26 Rational Method to PCSWMM: Matching Models to Situations</span>
+    </div>
+    <form class="search-form mr-2" action="search.html" method="get" id="header-search-form">
+      <div class="search-wrap">
+        <input type="text" name="q" id="header-q" class="search-input" placeholder="Search both pages…" autocomplete="off">
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+    <div class="dropdown">
+      <button type="button" class="dropdown-toggle btn btn-outline-primary">HydroIdiot#1</button>
+    </div>
+  </div>
+</header>
+
+<!-- SEARCH HERO -->
+<div class="search-hero">
+  <div class="container-xl">
+    <h1 class="h4 mb-3"><i class="fas fa-search mr-2 text-primary"></i>Search Course Notes</h1>
+    <form action="search.html" method="get" id="main-search-form">
+      <div class="search-hero-input-wrap">
+        <input type="text" name="q" id="main-q" class="search-hero-input" placeholder="Search across Johndrolearn and Ethrolearn…" autocomplete="off">
+        <button type="submit" class="search-hero-btn"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+    <p class="mt-2 mb-0" style="font-size:0.82rem; color:#6c757d;">Searches all sections on both pages — Unit Hydrograph, Rational Method, Curve Number, Routing, PCSWMM, calculators, and concept questions.</p>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-area">
+  <div class="container-xl">
+    <div id="results-container"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer role="contentinfo" class="footer border-top py-3 px-4">
+  <div class="container-fluid d-flex">
+    <a href="index.html"><img src="Johndrolearn.png" alt="Johndrolearn" style="max-height:45px;"></a>
+  </div>
+</footer>
+
+</div></div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// SEARCH INDEX
+// Each entry: { title, source, url, tags, body }
+// source: 'johndro' | 'ethro'
+// url: page + anchor
+// tags: extra keywords that boost matching
+// body: excerpt shown in result
+// ─────────────────────────────────────────────────────────────────────────────
+const INDEX = [
+
+  // ── JOHNDROLEARN — UH THEORY ─────────────────────────────────────────────
+  {
+    title: 'Unit Hydrograph Theory — Overview',
+    source: 'johndro',
+    url: 'index.html#uh-theory',
+    tags: ['uh','unit hydrograph','linear model','direct runoff','DRH','excess rainfall','base flow','linearity','time invariance'],
+    body: 'A Unit Hydrograph is the direct runoff hydrograph resulting from 1 inch of excess rainfall uniformly distributed over a watershed. Based on linearity and time-invariance assumptions, it allows prediction of any storm hydrograph through convolution.'
+  },
+  {
+    title: 'UH Terminology — Peak, Lag, Time to Peak, Volume',
+    source: 'johndro',
+    url: 'index.html#uh-theory',
+    tags: ['lag time','time to peak','tp','tL','tc','time of concentration','peak discharge','Qp','rising limb','recession limb','base time','S-curve','convolution','synthetic unit hydrograph'],
+    body: 'Key terms: lag time tL (centroid of rainfall to peak), time to peak tp, time of concentration tc, peak discharge Qp, rising limb, recession limb, time base, S-curve, convolution, and synthetic unit hydrograph.'
+  },
+  {
+    title: 'SCS Triangular Unit Hydrograph Equations',
+    source: 'johndro',
+    url: 'index.html#uh-theory',
+    tags: ['SCS','NRCS','triangular UH','484','peaking factor','tp','tL','tc','time base','Tb','2.67'],
+    body: 'The SCS Triangular UH: tL = 0.6tc, tp = tr/2 + tL, Qp,UH = 484×A/tp (A in mi², tp in hr), Tb = 2.67×tp. The peaking factor 484 reflects the ratio of recession to rising limb lengths.'
+  },
+  {
+    title: 'Reading a UH Figure — Peak, Time, Volume',
+    source: 'johndro',
+    url: 'index.html#uh-theory',
+    tags: ['reading UH','peak discharge','runoff volume','acre-inch','scale','ordinate','cfs/in'],
+    body: 'The UH y-axis is discharge per inch (cfs/in). To get actual peak: Qpeak = Qp,UH × Pe. Time to peak is read from the x-axis at the highest ordinate. Volume = Pe × A (in acre-inches).'
+  },
+  {
+    title: 'UH Convolution — Multi-Period Storm',
+    source: 'johndro',
+    url: 'index.html#uh-theory',
+    tags: ['convolution','superposition','DRH1','DRH2','lagged','multi-period','direct runoff','summation'],
+    body: 'Convolution: multiply UH ordinates by each Pe increment, offset by one time step per period, and sum all lagged DRH columns at each time step to get the total Direct Runoff Hydrograph.'
+  },
+
+  // ── JOHNDROLEARN — RATIONAL METHOD ───────────────────────────────────────
+  {
+    title: 'Rational Method — Q = CiA',
+    source: 'johndro',
+    url: 'index.html#rational-method',
+    tags: ['rational method','Q=CiA','CiA','peak discharge','cfs','runoff coefficient','intensity','drainage area','acres','200 acres'],
+    body: 'Q = C × i × A. Q = peak discharge (cfs), C = runoff coefficient, i = rainfall intensity (in/hr), A = drainage area (acres). Best for urban catchments up to 200 acres. Gives peak only, no hydrograph.'
+  },
+  {
+    title: 'Rational Method — Runoff Coefficient C',
+    source: 'johndro',
+    url: 'index.html#rational-method',
+    tags: ['runoff coefficient','C value','composite C','impervious','pavement','lawn','weighted average','land cover','urban'],
+    body: 'C represents the fraction of rainfall that becomes runoff (0 to 1). Pavement: 0.70–0.95. Lawns: 0.05–0.35. For mixed land covers use area-weighted composite C = ΣCiAi / ΣA.'
+  },
+  {
+    title: 'Rational Method — IDF Curves and Intensity',
+    source: 'johndro',
+    url: 'index.html#rational-method',
+    tags: ['IDF','intensity duration frequency','NOAA Atlas 14','return period','duration','tc','rainfall intensity','design storm'],
+    body: 'Intensity i is read from an IDF curve at duration = tc and the design return period. NOAA Atlas 14 (hdsc.nws.noaa.gov/pfds/) is the primary source. Setting duration = tc maximizes peak discharge.'
+  },
+  {
+    title: 'Time of Concentration — Kirpich and NRCS Lag',
+    source: 'johndro',
+    url: 'index.html#rational-method',
+    tags: ['time of concentration','tc','kirpich','NRCS lag','kinematic','overland flow','slope','length','travel time'],
+    body: 'Kirpich: tc [min] = 0.0078 × L^0.77 × S^-0.385. NRCS Lag: tL = L^0.8(S+1)^0.7 / (1900Y^0.5), tc = tL/0.6. Also available: Kinematic Wave Equation for urban sheet flow.'
+  },
+
+  // ── JOHNDROLEARN — CURVE NUMBER ───────────────────────────────────────────
+  {
+    title: 'Curve Number Method — Overview',
+    source: 'johndro',
+    url: 'index.html#cn-method',
+    tags: ['curve number','CN','NRCS','SCS','runoff depth','runoff volume','HSG','soil group','AMC','initial abstraction'],
+    body: 'The NRCS CN method estimates runoff depth from total storm rainfall. CN ranges 25–98. Higher CN = more runoff. Based on land use and hydrologic soil group (A, B, C, D) under AMC II conditions.'
+  },
+  {
+    title: 'Curve Number Equations — S, Ia, Q, Volume',
+    source: 'johndro',
+    url: 'index.html#cn-method',
+    tags: ['S retention','Ia initial abstraction','Pe effective rainfall','runoff equation','0.2S','1000/CN','acre-feet','acre-inches'],
+    body: 'S = (1000/CN) − 10. Ia = 0.2S. Q = (P−Ia)²/(P−Ia+S) when P > Ia, else Q = 0. Simplified: Q = (P−0.2S)²/(P+0.8S). Volume = Q × A (acre-in).'
+  },
+  {
+    title: 'Composite CN Calculation',
+    source: 'johndro',
+    url: 'index.html#cn-method',
+    tags: ['composite CN','weighted CN','area weighted','average CN','sub-area','land use'],
+    body: 'CN_composite = (ΣCNi×Ai) / ΣA. Always compute composite CN before calculating S. Do not average S values across sub-areas — this gives a different, incorrect result.'
+  },
+  {
+    title: 'Hydrologic Soil Groups A B C D',
+    source: 'johndro',
+    url: 'index.html#cn-method',
+    tags: ['HSG','hydrologic soil group','group A','group B','group C','group D','sand','clay','infiltration','runoff potential'],
+    body: 'Group A: sand/loamy sand, high infiltration, low runoff. Group B: silt loam, moderate infiltration. Group C: sandy clay loam, slow infiltration. Group D: clay, very low infiltration, high runoff potential.'
+  },
+  {
+    title: 'Antecedent Moisture Condition AMC I II III',
+    source: 'johndro',
+    url: 'index.html#cn-method',
+    tags: ['AMC','antecedent moisture','AMC I','AMC II','AMC III','dry','wet','normal','CN adjustment'],
+    body: 'Standard CN tables are for AMC II (normal). AMC I (dry): CNI = 4.2×CNII / (10−0.058×CNII). AMC III (wet): CNIII = 23×CNII / (10+0.13×CNII).'
+  },
+
+  // ── JOHNDROLEARN — ROUTING ────────────────────────────────────────────────
+  {
+    title: 'Hydrologic Routing — Overview',
+    source: 'johndro',
+    url: 'index.html#routing',
+    tags: ['routing','hydrologic routing','inflow','outflow','storage','attenuation','lag','detention basin','flood wave'],
+    body: 'Hydrologic routing transforms an inflow hydrograph into an outflow hydrograph, accounting for storage effects of a reach or basin. Results in peak attenuation (lower peak) and peak lag (delayed peak).'
+  },
+  {
+    title: 'Continuity Equation I − O = dS/dt',
+    source: 'johndro',
+    url: 'index.html#routing',
+    tags: ['continuity equation','conservation of mass','I-O=dS/dt','storage','inflow','outflow','routing basis'],
+    body: 'I − O = dS/dt. Inflow minus outflow equals rate of change of storage. Finite form: (I1+I2)/2 − (O1+O2)/2 = (S2−S1)/Δt. Foundation of all hydrologic routing methods.'
+  },
+  {
+    title: 'Level-Pool Routing — Modified Puls Method',
+    source: 'johndro',
+    url: 'index.html#routing',
+    tags: ['level pool','reservoir routing','modified puls','storage indication','2S/dt+O','stage storage','stage discharge','detention'],
+    body: 'Level-pool routing assumes a horizontal water surface. Uses a storage-indication routing curve (2S/Δt+O vs O). Step through: (2S2/Δt+O2) = I1+I2+(2S1/Δt−O1). Build routing curve from stage-storage and stage-discharge relationships.'
+  },
+  {
+    title: 'Muskingum Channel Routing — K and x Parameters',
+    source: 'johndro',
+    url: 'index.html#routing',
+    tags: ['muskingum','channel routing','K parameter','x parameter','wedge storage','C0 C1 C2','routing coefficients','stream routing'],
+    body: 'S = K[x·I + (1−x)·O]. K = travel time (hours). x = weighting factor (0 to 0.5). x=0: pure reservoir routing. x=0.5: pure translation. O2 = C0·I2 + C1·I1 + C2·O1 where C0+C1+C2 = 1.'
+  },
+
+  // ── JOHNDROLEARN — SUMMARY ───────────────────────────────────────────────
+  {
+    title: 'Summary — Choosing the Right Hydrologic Method',
+    source: 'johndro',
+    url: 'index.html#summary',
+    tags: ['comparison','summary','which method','rational vs CN','UH vs rational','routing vs UH','method selection'],
+    body: 'UH: full hydrograph, needs data. Rational Method: peak only, small urban basins <200 ac. CN Method: runoff depth/volume, rainfall excess input to UH. Routing: transforms inflow to outflow through storage element.'
+  },
+
+  // ── JOHNDROLEARN — CONCEPT QUESTIONS ─────────────────────────────────────
+  {
+    title: 'Concept Questions — Unit Hydrograph (Q1–Q5)',
+    source: 'johndro',
+    url: 'index.html#concept-questions',
+    tags: ['concept questions','UH questions','linearity','time invariance','S-curve','area under UH','volume','tp vs tL','storm duration'],
+    body: 'Q1: UH assumptions (linearity and time-invariance). Q2: tp vs tL difference. Q3: doubling storm duration does NOT double the peak. Q4: purpose of the S-curve. Q5: why UH area always equals 1 inch of runoff.'
+  },
+  {
+    title: 'Concept Questions — Rational Method (Q6–Q10)',
+    source: 'johndro',
+    url: 'index.html#concept-questions',
+    tags: ['concept questions','rational method questions','C coefficient','duration tc','IDF','urbanization','watershed size','steep slope'],
+    body: 'Q6: why duration = tc maximizes Q. Q7: physical meaning of C. Q8: why Rational Method fails for large watersheds. Q9: steep vs flat watershed peak discharge comparison. Q10: return period and IDF curve selection.'
+  },
+  {
+    title: 'Concept Questions — Curve Number (Q11–Q15)',
+    source: 'johndro',
+    url: 'index.html#concept-questions',
+    tags: ['concept questions','CN questions','initial abstraction','Ia physical meaning','P<=Ia','soil groups A D','AMC','composite CN','high CN','low CN'],
+    body: 'Q11: physical meaning of Ia = 0.2S. Q12: why zero runoff when P ≤ Ia. Q13: HSG A vs D comparison. Q14: simple average CN vs area-weighted. Q15: nonlinear effect — high CN watersheds show larger runoff increases.'
+  },
+  {
+    title: 'Concept Questions — Hydrologic Routing (Q16–Q20)',
+    source: 'johndro',
+    url: 'index.html#concept-questions',
+    tags: ['concept questions','routing questions','attenuation','lag','continuity','level pool vs muskingum','x parameter','volume conservation','detention'],
+    body: 'Q16: attenuation and lag explained. Q17: continuity equation terms. Q18: level-pool vs Muskingum assumptions. Q19: x=0 vs x=0.5 in Muskingum. Q20: detention basin reduces peak but NOT total volume.'
+  },
+
+  // ── JOHNDROLEARN — CALCULATORS ───────────────────────────────────────────
+  {
+    title: 'Calculator 1 — Rational Method Peak Discharge',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','rational method calculator','Q=CiA','composite C','multi land cover','peak flow calculator'],
+    body: 'Interactive calculator for Q = CiA. Add multiple land cover rows with individual C values and areas. Computes composite C and peak discharge Q with step-by-step solution.'
+  },
+  {
+    title: 'Calculator 2 — Curve Number Runoff Depth and Volume',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','CN calculator','runoff calculator','S Ia Pe volume','curve number calculator','acre-feet'],
+    body: 'Interactive CN calculator. Enter sub-area CNs, areas, and total rainfall P. Computes composite CN, S, Ia, runoff depth Q, and volume in acre-in, acre-ft, and ft³ with step-by-step solution.'
+  },
+  {
+    title: 'Calculator 3 — SCS Triangular Unit Hydrograph',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','SCS UH calculator','tp tL Qp','time to peak','peak discharge','time base','484'],
+    body: 'Interactive SCS Triangular UH calculator. Inputs: area, tc, storm duration tr, Pe. Outputs: lag time, time to peak, UH peak ordinate, actual peak discharge, time base, runoff volume.'
+  },
+  {
+    title: 'Calculator 4 — UH Convolution Table',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','convolution calculator','DRH','direct runoff','lagged','superposition','total hydrograph'],
+    body: 'Interactive convolution calculator. Paste UH ordinates and Pe values per period. Builds the full convolution table with each lagged DRH column, summed DRH, base flow, and total hydrograph.'
+  },
+  {
+    title: 'Calculator 5 — Time of Concentration',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','tc calculator','kirpich','NRCS lag','time of concentration','slope length'],
+    body: 'Interactive tc calculator with Kirpich and NRCS Lag method toggle. Full step-by-step solution showing exponent computations and unit conversions.'
+  },
+  {
+    title: 'Calculator 6 — IDF Rainfall Intensity',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','IDF calculator','intensity calculator','Sherman','power law','duration','in/hr'],
+    body: 'IDF intensity calculator. Toggle between Sherman (i = a/(t+b)^c) and Power Law (i = a/t^b). Enter IDF coefficients and duration/tc to get design intensity in in/hr.'
+  },
+  {
+    title: 'Calculator 7 — Composite CN Quick',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','composite CN','weighted CN quick','area weighted','sub-area CN'],
+    body: 'Quick composite CN calculator. Enter sub-area CNs and areas to get the weighted CN and corresponding S — without needing a rainfall depth. Faster than the full CN calculator.'
+  },
+  {
+    title: 'Calculator 8 — S-Curve UH Duration Change',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','S-curve','duration change','UH conversion','lag difference','new UH','tr1 to tr2'],
+    body: 'Convert a UH of one duration to a different duration using the S-curve method. Enter original UH ordinates, original and target durations. Shows full S-curve table and new UH ordinates.'
+  },
+  {
+    title: 'Calculator 9 — Level-Pool Modified Puls Routing',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','routing calculator','level pool','modified puls','storage outflow','detention sizing','attenuation','peak reduction'],
+    body: 'Full level-pool routing calculator. Enter inflow hydrograph, storage-outflow S-O table, and Δt. Builds routing table, reports peak attenuation %, peak lag, and max storage.'
+  },
+  {
+    title: 'Calculator 10 — Back-Calculate Peak from Volume',
+    source: 'johndro',
+    url: 'index.html#calculators',
+    tags: ['calculator','back calculate peak','triangular hydrograph','volume to peak','Qp from volume','time base'],
+    body: 'Given a runoff volume and time base (or time to peak), back-calculates the peak discharge using triangular hydrograph geometry. Volume in ac-in, ac-ft, or ft³.'
+  },
+
+  // ── ETHROLEARN — LAG TIME AND TC ─────────────────────────────────────────
+  {
+    title: 'Lag Time and Time of Concentration (Watt & Chow)',
+    source: 'ethro',
+    url: 'ethrolearn.html#lag-tc',
+    tags: ['lag time','tL','time of concentration','tC','Watt Chow','0.000326','stream length','slope','Sc','Bedient textbook'],
+    body: 'tL = 0.000326(L/√Sc)^0.79. tC = (5/3)tL. L = main stream length (m), Sc = sine of channel slope. Note: Bedient 6th ed. uses tp for lag time and tc for time of concentration.'
+  },
+
+  // ── ETHROLEARN — UNIT HYDROGRAPH ─────────────────────────────────────────
+  {
+    title: 'Unit Hydrograph — Definition and Linear Model',
+    source: 'ethro',
+    url: 'ethrolearn.html#uh',
+    tags: ['unit hydrograph','definition','linear model','convolution','1 inch','excess rainfall','watershed response'],
+    body: 'A UH is the direct runoff hydrograph from 1 inch of excess rainfall uniformly applied. Treats watershed as a linear system — scale by Pe and superimpose (convolve) to get the storm hydrograph.'
+  },
+  {
+    title: 'UH Convolution Example — DRH Table',
+    source: 'ethro',
+    url: 'ethrolearn.html#uh-convolution',
+    tags: ['convolution example','DRH1 DRH2 DRH3 DRH4','total DRH','abstraction','excess precipitation','lagged','table'],
+    body: 'Example with UH ordinates 10, 100, 200, 150, 100, 50 cfs/in. Four Pe values (0.2, 0.7, 1.2, 0.2 in) produce DRH1–DRH4. Total DRH peaks at 385 cfs at t=5 hr. Full calculation table provided.'
+  },
+  {
+    title: 'UH Key Assumptions and Shortcomings',
+    source: 'ethro',
+    url: 'ethrolearn.html#uh-assumptions',
+    tags: ['UH assumptions','shortcomings','constant intensity','uniform distribution','proportionality','base time','limitations','nonlinear'],
+    body: '6 key assumptions: constant intensity, uniform spatial distribution, constant base time, proportional ordinates, superposition of DRHs, fixed watershed characteristics. Nonlinear effects and spatial variability are ignored.'
+  },
+
+  // ── ETHROLEARN — SCS SYNTHETIC UH ────────────────────────────────────────
+  {
+    title: 'Synthetic UH — NRCS/SCS Method and Equations',
+    source: 'ethro',
+    url: 'ethrolearn.html#scs-uh',
+    tags: ['synthetic UH','SCS','NRCS','dimensionless UH','lag time equation','L S Y','tp tL tc tR','ungauged watershed'],
+    body: 'tL = L^0.8(S+1)^0.7 / (1900Y^0.5). tp = tL/0.9. tc = 5/3·tL = 1.5tp. tR = 0.2tp. L = hydraulic length (ft), S = (1000/CN)−10, Y = avg slope (%). Bedient notation: tp = lag time, TR = duration, D = effective duration.'
+  },
+  {
+    title: 'SCS Unit Peak Discharge — 484 and 2.08 Constants',
+    source: 'ethro',
+    url: 'ethrolearn.html#scs-peak',
+    tags: ['unit peak discharge','qp','484','2.08','Imperial SI','peak discharge formula','mi squared','km squared'],
+    body: 'Imperial: qp = 484×A/tp (cfs/in, A in mi², tp in hr). SI: qp = 2.08×A/tp (cms/cm, A in km²). Unit peak is scaled so total UH volume = 1 unit of rainfall times watershed area.'
+  },
+  {
+    title: 'SCS Dimensionless UH Table — t/tp and q/qp Ratios',
+    source: 'ethro',
+    url: 'ethrolearn.html#scs-table',
+    tags: ['dimensionless UH','t/tp','q/qp','ratios table','scaling','SCS shape'],
+    body: 'Full table of t/tp ratios (0 to 5.0) with corresponding q/qp discharge ratios (0 to 1.0). Multiply t-axis by tp and q-axis by qp to get the actual watershed UH at any time interval.'
+  },
+
+  // ── ETHROLEARN — RATIONAL METHOD ─────────────────────────────────────────
+  {
+    title: 'Rational Method — Q = CiA and Applicability',
+    source: 'ethro',
+    url: 'ethrolearn.html#rational',
+    tags: ['rational method','Q=CiA','peak runoff','urban hydrology','200 acres','runoff coefficient','1.008 conversion'],
+    body: 'Q = C×i×A. Applicable to catchments up to 200 acres. 1.008 conversion factor typically dropped. Assumes steady, uniform rainfall across the catchment for duration = tc.'
+  },
+  {
+    title: 'Runoff Coefficient Table — C Values by Land Use',
+    source: 'ethro',
+    url: 'ethrolearn.html#c-values',
+    tags: ['runoff coefficient','C table','downtown','residential','industrial','streets','asphalt','lawns','sandy soil','heavy soil','ASCE WPCF'],
+    body: 'C values: downtown 0.70–0.95, single-family residential 0.30–0.50, light industrial 0.50–0.80, asphalt 0.70–0.95, roofs 0.75–0.95, lawns sandy flat 0.05–0.10. Source: ASCE/WPCF 1969.'
+  },
+  {
+    title: 'IDF Curves — NOAA Atlas 14 and Duration Selection',
+    source: 'ethro',
+    url: 'ethrolearn.html#idf',
+    tags: ['IDF','intensity duration frequency','NOAA Atlas 14','DOTD','return period','duration tc','design storm','equilibrium'],
+    body: 'Use NOAA Atlas 14 (hdsc.nws.noaa.gov/pfds/) for design intensity. Duration = tc for maximum peak. If duration < tc: entire catchment not contributing. If duration > tc: lower intensity than needed. Only duration = tc gives correct maximum Q.'
+  },
+  {
+    title: 'Time of Concentration — Kinematic Wave Equation',
+    source: 'ethro',
+    url: 'ethrolearn.html#tc-kinematic',
+    tags: ['kinematic wave','tc','overland flow','turbulent','laminar','Manning','alpha','m=5/3','m=3','Goal Seek','300 feet','iterative'],
+    body: 'tc = (L/(α×ie^(m-1)))^(1/m). Turbulent (m=5/3): α = 1.49√S/n. Laminar (m=3): α = gS/3ν. Contains ie inside — requires iterative solution. Use Excel Goal Seek. Overland flow length limited to 300 ft in urban areas.'
+  },
+
+  // ── ETHROLEARN — CURVE NUMBER ─────────────────────────────────────────────
+  {
+    title: 'SCS CN Method — Equations Derivation',
+    source: 'ethro',
+    url: 'ethrolearn.html#cn',
+    tags: ['CN method','Pe equation','Ia 0.2S','F/S ratio','initial abstraction','effective rainfall','maximum retention','derivation'],
+    body: 'Pe = (P−0.2S)²/(P+0.8S). S = (1000/CN)−10. Ia = 0.2S. Derived from F/S = Pe/(P−Ia) ratio assumption. Pe = 0 when P ≤ Ia. Three rainfall components: Ia, F, and Pe.'
+  },
+  {
+    title: 'CN Table for Urban Areas — NRCS Table 2-2a',
+    source: 'ethro',
+    url: 'ethrolearn.html#cn-table',
+    tags: ['CN table','urban CN','Table 2-2a','open space','impervious','streets','residential lots','commercial','industrial','HSG A B C D'],
+    body: 'Full NRCS Table 2-2a with CN values for open space, impervious areas, streets, urban/commercial districts, residential lots (1/8 to 2 acres), and newly graded areas across HSG A, B, C, D.'
+  },
+  {
+    title: 'Antecedent Moisture Condition AMC I II III Equations',
+    source: 'ethro',
+    url: 'ethrolearn.html#amc',
+    tags: ['AMC','antecedent moisture','CNI','CNII','CNIII','dry wet normal','Chow Maidment Mays','adjustment equations'],
+    body: 'CNI = 4.2×CNII/(10−0.058×CNII). CNIII = 23×CNII/(10+0.13×CNII). Standard tables are AMC II. AMC I = dry (drier than normal). AMC III = wet/saturated. Source: Chow, Maidment, Mays 1988.'
+  },
+  {
+    title: 'Area-Averaged Composite CN',
+    source: 'ethro',
+    url: 'ethrolearn.html#avg-cn',
+    tags: ['composite CN','area averaged','CNavg','sub-catchments','engineering judgment','weighted'],
+    body: 'CNavg = Σ(CNi×Areai) / ΣArea. Engineering judgment needed on whether to use one composite CN or subdivide into sub-catchments. Extreme CN sub-areas can skew the composite unrealistically.'
+  },
+
+  // ── ETHROLEARN — PCSWMM HYDRAULICS ────────────────────────────────────────
+  {
+    title: 'PCSWMM Hydraulics — Overview',
+    source: 'ethro',
+    url: 'ethrolearn.html#pcswmm',
+    tags: ['PCSWMM','hydraulics','open channel','routing','junctions','conduits','outfalls','link node','subcatchments'],
+    body: 'PCSWMM routes subcatchment runoff through a link-and-node drainage network. Three element types: outfalls (discharge points), junctions (inlets and manholes), and conduits (pipes and channels).'
+  },
+  {
+    title: 'PCSWMM Outfalls — Invert Elevation',
+    source: 'ethro',
+    url: 'ethrolearn.html#outfalls',
+    tags: ['outfall','invert elevation','discharge point','watershed outlet','PCSWMM outfall'],
+    body: 'An outfall is the watershed discharge point in PCSWMM. Water reaching the outfall is removed from the model. Key property: invert elevation, which sets the outlet boundary condition.'
+  },
+  {
+    title: 'PCSWMM Junctions — Inlets, Manholes, Flooding',
+    source: 'ethro',
+    url: 'ethrolearn.html#junctions',
+    tags: ['junction','inlet','manhole','grate inlet','curb inlet','invert elevation','depth','flooding','vertical cylinder','PCSWMM junction'],
+    body: 'Junctions = storm sewer inlets or manholes. Modeled as vertical cylinders. Key properties: invert elevation (bottom) and depth (top). If water exceeds depth, flooding occurs and water is lost from the model.'
+  },
+  {
+    title: 'PCSWMM Conduits — Pipes, Manning n, Geometry',
+    source: 'ethro',
+    url: 'ethrolearn.html#conduits',
+    tags: ['conduit','pipe','channel','Manning roughness','circular pipe','Geom 1','diameter','cross section','link node','slope','invert elevation'],
+    body: 'Conduits connect junction nodes. Key properties: length, Manning n (material roughness), and geometry (Geom 1 = diameter for circular pipes). Pipe slope is calculated automatically from junction invert elevations and conduit length.'
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SEARCH ENGINE
+// ─────────────────────────────────────────────────────────────────────────────
+function highlight(text, query) {
+  if (!query) return text;
+  const terms = query.trim().split(/\s+/).filter(t => t.length > 1);
+  let result = text;
+  terms.forEach(term => {
+    const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    result = result.replace(re, '<mark>$1</mark>');
+  });
+  return result;
+}
+
+function score(entry, terms) {
+  let s = 0;
+  const titleLower = entry.title.toLowerCase();
+  const bodyLower = entry.body.toLowerCase();
+  const tagsLower = entry.tags.join(' ').toLowerCase();
+  terms.forEach(term => {
+    const t = term.toLowerCase();
+    if (titleLower.includes(t)) s += 10;
+    if (tagsLower.includes(t)) s += 5;
+    if (bodyLower.includes(t)) s += 2;
+  });
+  return s;
+}
+
+function doSearch(query) {
+  const container = document.getElementById('results-container');
+  if (!query || query.trim().length < 2) {
+    container.innerHTML = `<div class="no-results"><i class="fas fa-search d-block"></i><p>Enter a search term to find content across both pages.</p></div>${tipsHTML()}`;
+    return;
+  }
+  const terms = query.trim().split(/\s+/).filter(t => t.length > 1);
+  const scored = INDEX.map(e => ({ entry: e, score: score(e, terms) }))
+    .filter(r => r.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (scored.length === 0) {
+    container.innerHTML = `<div class="no-results"><i class="fas fa-search d-block"></i><p>No results found for "<strong>${escHtml(query)}</strong>".</p><p>Try shorter terms or check spelling.</p></div>${tipsHTML()}`;
+    return;
+  }
+
+  const johndroCount = scored.filter(r => r.entry.source === 'johndro').length;
+  const ethroCount = scored.filter(r => r.entry.source === 'ethro').length;
+
+  let html = `<div class="result-count">${scored.length} result${scored.length !== 1 ? 's' : ''} for "<strong>${escHtml(query)}</strong>" &nbsp;—&nbsp; ${johndroCount} from Johndrolearn, ${ethroCount} from Ethrolearn</div>`;
+
+  scored.forEach(r => {
+    const e = r.entry;
+    const sourceLabel = e.source === 'johndro'
+      ? '<span class="result-source johndro">Johndrolearn</span>'
+      : '<span class="result-source ethro">Ethrolearn</span>';
+    html += `
+      <div class="result-card">
+        <a href="${e.url}">
+          ${sourceLabel}
+          <div class="result-title">${highlight(escHtml(e.title), query)}</div>
+          <div class="result-excerpt">${highlight(escHtml(e.body), query)}</div>
+          <div class="result-url"><i class="fas fa-link mr-1"></i>${e.url}</div>
+        </a>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function tipsHTML() {
+  return `<div class="search-tips"><h6><i class="fas fa-lightbulb mr-1"></i>Search Tips</h6><ul>
+    <li>Try topic keywords: <em>curve number</em>, <em>peak discharge</em>, <em>Manning</em>, <em>convolution</em></li>
+    <li>Search by equation terms: <em>484</em>, <em>0.2S</em>, <em>CiA</em>, <em>continuity</em></li>
+    <li>Search by calculator: <em>calculator routing</em>, <em>calculator CN</em></li>
+    <li>Search concept questions: <em>concept lag time</em>, <em>concept attenuation</em></li>
+    <li>Search PCSWMM topics: <em>junction flooding</em>, <em>conduit slope</em>, <em>outfall</em></li>
+  </ul></div>`;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q') || '';
+  if (q) {
+    document.getElementById('main-q').value = q;
+    document.getElementById('header-q').value = q;
+  }
+  doSearch(q);
+
+  // Live search on main input
+  document.getElementById('main-search-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = document.getElementById('main-q').value;
+    history.replaceState(null, '', '?q=' + encodeURIComponent(query));
+    doSearch(query);
+    document.getElementById('header-q').value = query;
+  });
+});
+</script>
+
+</body>
+</html>
