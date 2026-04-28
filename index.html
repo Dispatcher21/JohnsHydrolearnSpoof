@@ -291,6 +291,29 @@
             </ol>
           </li>
           <li><a href="#summary">Summary: Choosing the Right Method</a></li>
+          <li><a href="#rational-subcatchments">Rational Method — Multiple Subcatchments &amp; IDF Curves</a>
+            <ol>
+              <li><a href="#rational-subcatchments">Controlling tc and Combined Peak</a></li>
+              <li><a href="#rational-subcatchments">IDF Curves in Depth</a></li>
+            </ol>
+          </li>
+          <li><a href="#cn-deep">CN Method — Expanded Coverage</a>
+            <ol>
+              <li><a href="#cn-deep">Sensitivity Analysis Table</a></li>
+              <li><a href="#cn-deep">Multi-Subcatchment Pre/Post Example</a></li>
+            </ol>
+          </li>
+          <li><a href="#detention">Pre/Post Development, Detention &amp; Required Storage</a>
+            <ol>
+              <li><a href="#detention">Detention vs. Retention</a></li>
+              <li><a href="#detention">Routing Inflow Through a Basin</a></li>
+              <li><a href="#detention">Required Storage Estimation</a></li>
+            </ol>
+          </li>
+          <li><a href="#hms-swmm">HMS and SWMM Simulations</a></li>
+          <li><a href="#green-infra">Green Infrastructure &amp; Low Impact Development</a></li>
+          <li><a href="#calibration">Calibration, Verification &amp; Model Validation</a></li>
+          <li><a href="#routed-outflow">Routed Outflow &amp; Full Design Workflow</a></li>
           <li><a href="#uh-chart">Interactive UH Chart</a></li>
           <li><a href="#glossary">Glossary</a></li>
           <li><a href="#formula-sheet">Formula Sheet</a></li>
@@ -315,6 +338,9 @@
               <li><a href="#calculators">Calculator 8: UH Duration Change (S-Curve)</a></li>
               <li><a href="#calculators">Calculator 9: Level-Pool (Modified Puls) Routing</a></li>
               <li><a href="#calculators">Calculator 10: Back-Calculate Peak from Volume</a></li>
+              <li><a href="#calculators">Calculator 11: Multi-Subcatchment Rational Method</a></li>
+              <li><a href="#calculators">Calculator 12: Routing Curve Builder (Modified Puls)</a></li>
+              <li><a href="#calculators">Calculator 13: Goodness-of-Fit &amp; NSE</a></li>
             </ol>
           </li>
         </ol>
@@ -919,6 +945,401 @@
         </div>
 
 
+
+        <!-- ============================================================
+             EXTENDED TOPICS — NEW CONTENT
+             ============================================================ -->
+
+        <!-- ── A. RATIONAL METHOD WITH MULTIPLE SUBCATCHMENTS ── -->
+        <h2 id="rational-subcatchments">Rational Method with Multiple Subcatchments</h2>
+
+        <p>Many real drainage projects involve more than one subcatchment contributing flow to a common outlet or junction. The Rational Method can be extended to handle this, but the approach must be applied carefully because each subcatchment has its own time of concentration — and the critical design condition changes depending on which combination of subcatchments is in play.</p>
+
+        <h3>The Key Principle: Use the Controlling tc</h3>
+        <p>When multiple subcatchments drain to a common point, the design storm duration is set equal to the <strong>longest time of concentration</strong> among all contributing subcatchments. This is the duration at which the entire combined drainage area is simultaneously contributing runoff to the outlet. If a shorter duration were used, some areas would not yet be fully contributing, giving an incorrect result.</p>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">Critical Check</div>
+          Always verify that using the longest tc also produces the highest Q. In some cases — particularly when one subcatchment has a very high C and short tc — it may actually produce a higher peak before the larger area reaches equilibrium. Check both the individual and combined cases.
+        </div>
+
+        <h3>Step-by-Step Procedure for Multiple Subcatchments</h3>
+        <ol>
+          <li>Identify all subcatchments draining to the point of interest. List area A<sub>i</sub>, runoff coefficient C<sub>i</sub>, and time of concentration t<sub>c,i</sub> for each.</li>
+          <li>Determine the controlling t<sub>c</sub> = max(t<sub>c,i</sub>). This is the design storm duration.</li>
+          <li>Enter the IDF curve at duration = controlling t<sub>c</sub> and the design return period. Read off intensity i.</li>
+          <li>Compute Q = i × Σ(C<sub>i</sub> × A<sub>i</sub>). Note: you sum the C×A products directly — you do NOT compute a composite C first when subcatchments have different tc values.</li>
+          <li>If required, also check the peak for upstream-only combinations with their own shorter tc.</li>
+        </ol>
+
+        <div class="worked-example">
+          <div class="we-title"><i class="fas fa-calculator"></i> Worked Example: Four Subcatchments to One Outlet</div>
+          <p><strong>Given:</strong> Four subcatchments drain to a common storm drain outlet. 10-year design storm, IDF coefficients (Sherman): i = 98 / (t + 7.2)<sup>0.73</sup> (i in in/hr, t in minutes).</p>
+
+          <figure class="table" style="margin:0.75rem 0;">
+            <table>
+              <thead><tr><th>Subcatchment</th><th>Area A (ac)</th><th>Runoff Coeff. C</th><th>tc (min)</th><th>C × A</th></tr></thead>
+              <tbody>
+                <tr><td>SC-1 (parking lot)</td><td>3.5</td><td>0.90</td><td>8</td><td>3.15</td></tr>
+                <tr><td>SC-2 (residential)</td><td>7.2</td><td>0.40</td><td>18</td><td>2.88</td></tr>
+                <tr><td>SC-3 (park/grass)</td><td>5.0</td><td>0.20</td><td>25</td><td>1.00</td></tr>
+                <tr><td>SC-4 (commercial)</td><td>4.1</td><td>0.85</td><td>12</td><td>3.49</td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>19.8</strong></td><td>—</td><td>—</td><td><strong>10.52</strong></td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <div class="we-step"><strong>Step 1 — Controlling tc:</strong><br>tc = max(8, 18, 25, 12) = <strong>25 minutes</strong> (SC-3 controls)</div>
+          <div class="we-step"><strong>Step 2 — Design intensity at tc = 25 min:</strong><br>i = 98 / (25 + 7.2)<sup>0.73</sup> = 98 / (32.2)<sup>0.73</sup> = 98 / 14.47 = <strong>6.77 in/hr</strong></div>
+          <div class="we-step"><strong>Step 3 — Peak discharge:</strong><br>Q = i × Σ(C<sub>i</sub>A<sub>i</sub>) = 6.77 × 10.52 = <strong>71.2 cfs</strong></div>
+          <div class="we-step"><strong>Step 4 — Check: SC-1 + SC-4 only (tc = 12 min):</strong><br>i(12 min) = 98 / (19.2)<sup>0.73</sup> = 98 / 9.74 = 10.06 in/hr<br>Q = 10.06 × (3.15 + 3.49) = 10.06 × 6.64 = <strong>66.8 cfs</strong> — lower, so tc = 25 min controls.</div>
+          <div class="we-answer">Design peak Q = 71.2 cfs at tc = 25 min</div>
+        </div>
+
+        <h3>IDF Curves — Intensity Duration Frequency in Depth</h3>
+        <p>IDF curves are the statistical backbone of the Rational Method. They answer the question: for a storm of a given duration and return period at this location, what average intensity should be expected?</p>
+
+        <p>IDF relationships are typically expressed in one of three equation forms:</p>
+
+        <div class="callout callout-formula">
+          <div class="callout-title">Common IDF Equation Forms</div>
+          <p><strong>Sherman (3-parameter):</strong> &nbsp; i = a / (t + b)<sup>c</sup></p>
+          <p><strong>Power Law (2-parameter):</strong> &nbsp; i = a / t<sup>b</sup></p>
+          <p><strong>Modified Power:</strong> &nbsp; i = a × t<sup>b</sup> + c</p>
+          <p style="font-family:inherit;font-size:0.85rem;margin-top:0.5rem;">Where i = intensity (in/hr), t = duration (min or hr), and a, b, c are regression coefficients fit to local rainfall data. Coefficients change by location and return period.</p>
+        </div>
+
+        <p>IDF data for the United States is published by NOAA as <strong>Atlas 14</strong>, available at hdsc.nws.noaa.gov/pfds/. For Louisiana specifically, local hydraulic manuals (DOTD) provide region-specific IDF equations fitted to Louisiana rainfall station data. Atlas 14 is the more current and preferred source, but DOTD equations remain in use for many existing permit calculations.</p>
+
+        <h4>Reading an IDF Curve</h4>
+        <ul>
+          <li>The x-axis is storm duration (minutes or hours).</li>
+          <li>The y-axis is rainfall intensity (in/hr).</li>
+          <li>Each curve on the graph represents a different return period (2-yr, 5-yr, 10-yr, 25-yr, 50-yr, 100-yr).</li>
+          <li>Higher return periods plot <em>above</em> lower ones at any given duration — rarer storms are more intense.</li>
+          <li>All curves slope downward left to right — intensity decreases as duration increases because the same rainfall volume is spread over more time.</li>
+          <li>To find design i: enter the x-axis at duration = t<sub>c</sub>, go up to the curve for your return period, read i from the y-axis.</li>
+        </ul>
+
+
+        <!-- ── B. CN METHOD DEEP DIVE ── -->
+        <h2 id="cn-deep">CN Method — Expanded Coverage</h2>
+
+        <h3>The Physical Basis of the CN Equation</h3>
+        <p>The SCS CN method is built on a proportionality assumption: the ratio of actual infiltration to maximum possible infiltration equals the ratio of actual runoff to maximum possible runoff. This produces the core equation already covered, but understanding <em>why</em> each term behaves as it does makes the method much easier to apply correctly.</p>
+
+        <p>When rainfall first begins, the watershed absorbs all of it — filling interception storage on leaves and stems, filling small surface depressions, and meeting the initial high demand of dry soil. This is the <strong>initial abstraction I<sub>a</sub></strong>. Once I<sub>a</sub> is satisfied, additional rainfall partitions between infiltration (continuing abstraction F) and runoff (P<sub>e</sub>). The CN controls how quickly the watershed "fills up" and how much it can ultimately absorb.</p>
+
+        <h3>Effect of CN on Runoff — Sensitivity Analysis</h3>
+        <p>The CN runoff equation is <strong>nonlinear</strong> — the relationship between total rainfall P and runoff depth Q is a curve, not a straight line. This has important practical implications:</p>
+        <ul>
+          <li>For small storms (P barely exceeds I<sub>a</sub>), runoff is very sensitive to CN — a small change in CN produces a large proportional change in Q.</li>
+          <li>For very large storms, most rainfall becomes runoff regardless of CN — Q approaches P asymptotically and CN sensitivity is lower.</li>
+          <li>Urbanization (increasing CN) has its greatest relative impact on moderate, frequently occurring storms — which is important for green infrastructure sizing.</li>
+        </ul>
+
+        <figure class="table">
+          <table>
+            <thead><tr><th>CN</th><th>S (in)</th><th>I<sub>a</sub> (in)</th><th>Q for P=2 in</th><th>Q for P=4 in</th><th>Q for P=6 in</th></tr></thead>
+            <tbody>
+              <tr><td>55</td><td>8.18</td><td>1.64</td><td>0.04 in</td><td>0.63 in</td><td>1.57 in</td></tr>
+              <tr><td>65</td><td>5.38</td><td>1.08</td><td>0.20 in</td><td>1.09 in</td><td>2.25 in</td></tr>
+              <tr><td>75</td><td>3.33</td><td>0.67</td><td>0.50 in</td><td>1.63 in</td><td>2.95 in</td></tr>
+              <tr><td>85</td><td>1.76</td><td>0.35</td><td>1.03 in</td><td>2.34 in</td><td>3.67 in</td></tr>
+              <tr><td>95</td><td>0.53</td><td>0.11</td><td>1.63 in</td><td>3.15 in</td><td>4.67 in</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <h3>Multi-Subcatchment CN Calculation</h3>
+        <p>When a project watershed contains multiple land use or soil type combinations, the workflow is:</p>
+        <ol>
+          <li>Delineate subcatchments and identify the dominant land use and HSG in each.</li>
+          <li>Look up CN for each subcatchment from NRCS Table 2-2a (or appropriate table).</li>
+          <li>Compute area-weighted composite CN: CN = Σ(CN<sub>i</sub> × A<sub>i</sub>) / ΣA.</li>
+          <li>Compute S from composite CN, then I<sub>a</sub>, then Q from the rainfall depth.</li>
+          <li>Compute runoff volume: V = Q × A<sub>total</sub>.</li>
+        </ol>
+
+        <div class="worked-example">
+          <div class="we-title"><i class="fas fa-calculator"></i> Worked Example: CN with Four Subcatchments, Pre vs. Post Development</div>
+          <p><strong>Pre-development:</strong> 200-acre watershed, all HSG B soils.</p>
+          <figure class="table" style="margin:0.5rem 0;">
+            <table>
+              <thead><tr><th>Land Use</th><th>Area (ac)</th><th>CN (HSG B)</th><th>CN × A</th></tr></thead>
+              <tbody>
+                <tr><td>Woods, good condition</td><td>90</td><td>55</td><td>4,950</td></tr>
+                <tr><td>Meadow, good condition</td><td>70</td><td>58</td><td>4,060</td></tr>
+                <tr><td>Row crops, good condition</td><td>40</td><td>78</td><td>3,120</td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>200</strong></td><td>—</td><td><strong>12,130</strong></td></tr>
+              </tbody>
+            </table>
+          </figure>
+          <div class="we-step"><strong>Pre-dev CN:</strong> 12,130 / 200 = <strong>60.7 → CN = 61</strong><br>S = (1000/61)−10 = 6.39 in; I<sub>a</sub> = 1.28 in<br>For P = 4.5 in: Q = (4.5−1.28)² / (4.5−1.28+6.39) = (3.22)²/9.61 = <strong>1.08 in</strong><br>Volume = 1.08 × 200 = <strong>216 acre-in = 18.0 acre-ft</strong></div>
+
+          <p style="margin-top:0.75rem;"><strong>Post-development:</strong> Same soils, land use changed by development.</p>
+          <figure class="table" style="margin:0.5rem 0;">
+            <table>
+              <thead><tr><th>Land Use</th><th>Area (ac)</th><th>CN (HSG B)</th><th>CN × A</th></tr></thead>
+              <tbody>
+                <tr><td>Residential ½-acre lots</td><td>100</td><td>70</td><td>7,000</td></tr>
+                <tr><td>Commercial (85% imp.)</td><td>60</td><td>92</td><td>5,520</td></tr>
+                <tr><td>Open space, good condition</td><td>40</td><td>61</td><td>2,440</td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>200</strong></td><td>—</td><td><strong>14,960</strong></td></tr>
+              </tbody>
+            </table>
+          </figure>
+          <div class="we-step"><strong>Post-dev CN:</strong> 14,960 / 200 = <strong>74.8 → CN = 75</strong><br>S = (1000/75)−10 = 3.33 in; I<sub>a</sub> = 0.67 in<br>For P = 4.5 in: Q = (4.5−0.67)² / (4.5−0.67+3.33) = (3.83)²/7.16 = <strong>2.05 in</strong><br>Volume = 2.05 × 200 = <strong>410 acre-in = 34.2 acre-ft</strong></div>
+          <div class="we-answer">Development increased runoff from 1.08 in (18.0 ac-ft) to 2.05 in (34.2 ac-ft) — a 90% increase in volume.</div>
+        </div>
+
+
+        <!-- ── C. PRE/POST DEVELOPMENT, DETENTION, REQUIRED STORAGE ── -->
+        <h2 id="detention">Pre/Post Development, Detention Basin Design &amp; Required Storage</h2>
+
+        <h3>Pre-Development vs. Post-Development Conditions</h3>
+        <p>A central objective of stormwater management regulations is to ensure that development does not increase flood peaks at downstream locations. This is enforced through the concept of <strong>pre-development vs. post-development</strong> analysis:</p>
+
+        <ul>
+          <li><strong>Pre-development condition:</strong> The hydrologic state of the watershed before construction or land use change. Typically characterized by lower CN, higher infiltration, lower peak flows, and longer times of concentration because of natural cover and flow paths.</li>
+          <li><strong>Post-development condition:</strong> The watershed state after development. Higher CN, reduced infiltration, higher and faster peak flows, shorter tc because impervious surfaces and engineered drainage convey water quickly.</li>
+          <li><strong>The regulatory requirement:</strong> In most jurisdictions, post-development peak discharge must not exceed pre-development peak discharge for one or more design storm return periods (commonly the 2-year and 10-year, sometimes also the 25-year and 100-year).</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-title">Why This Matters</div>
+          Without stormwater controls, development consistently increases peak flows and runoff volumes. These increases cause downstream flooding, channel erosion, and water quality degradation. Detention and retention basins are the primary engineering tools used to offset these impacts.
+        </div>
+
+        <h3>Detention vs. Retention</h3>
+        <figure class="table">
+          <table>
+            <thead><tr><th>Feature</th><th>Detention Basin</th><th>Retention Basin (Wet Pond)</th></tr></thead>
+            <tbody>
+              <tr><td>Permanent water</td><td>No — empties between storms</td><td>Yes — maintains a permanent pool</td></tr>
+              <tr><td>Volume control</td><td>Peak attenuation only</td><td>Peak attenuation + volume reduction (evaporation, infiltration)</td></tr>
+              <tr><td>Outlet type</td><td>Riser/pipe, empties fully</td><td>Overflow spillway above permanent pool elevation</td></tr>
+              <tr><td>Water quality benefit</td><td>Limited — short detention time</td><td>Higher — sedimentation in permanent pool</td></tr>
+              <tr><td>Maintenance</td><td>Periodic sediment removal</td><td>Vegetation management, sediment removal less frequent</td></tr>
+              <tr><td>Typical use</td><td>Quantity control, subdivision drainage</td><td>Quantity + quality control, larger developments</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <h3>Routing Inflow Through a Detention Basin</h3>
+        <p>The design process for a detention basin requires routing the post-development inflow hydrograph through the proposed basin and verifying the routed outflow peak does not exceed the pre-development target. The level-pool (Modified Puls) routing method is the standard approach:</p>
+
+        <ol>
+          <li><strong>Generate the post-development inflow hydrograph</strong> — using CN method + UH convolution (or HMS/SWMM simulation).</li>
+          <li><strong>Identify the target outflow peak</strong> — typically the pre-development peak for the same design storm.</li>
+          <li><strong>Size the outlet structure</strong> — determine the stage-discharge relationship for the outlet (pipe, weir, riser). The outlet must pass the full design flow while maintaining controlled peak outflow.</li>
+          <li><strong>Define stage-storage relationship</strong> — from the basin geometry, develop the elevation vs. storage volume curve.</li>
+          <li><strong>Build the routing curve</strong> — combine stage-storage and stage-discharge to create the (2S/Δt + O) vs. O relationship.</li>
+          <li><strong>Route using Modified Puls</strong> — step through the inflow hydrograph and solve for outflow at each time step.</li>
+          <li><strong>Check peak outflow</strong> — if routed peak exceeds the target, increase basin size or modify the outlet. Iterate until the target is met.</li>
+        </ol>
+
+        <h3>Required Storage Estimation</h3>
+        <p>Before performing the full routing, engineers often estimate the <strong>required storage volume</strong> needed to achieve the target peak reduction. A common simplified approach uses the difference in areas between the inflow and allowable outflow hydrographs:</p>
+
+        <div class="callout callout-formula">
+          <div class="callout-title">Simplified Storage Estimation</div>
+          <p>V<sub>req</sub> ≈ V<sub>in</sub> − V<sub>out,allowed</sub></p>
+          <p style="font-family:inherit;font-size:0.9rem;margin-top:0.4rem;">Where V<sub>in</sub> is the total inflow volume and V<sub>out,allowed</sub> is the volume that can be released at or below the target outflow peak rate over the storm duration. This is an approximation — actual required storage from routing is typically 10–30% higher.</p>
+          <p style="font-family:inherit;font-size:0.85rem;">Alternatively, using the triangular hydrograph approximation:</p>
+          <p>V<sub>req</sub> ≈ 0.5 × (Q<sub>in,peak</sub> − Q<sub>out,peak</sub>) × T<sub>b</sub></p>
+          <p style="font-family:inherit;font-size:0.85rem;">Where T<sub>b</sub> is the time base of the inflow hydrograph.</p>
+        </div>
+
+        <div class="worked-example">
+          <div class="we-title"><i class="fas fa-calculator"></i> Worked Example: Pre/Post Analysis and Required Storage</div>
+          <p><strong>Given:</strong> 200-acre watershed. Pre-development peak (10-yr) = 85 cfs. Post-development 10-yr inflow hydrograph peaks at 210 cfs with a time base of 6 hours and total inflow volume of 340 acre-ft.</p>
+          <div class="we-step"><strong>Target outflow peak:</strong> Q<sub>out,max</sub> = 85 cfs (must not exceed pre-development peak)</div>
+          <div class="we-step"><strong>Simplified storage estimate:</strong><br>V<sub>req</sub> ≈ 0.5 × (210 − 85) cfs × 6 hr × 3600 s/hr<br>= 0.5 × 125 × 21,600 = 1,350,000 ft³ = <strong>31.0 acre-ft</strong><br>(Actual required storage from routing will be somewhat higher — use this as a starting point for basin sizing.)</div>
+          <div class="we-step"><strong>Peak attenuation required:</strong><br>(210 − 85) / 210 × 100 = <strong>59.5% peak reduction</strong></div>
+          <div class="we-answer">Estimate ~31 acre-ft of active storage needed. Size outlet to pass ≤ 85 cfs at maximum water surface elevation, then verify with full Modified Puls routing.</div>
+        </div>
+
+
+        <!-- ── D. HMS AND SWMM SIMULATIONS ── -->
+        <h2 id="hms-swmm">HMS and SWMM Simulations</h2>
+
+        <h3>What These Tools Do</h3>
+        <p>HEC-HMS (Hydrologic Engineering Center — Hydrologic Modeling System) and SWMM (Storm Water Management Model, used through PCSWMM) are industry-standard software tools that automate and extend the manual calculations covered in this course. They implement the same underlying hydrology — CN method, UH convolution, routing — but handle multiple subcatchments, complex channel networks, and multiple storm events simultaneously.</p>
+
+        <figure class="table">
+          <table>
+            <thead><tr><th>Feature</th><th>HEC-HMS</th><th>PCSWMM / SWMM</th></tr></thead>
+            <tbody>
+              <tr><td>Developer</td><td>US Army Corps of Engineers (free)</td><td>EPA SWMM engine; CHI PCSWMM interface</td></tr>
+              <tr><td>Primary focus</td><td>Watershed-scale hydrology, flood routing</td><td>Urban stormwater, pipe network hydraulics</td></tr>
+              <tr><td>Runoff methods</td><td>SCS CN, Green-Ampt, initial/constant rate</td><td>SCS CN, Green-Ampt, Horton</td></tr>
+              <tr><td>Routing methods</td><td>Muskingum, Modified Puls, kinematic wave</td><td>Dynamic wave (St. Venant equations)</td></tr>
+              <tr><td>Network elements</td><td>Subbasins, reaches, junctions, reservoirs</td><td>Subcatchments, junctions, conduits, outfalls, storage units</td></tr>
+              <tr><td>Typical application</td><td>Watershed flood studies, detention sizing, FEMA analyses</td><td>Urban drainage design, inlet/pipe sizing, green infrastructure</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <h3>HEC-HMS Workflow</h3>
+        <p>A typical HEC-HMS project involves the following components:</p>
+        <ol>
+          <li><strong>Basin Model:</strong> Define subbasins (with area, CN, and UH parameters), reaches (routing method and parameters), junctions (where flows combine), and reservoirs (stage-storage-discharge relationships).</li>
+          <li><strong>Meteorologic Model:</strong> Specify the design rainfall — SCS Type II distribution, user-specified hyetograph, or frequency storm. This produces the precipitation input for each subbasin.</li>
+          <li><strong>Control Specifications:</strong> Set the simulation time window and computational time step Δt.</li>
+          <li><strong>Run the simulation:</strong> HMS applies the CN method to convert rainfall to excess, convolves the UH to get subbasin hydrographs, routes flows through reaches and reservoirs, and combines flows at junctions.</li>
+          <li><strong>Analyze results:</strong> Extract peak flows, volumes, and hydrographs at any element in the network. Compare pre- and post-development conditions. Evaluate detention basin performance.</li>
+        </ol>
+
+        <h3>PCSWMM / SWMM Workflow</h3>
+        <p>SWMM is particularly suited for urban drainage networks with pipes and inlets:</p>
+        <ol>
+          <li><strong>Build the network:</strong> Define subcatchments (area, CN or other runoff method, slope, width, imperviousness), junctions (inlets, manholes), conduits (pipes with Manning n, length, geometry), storage units (detention basins), and outfalls.</li>
+          <li><strong>Set the rain gage:</strong> Input the design hyetograph as a time series. Apply it to all subcatchments.</li>
+          <li><strong>Run the simulation:</strong> SWMM solves the full dynamic wave equations (St. Venant) for pipe flow — capturing surcharging, backwater, and flooding at junctions.</li>
+          <li><strong>Check the Status Report:</strong> Review runoff quantity continuity (is continuity error &lt;1%?), flow routing continuity, and any flooding losses.</li>
+          <li><strong>Analyze results:</strong> Plot hydrographs, examine profile views at peak discharge, identify where flooding occurs and which pipes are surcharged.</li>
+        </ol>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">Continuity Error</div>
+          Both HMS and SWMM report a continuity error — the percentage difference between total inflow and total outflow + change in storage. A continuity error above 1% (absolute value) suggests a modeling error: incorrect invert elevations, disconnected network elements, or time step issues. Always check continuity before trusting results.
+        </div>
+
+
+        <!-- ── E. GREEN INFRASTRUCTURE AND LOW IMPACT DEVELOPMENT ── -->
+        <h2 id="green-infra">Green Infrastructure, Retention, and Low Impact Development (LID)</h2>
+
+        <h3>The LID Philosophy</h3>
+        <p><strong>Low Impact Development (LID)</strong> is a stormwater management approach that mimics pre-development hydrologic conditions by managing rainfall close to where it falls, rather than collecting and conveying it rapidly to a central pond. LID strategies reduce runoff volume (not just peak rate), improve water quality, and provide multiple co-benefits including urban cooling, habitat, and aesthetics.</p>
+
+        <p><strong>Green Infrastructure (GI)</strong> is the broader term for using natural or semi-natural systems to manage stormwater. It includes LID practices at the site scale as well as landscape-scale elements like urban forests, floodplain restoration, and constructed wetlands.</p>
+
+        <h3>Core LID / GI Practices</h3>
+
+        <figure class="table">
+          <table>
+            <thead><tr><th>Practice</th><th>How It Works</th><th>Primary Benefit</th><th>Best Used For</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Bioretention / Rain Gardens</strong></td><td>Depressed vegetated areas with engineered soil media that infiltrate and filter runoff</td><td>Volume reduction, water quality</td><td>Small drainage areas; retrofits in parking lots, roadways</td></tr>
+              <tr><td><strong>Green Roofs</strong></td><td>Vegetation layer on rooftop retains rainfall in growing media before slow release</td><td>Volume reduction, peak attenuation</td><td>Dense urban areas; flat or low-slope roofs</td></tr>
+              <tr><td><strong>Permeable Pavement</strong></td><td>Porous asphalt, concrete, or pavers allow runoff to infiltrate through the surface</td><td>Volume reduction, groundwater recharge</td><td>Parking lots, low-traffic roads, walkways</td></tr>
+              <tr><td><strong>Rain Barrels / Cisterns</strong></td><td>Collect and store rooftop runoff for later reuse (irrigation)</td><td>Volume reduction, water reuse</td><td>Residential; individual buildings</td></tr>
+              <tr><td><strong>Vegetated Swales</strong></td><td>Shallow vegetated channels convey runoff slowly, promoting infiltration and settling</td><td>Conveyance, volume reduction, water quality</td><td>Along roadways; replacing curb-and-gutter</td></tr>
+              <tr><td><strong>Constructed Wetlands</strong></td><td>Shallow wetland basins provide extended detention time, biological treatment</td><td>Water quality, habitat, volume reduction</td><td>Larger developments; downstream of conventional detention</td></tr>
+              <tr><td><strong>Disconnection</strong></td><td>Direct rooftop or pavement runoff to pervious areas (lawns, planting beds) rather than impervious paths</td><td>Volume reduction by infiltration</td><td>Residential; simple and low-cost retrofit</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <h3>How LID Differs from Conventional Detention</h3>
+        <p>Conventional detention basins address <strong>peak rate</strong> — they collect the post-development flood wave and release it slowly so the outflow peak matches pre-development levels, but the total runoff volume is unchanged (water just leaves later). LID practices address <strong>volume</strong> — they reduce the total amount of runoff generated, which reduces both peak and volume. This distinction matters because:</p>
+        <ul>
+          <li>Volume reduction provides better water quality benefits (less pollutant loading to receiving waters).</li>
+          <li>Reducing volume also reduces the required size of downstream detention basins.</li>
+          <li>Many newer regulatory frameworks (and green certification systems like LEED) require volume reduction targets, not just peak matching.</li>
+        </ul>
+
+        <h3>Modeling LID in SWMM</h3>
+        <p>PCSWMM/SWMM includes built-in LID control modules that can be applied to subcatchments:</p>
+        <ul>
+          <li><strong>Bioretention Cell:</strong> Defined by surface depression depth, soil layer thickness and properties, and an underdrain. SWMM simulates the wetting front and drainage of the media.</li>
+          <li><strong>Permeable Pavement:</strong> Defined by surface permeability, pavement layer, soil layer, and underdrain. Reduces the effective impervious area of the subcatchment.</li>
+          <li><strong>Green Roof:</strong> Defined by soil layer properties and optional drainage mat. Applied as a fraction of the subcatchment area.</li>
+          <li><strong>Rain Barrel:</strong> Defined by storage volume, drain rate, and delay time. Captures and slowly releases rooftop runoff.</li>
+          <li><strong>Vegetated Swale:</strong> Modeled as a special conduit with infiltration through the bottom and sides.</li>
+        </ul>
+        <p>LID controls are assigned to subcatchments as a fraction of the total subcatchment area. The remainder of the area uses the standard runoff calculation. Results show how much LID coverage is needed to meet volume and peak targets.</p>
+
+
+        <!-- ── F. CALIBRATION AND VERIFICATION ── -->
+        <h2 id="calibration">Calibration, Verification, and Model Validation</h2>
+
+        <h3>What is Calibration?</h3>
+        <p><strong>Calibration</strong> is the process of adjusting model parameters so that simulated outputs match observed (measured) data from a known storm event. In hydrologic modeling, this means comparing simulated peak flows, volumes, and hydrograph shapes to streamflow gauge records and adjusting CN values, UH parameters, routing coefficients, and Manning's n values until the match is acceptable.</p>
+
+        <p>Calibration is possible only when observed data exists — a streamflow gauge record, rainfall data, and sometimes water surface elevation measurements. Without observed data, models must use <em>estimated</em> parameter values from tables and regional equations, and the model is called <strong>uncalibrated</strong>.</p>
+
+        <h3>What is Verification (Validation)?</h3>
+        <p><strong>Verification</strong> (also called <strong>validation</strong>) is the process of testing the calibrated model against a <em>different</em>, independent storm event — one that was not used during calibration. If the calibrated parameters produce acceptable results for the verification event, the model is considered validated and can be used with greater confidence for prediction.</p>
+
+        <div class="callout">
+          <div class="callout-title">The Calibration/Verification Rule</div>
+          Never use the same dataset for both calibration and verification. Using a single storm to both calibrate and "verify" the model is circular — it tells you nothing about how well the model will perform for events it has never seen. You need at least two storm events: one to calibrate, one to verify.
+        </div>
+
+        <h3>Key Calibration Parameters in Hydrologic Models</h3>
+        <figure class="table">
+          <table>
+            <thead><tr><th>Parameter</th><th>Model Component</th><th>Effect of Increasing</th><th>Typical Calibration Range</th></tr></thead>
+            <tbody>
+              <tr><td>Curve Number (CN)</td><td>Runoff generation</td><td>More runoff, higher peak, larger volume</td><td>Within ±10 of table value; same land use class</td></tr>
+              <tr><td>Initial Abstraction Ratio (λ)</td><td>Runoff generation</td><td>Higher λ → more initial loss → less runoff for small storms</td><td>0.05–0.20 (default 0.20)</td></tr>
+              <tr><td>Lag Time / tc</td><td>UH timing</td><td>Longer lag → later, broader, lower peak hydrograph</td><td>Adjust within ±25% of computed value</td></tr>
+              <tr><td>Manning's n</td><td>Channel routing / pipe flow</td><td>Higher n → slower flow → more attenuation and lag</td><td>Tabulated by material; ±20–30% for natural channels</td></tr>
+              <tr><td>Muskingum K and x</td><td>Channel routing</td><td>K controls lag; x controls attenuation</td><td>K from reach length/velocity; x: 0 to 0.3</td></tr>
+              <tr><td>Storage (pond/basin)</td><td>Reservoir routing</td><td>More storage → more attenuation and longer release</td><td>Verified against surveyed bathymetry</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <h3>Goodness-of-Fit Measures</h3>
+        <p>During calibration, the match between simulated and observed data is assessed quantitatively. Common measures include:</p>
+        <ul>
+          <li><strong>Peak flow error:</strong> (Q<sub>sim</sub> − Q<sub>obs</sub>) / Q<sub>obs</sub> × 100%. Target: &lt;10% for calibration, &lt;15% for verification.</li>
+          <li><strong>Volume error:</strong> (V<sub>sim</sub> − V<sub>obs</sub>) / V<sub>obs</sub> × 100%. Target: &lt;5% for calibration.</li>
+          <li><strong>Nash-Sutcliffe Efficiency (NSE):</strong> Ranges from −∞ to 1.0. NSE = 1.0 is a perfect match. NSE &gt; 0.5 is generally considered acceptable; NSE &gt; 0.75 is good.</li>
+          <li><strong>Root Mean Square Error (RMSE):</strong> Average magnitude of the difference between simulated and observed values. Lower is better.</li>
+          <li><strong>Timing of peak:</strong> Is the simulated peak occurring at approximately the right time? Timing errors suggest incorrect tc or routing parameters.</li>
+        </ul>
+
+        <h3>Calibration vs. Uncalibrated Models</h3>
+        <p>Most engineering design models for new developments are <strong>uncalibrated</strong> because there are no pre-existing streamflow records for the project site. This is acceptable for design purposes as long as:</p>
+        <ul>
+          <li>Parameter values are selected from appropriate regional tables and equations (not arbitrary).</li>
+          <li>Sensitivity analysis is performed to understand how uncertainty in parameters affects the design.</li>
+          <li>Conservative parameter choices are made where appropriate (e.g., using AMC II or III conditions for critical design events).</li>
+        </ul>
+
+        <div class="callout callout-success">
+          <div class="callout-title">Key Distinction</div>
+          <strong>Calibration</strong> adjusts parameters to fit observed data. <strong>Verification</strong> tests the calibrated model on independent data. <strong>Sensitivity analysis</strong> varies parameters to understand their influence. <strong>Uncertainty analysis</strong> quantifies the range of possible outputs given parameter uncertainty. All four are distinct concepts that appear on exams and in professional practice.
+        </div>
+
+        <h2 id="routed-outflow">Routed Outflow and the Full Design Workflow</h2>
+
+        <h3>What "Routed Outflow" Means</h3>
+        <p>The term <strong>routed outflow</strong> refers specifically to the outflow hydrograph at the outlet of a detention basin (or any routing element) that has been computed via a routing procedure — not simply the inflow hydrograph or an estimated peak. It is the actual, time-varying discharge that leaves the basin after accounting for storage effects.</p>
+
+        <p>In the context of pre/post development analysis:</p>
+        <ul>
+          <li><strong>Inflow hydrograph:</strong> Post-development runoff hydrograph entering the detention basin.</li>
+          <li><strong>Routed outflow hydrograph:</strong> The attenuated, delayed hydrograph exiting the basin after routing through the storage-outlet system.</li>
+          <li><strong>Target:</strong> Routed outflow peak ≤ pre-development peak for each design storm.</li>
+        </ul>
+
+        <h3>Complete Pre/Post Design Workflow</h3>
+        <ol>
+          <li><strong>Delineate the watershed</strong> and identify pre- and post-development land use and soil conditions.</li>
+          <li><strong>Compute pre-development CN and runoff</strong> for each design storm (2-yr, 10-yr, etc.). Generate pre-development hydrographs using UH or HMS.</li>
+          <li><strong>Compute post-development CN and runoff.</strong> Generate post-development inflow hydrographs. Compare peaks — confirm that post-development exceeds pre-development (if not, detention may not be needed).</li>
+          <li><strong>Size the detention basin.</strong> Estimate required storage. Lay out basin geometry (depth, footprint, side slopes). Develop stage-storage curve.</li>
+          <li><strong>Design the outlet structure.</strong> Select riser/orifice/weir combination. Develop stage-discharge curve for the outlet.</li>
+          <li><strong>Build the routing curve</strong> (2S/Δt + O vs. O) from the combined stage-storage and stage-discharge relationships.</li>
+          <li><strong>Route the post-development inflow</strong> through the basin using Modified Puls. Extract routed outflow peak.</li>
+          <li><strong>Compare routed outflow to pre-development target.</strong> If routed outflow exceeds the target, increase basin volume or modify the outlet. If routed outflow is well below the target, the basin may be oversized — consider reducing it.</li>
+          <li><strong>Repeat for all required design storms.</strong> The controlling storm is often the 10-year, but the 2-year and 100-year must also be checked.</li>
+          <li><strong>Verify freeboard.</strong> Confirm the maximum water surface elevation during the 100-year storm remains below the top of the basin embankment with adequate freeboard (typically 1–2 ft).</li>
+        </ol>
+
+        <div class="callout callout-success">
+          <div class="callout-title">Summary of Key Terms</div>
+          <strong>Pre-development peak:</strong> The target — post-development routed outflow must not exceed this.<br>
+          <strong>Post-development peak:</strong> The unmitigated inflow peak to the detention basin.<br>
+          <strong>Required storage:</strong> The active storage volume needed between the lowest outlet and the maximum design water surface.<br>
+          <strong>Routed outflow:</strong> The attenuated peak after Modified Puls routing through the sized basin.<br>
+          <strong>Freeboard:</strong> Vertical distance from the maximum design water surface to the top of the embankment — a safety margin against overtopping.
+        </div>
 
         <!-- ============================================================
              SECTION 5: INTERACTIVE UH CHART
@@ -1737,6 +2158,108 @@
           <div id="bp-error" class="calc-error" style="display:none;"></div>
         </div>
 
+        <!-- ── CALCULATOR 11: MULTI-SUBCATCHMENT RATIONAL METHOD ── -->
+        <h3>Calculator 11: Multi-Subcatchment Rational Method</h3>
+        <p>Enter each subcatchment's area, runoff coefficient, and individual time of concentration. Enter your IDF equation coefficients. The calculator finds the controlling t<sub>c</sub>, computes intensity, sums C&times;A across all subcatchments, and checks sub-combinations to confirm which case governs.</p>
+
+        <div class="calc-box" id="calc-mscr">
+          <div class="calc-label">IDF Equation &mdash; i = a / (t + b)<sup>c</sup></div>
+          <div class="row mb-3">
+            <div class="col-sm-2"><label class="calc-field-label">Coefficient a</label><input type="number" id="mscr-a" class="calc-input" placeholder="e.g. 98" step="any"></div>
+            <div class="col-sm-2"><label class="calc-field-label">Coefficient b</label><input type="number" id="mscr-b" class="calc-input" placeholder="e.g. 7.2" step="any"></div>
+            <div class="col-sm-2"><label class="calc-field-label">Coefficient c</label><input type="number" id="mscr-c" class="calc-input" placeholder="e.g. 0.73" step="any"></div>
+            <div class="col-sm-3"><label class="calc-field-label">t units in equation</label>
+              <select id="mscr-tunits" class="calc-input" style="height:auto;">
+                <option value="min">Minutes</option>
+                <option value="hr">Hours</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-label">Subcatchments</div>
+          <div id="mscr-rows">
+            <div class="mscr-row row align-items-center mb-2">
+              <div class="col-sm-3"><label class="calc-field-label">Name</label><input type="text" class="calc-input mscr-name" placeholder="e.g. SC-1"></div>
+              <div class="col-sm-3"><label class="calc-field-label">Area A (acres)</label><input type="number" class="calc-input mscr-area" placeholder="e.g. 5.0" min="0" step="0.1"></div>
+              <div class="col-sm-2"><label class="calc-field-label">Runoff Coeff. C</label><input type="number" class="calc-input mscr-c" placeholder="e.g. 0.75" min="0" max="1" step="0.01"></div>
+              <div class="col-sm-3"><label class="calc-field-label">t<sub>c</sub> (min)</label><input type="number" class="calc-input mscr-tc" placeholder="e.g. 15" min="0" step="1"></div>
+              <div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,'mscr-rows')" title="Remove">&#215;</button></div>
+            </div>
+          </div>
+          <button class="calc-add-btn" onclick="addMSCRRow()"><i class="fas fa-plus mr-1"></i>Add Subcatchment</button>
+
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcMSCR()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-mscr')">Reset</button>
+          </div>
+          <div id="mscr-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="mscr-result-body"></div></div>
+          <div id="mscr-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="mscr-steps-body"></div></div>
+          <div id="mscr-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 12: ROUTING CURVE BUILDER ── -->
+        <h3>Calculator 12: Routing Curve Builder (Modified Puls)</h3>
+        <p>Enter your stage-storage and stage-outflow data. The calculator builds the complete routing table with 2S/&Delta;t + O and 2S/&Delta;t &minus; O columns, ready to use directly in Modified Puls level-pool routing.</p>
+
+        <div class="calc-box" id="calc-rcb">
+          <div class="row mb-3">
+            <div class="col-sm-3"><label class="calc-field-label">Time Step &Delta;t (hr)</label><input type="number" id="rcb-dt" class="calc-input" placeholder="e.g. 0.5" min="0.01" step="0.25"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="calc-label">Stage / Elevation (ft)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">One value per line, lowest first.</p>
+              <textarea id="rcb-stage" class="calc-textarea" style="min-height:140px;" placeholder="100.0&#10;100.5&#10;101.0&#10;101.5&#10;102.0&#10;102.5&#10;103.0"></textarea>
+            </div>
+            <div class="col-md-4">
+              <div class="calc-label">Storage S (acre-ft)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Matching rows with Stage column.</p>
+              <textarea id="rcb-storage" class="calc-textarea" style="min-height:140px;" placeholder="0.0&#10;0.8&#10;2.1&#10;3.9&#10;6.2&#10;9.0&#10;12.3"></textarea>
+            </div>
+            <div class="col-md-4">
+              <div class="calc-label">Outflow O (cfs)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Matching rows — outlet discharge at each stage.</p>
+              <textarea id="rcb-outflow" class="calc-textarea" style="min-height:140px;" placeholder="0&#10;8&#10;22&#10;42&#10;68&#10;100&#10;138"></textarea>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcRCB()">Build Routing Curve</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-rcb')">Reset</button>
+          </div>
+          <div id="rcb-result" style="display:none; margin-top:1.2rem;">
+            <div class="calc-result-title" style="color:#0075b4;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Routing Curve Table</div>
+            <div style="overflow-x:auto;"><table id="rcb-table" style="border-collapse:collapse;width:100%;font-size:0.85rem;"></table></div>
+            <div class="calc-steps mt-3" style="display:block;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> How to Use This Table</div><div id="rcb-steps-body"></div></div>
+          </div>
+          <div id="rcb-error" class="calc-error" style="display:none;"></div>
+        </div>
+
+        <!-- ── CALCULATOR 13: GOODNESS OF FIT / NSE ── -->
+        <h3>Calculator 13: Goodness-of-Fit &amp; Nash-Sutcliffe Efficiency</h3>
+        <p>Enter observed and simulated discharge values (one pair per line, or two columns separated by a comma or tab). The calculator computes NSE, RMSE, peak flow error, volume error, and peak timing error — all key calibration metrics.</p>
+
+        <div class="calc-box" id="calc-nse">
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <div class="calc-label">Observed Discharge Q<sub>obs</sub> (cfs)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">One value per time step.</p>
+              <textarea id="nse-obs" class="calc-textarea" style="min-height:160px;" placeholder="0&#10;15&#10;62&#10;140&#10;210&#10;255&#10;230&#10;180&#10;120&#10;70&#10;35&#10;12&#10;0"></textarea>
+            </div>
+            <div class="col-md-6">
+              <div class="calc-label">Simulated Discharge Q<sub>sim</sub> (cfs)</div>
+              <p style="font-size:0.82rem;color:#6c757d;">Same number of values, same time steps.</p>
+              <textarea id="nse-sim" class="calc-textarea" style="min-height:160px;" placeholder="0&#10;18&#10;71&#10;152&#10;218&#10;248&#10;220&#10;172&#10;113&#10;65&#10;30&#10;10&#10;0"></textarea>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button class="calc-btn" onclick="calcNSE()">Calculate</button>
+            <button class="calc-reset-btn" onclick="resetCalc('calc-nse')">Reset</button>
+          </div>
+          <div id="nse-result" class="calc-result" style="display:none;"><div class="calc-result-title">Results</div><div id="nse-result-body"></div></div>
+          <div id="nse-steps" class="calc-steps" style="display:none;"><div class="calc-steps-title"><i class="fas fa-list-ol"></i> Step-by-Step Solution</div><div id="nse-steps-body"></div></div>
+          <div id="nse-error" class="calc-error" style="display:none;"></div>
+        </div>
+
       </div>
       <!-- END CONTENT -->
 
@@ -2507,6 +3030,30 @@ var GLOSSARY = [
   {term:'Muskingum x Parameter', tag:'rt', def:'Dimensionless weighting factor (0 ≤ x ≤ 0.5) controlling the relative influence of inflow vs outflow on channel storage. x=0: pure reservoir routing (maximum attenuation). x=0.5: pure translation (no attenuation). Typical natural channels: x = 0.1–0.3.'},
   {term:'Stage-Storage Curve', tag:'rt', def:'A relationship between water surface elevation (stage) and storage volume in a reservoir or detention basin. Combined with the stage-discharge curve, it is used to build the routing curve for level-pool routing.'},
   {term:'Stage-Discharge Curve', tag:'rt', def:'A relationship between water surface elevation (stage) and outflow rate through a spillway, outlet pipe, or weir. Combined with the stage-storage curve, it defines how outflow responds to changes in storage.'},
+  // ── New topics ──
+  {term:'Pre-Development Condition', tag:'rt', def:'The hydrologic state of a watershed before construction or land use change. Characterized by lower CN, higher infiltration, longer tc, and lower peak flows. Pre-development peak discharge is the regulatory target that post-development design must not exceed.'},
+  {term:'Post-Development Condition', tag:'rt', def:'The watershed state after development. Higher CN, reduced infiltration, shorter tc (impervious surfaces speed flow), higher and faster peak discharges. Drives the need for stormwater detention or retention controls.'},
+  {term:'Required Storage', tag:'rt', def:'The active storage volume in a detention basin needed to attenuate the post-development peak flow down to the pre-development target. Estimated as V ≈ 0.5×(Qin,peak−Qout,peak)×Tb, then refined through full routing.'},
+  {term:'Routed Outflow', tag:'rt', def:'The time-varying discharge exiting a detention basin after the inflow hydrograph has been passed through the routing procedure (e.g., Modified Puls). The routed outflow peak must not exceed the pre-development target peak.'},
+  {term:'Freeboard', tag:'rt', def:'The vertical distance between the maximum design water surface elevation in a detention basin (at the 100-year storm) and the top of the embankment. Provides a safety margin against overtopping. Typically 1–2 feet minimum.'},
+  {term:'Detention Basin', tag:'rt', def:'A stormwater management basin that temporarily stores runoff and releases it at a controlled rate to attenuate the post-development peak flow. Empties completely between storm events. Controls peak rate but not total volume.'},
+  {term:'Retention Basin (Wet Pond)', tag:'rt', def:'A stormwater basin that maintains a permanent pool of water between storms. Provides both peak rate control and volume reduction through evaporation and infiltration, as well as water quality benefits through sedimentation in the permanent pool.'},
+  {term:'Inflow Hydrograph', tag:'rt', def:'The time-varying discharge entering a detention basin or routing reach — typically the post-development runoff hydrograph from a design storm. This is what is transformed into the routed outflow hydrograph.'},
+  {term:'Calibration (model)', tag:'rt', def:'The process of adjusting model parameters (CN, lag time, Manning n, routing coefficients) so that simulated outputs match observed streamflow data from a known storm event. Requires actual measured flow records.'},
+  {term:'Verification / Validation (model)', tag:'rt', def:'Testing a calibrated model against a separate, independent storm event not used in calibration. If results are acceptable, the model is validated and its parameters can be trusted for design prediction.'},
+  {term:'Nash-Sutcliffe Efficiency (NSE)', tag:'rt', def:'A goodness-of-fit statistic comparing simulated to observed hydrographs. Ranges from −∞ to 1.0; NSE = 1.0 is perfect. NSE > 0.5 is generally acceptable; NSE > 0.75 is good for calibration.'},
+  {term:'Continuity Error', tag:'rt', def:'The percentage difference between total inflow and total outflow plus change in storage in a model simulation. Should be < 1% (absolute value). A higher continuity error signals a modeling error such as disconnected network elements or incorrect invert elevations.'},
+  {term:'HEC-HMS', tag:'rt', def:'Hydrologic Engineering Center — Hydrologic Modeling System. Free software from the US Army Corps of Engineers for watershed-scale rainfall-runoff modeling, routing, and detention basin analysis using CN method, UH convolution, and multiple routing methods.'},
+  {term:'SWMM / PCSWMM', tag:'rt', def:'Storm Water Management Model (EPA). PCSWMM is a commercial interface for SWMM. Solves the full dynamic wave (St. Venant) equations for pipe network hydraulics. Used for urban drainage design including inlets, pipes, manholes, storage units, and LID controls.'},
+  {term:'Low Impact Development (LID)', tag:'rm', def:'A stormwater approach that mimics pre-development hydrology by managing rainfall close to where it falls — through infiltration, evapotranspiration, and storage — rather than collecting and rapidly conveying runoff to a central facility.'},
+  {term:'Green Infrastructure (GI)', tag:'rm', def:'The use of natural or semi-natural systems to manage stormwater. Includes site-scale LID practices (bioretention, green roofs, permeable pavement) and landscape-scale elements (urban forests, floodplain restoration, constructed wetlands).'},
+  {term:'Bioretention / Rain Garden', tag:'rm', def:'A depressed, vegetated area with engineered soil media that infiltrates and filters stormwater runoff. Reduces both volume and peak flow. Commonly used in parking lots, roadway medians, and residential yards.'},
+  {term:'Permeable Pavement', tag:'rm', def:'Porous asphalt, concrete, or interlocking pavers that allow stormwater to infiltrate through the surface rather than running off. Reduces effective impervious area and promotes groundwater recharge.'},
+  {term:'Green Roof', tag:'rm', def:'A rooftop covered with a growing medium and vegetation layer that retains rainfall in the media before it is slowly released or evapotranspired. Reduces runoff volume and peak from rooftop areas in dense urban settings.'},
+  {term:'Vegetated Swale', tag:'rm', def:'A shallow, vegetated open channel that conveys stormwater slowly, promoting infiltration, sedimentation, and biological uptake. Used along roadways as an alternative to curb-and-gutter systems.'},
+  {term:'Controlling tc (multiple subcatchments)', tag:'rm', def:'When multiple subcatchments drain to a common outlet, the design storm duration for the Rational Method is set equal to the longest tc among all subcatchments. This is the time at which the entire drainage area is simultaneously contributing runoff.'},
+  {term:'IDF Curve Equation (Sherman)', tag:'rm', def:'A mathematical form of the IDF relationship: i = a / (t + b)^c. Where i = intensity (in/hr), t = duration (min), and a, b, c are regression coefficients fitted to local rainfall data for a specific return period and location.'},
+  {term:'Sensitivity Analysis', tag:'rt', def:'Varying model input parameters one at a time (or in combination) to quantify how much the output changes. Identifies which parameters most influence results and helps engineers understand model uncertainty without observed calibration data.'},
 ];
 
 var TAG_LABELS = {uh:'Unit Hydrograph', rm:'Rational Method', cn:'Curve Number', rt:'Routing'};
@@ -2556,6 +3103,251 @@ function cnLookup(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){ renderGlossary(''); });
+
+// ─── CALCULATOR 11: MULTI-SUBCATCHMENT RATIONAL METHOD ────────────────────────
+function addMSCRRow(){
+  var c=document.getElementById('mscr-rows');
+  var d=document.createElement('div');
+  d.className='mscr-row row align-items-center mb-2';
+  d.innerHTML='<div class="col-sm-3"><label class="calc-field-label">Name</label><input type="text" class="calc-input mscr-name" placeholder="e.g. SC-2"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">Area A (acres)</label><input type="number" class="calc-input mscr-area" placeholder="e.g. 4.0" min="0" step="0.1"></div>'
+    +'<div class="col-sm-2"><label class="calc-field-label">C</label><input type="number" class="calc-input mscr-c" placeholder="e.g. 0.60" min="0" max="1" step="0.01"></div>'
+    +'<div class="col-sm-3"><label class="calc-field-label">t<sub>c</sub> (min)</label><input type="number" class="calc-input mscr-tc" placeholder="e.g. 20" min="0" step="1"></div>'
+    +'<div class="col-sm-1 pt-4"><button class="calc-remove-btn" onclick="removeRow(this,\'mscr-rows\')" title="Remove">&#215;</button></div>';
+  c.appendChild(d);
+}
+
+function mscrIntensity(tc_input, a, b, c_coef, tunits) {
+  var t = tunits === 'hr' ? tc_input / 60 : tc_input;
+  return a / Math.pow(t + b, c_coef);
+}
+
+function calcMSCR(){
+  hideError('mscr-error'); hideEl('mscr-result'); hideEl('mscr-steps');
+  var a=parseFloat(document.getElementById('mscr-a').value);
+  var b=parseFloat(document.getElementById('mscr-b').value);
+  var c_coef=parseFloat(document.getElementById('mscr-c').value);
+  var tunits=document.getElementById('mscr-tunits').value;
+  if(isNaN(a)||isNaN(b)||isNaN(c_coef)){showError('mscr-error','Enter all three IDF coefficients a, b, and c.');return;}
+
+  var rows=document.querySelectorAll('#mscr-rows .mscr-row');
+  var scs=[], valid=true;
+  rows.forEach(function(row){
+    var name=row.querySelector('.mscr-name').value||'SC';
+    var area=parseFloat(row.querySelector('.mscr-area').value);
+    var C=parseFloat(row.querySelector('.mscr-c').value);
+    var tc=parseFloat(row.querySelector('.mscr-tc').value);
+    if(isNaN(area)||isNaN(C)||isNaN(tc)||area<=0||C<0||C>1||tc<=0){valid=false;return;}
+    scs.push({name:name,area:area,C:C,tc:tc,CA:C*area});
+  });
+  if(!valid||scs.length<1){showError('mscr-error','Check all subcatchment rows — area > 0, C between 0–1, tc > 0.');return;}
+
+  // Find controlling tc (max) and compute combined Q
+  var maxTC=Math.max.apply(null,scs.map(function(s){return s.tc;}));
+  var sumCA=scs.reduce(function(acc,s){return acc+s.CA;},0);
+  var i_control=mscrIntensity(maxTC,a,b,c_coef,tunits);
+  var Q_control=i_control*sumCA;
+
+  // Check all subsets (brute force for small n)
+  var bestQ=Q_control, bestSubset=null, bestTC=maxTC, bestI=i_control;
+  var n=scs.length;
+  for(var mask=1;mask<(1<<n);mask++){
+    if(mask===(1<<n)-1) continue; // skip full set — already computed
+    var subset=[], subCA=0, subTC=0;
+    for(var j=0;j<n;j++){
+      if(mask&(1<<j)){subset.push(scs[j]);subCA+=scs[j].CA;subTC=Math.max(subTC,scs[j].tc);}
+    }
+    var i_sub=mscrIntensity(subTC,a,b,c_coef,tunits);
+    var Q_sub=i_sub*subCA;
+    if(Q_sub>bestQ){bestQ=Q_sub;bestSubset=subset.map(function(s){return s.name;});bestTC=subTC;bestI=i_sub;}
+  }
+
+  // Build result
+  var scTable=scs.map(function(s){
+    return resultRow(s.name+' (C='+s.c+', A='+s.area+' ac, tc='+s.tc+' min)',
+      'C\u00D7A = '+s.CA.toFixed(3)+' | i('+s.tc+'min) = '+mscrIntensity(s.tc,a,b,c_coef,tunits).toFixed(2)+' in/hr');
+  }).join('');
+
+  var html=scTable
+    +'<div style="border-top:2px solid #c3e6cb;margin:0.4rem 0;"></div>'
+    +resultRow('Controlling t<sub>c</sub>',maxTC.toFixed(1)+' min ('+scs.filter(function(s){return s.tc===maxTC;})[0].name+')')
+    +resultRow('Intensity at controlling t<sub>c</sub>','i = '+a+' / ('+maxTC.toFixed(1)+(tunits==='hr'?'/60':'')+' + '+b+')^'+c_coef+' = '+i_control.toFixed(3)+' in/hr')
+    +resultRow('&Sigma;(C\u00D7A)',sumCA.toFixed(3)+' acres')
+    +resultRow('Peak Q (full area)',Q_control.toFixed(2)+' cfs');
+
+  if(bestSubset){
+    html+='<div style="border-top:2px solid #ffc107;margin:0.4rem 0;"></div>'
+      +resultRow('&#9888; Subset check','Subcatchments ['+bestSubset.join(', ')+'] at tc='+bestTC+' min give Q = '+bestQ.toFixed(2)+' cfs — this GOVERNS')
+      +resultRow('Governing Peak Q',bestQ.toFixed(2)+' cfs at tc = '+bestTC.toFixed(1)+' min, i = '+bestI.toFixed(3)+' in/hr');
+  } else {
+    html+=resultRow('Subset check','Full area controls \u2713 — no subset produces a higher Q');
+  }
+  document.getElementById('mscr-result-body').innerHTML=html;
+  showEl('mscr-result');
+
+  // Steps
+  var steps=stepBlock(1,'List subcatchment C\u00D7A products','For each subcatchment: C\u00D7A',
+    scs.map(function(s){return s.name+': '+s.C.toFixed(2)+'\u00D7'+s.area+' = '+s.CA.toFixed(3);}).join('; '),
+    '\u03A3(C\u00D7A) = '+sumCA.toFixed(3)+' acres');
+  steps+=stepBlock(2,'Identify controlling t<sub>c</sub>','tc,control = max(tc,i) across all subcatchments',
+    scs.map(function(s){return s.name+': '+s.tc+' min';}).join(', '),
+    'tc,control = '+maxTC.toFixed(1)+' min');
+  steps+=stepBlock(3,'Compute intensity from IDF','i = '+a+' / (t + '+b+')^'+c_coef,
+    'i = '+a+' / ('+maxTC.toFixed(1)+' + '+b+')^'+c_coef+' = '+a+' / '+(maxTC+b).toFixed(2)+'^'+c_coef,
+    'i = '+i_control.toFixed(3)+' in/hr');
+  steps+=stepBlock(4,'Compute peak discharge','Q = i \u00D7 \u03A3(C\u00D7A)',
+    'Q = '+i_control.toFixed(3)+' \u00D7 '+sumCA.toFixed(3),
+    'Q = '+Q_control.toFixed(2)+' cfs (full area case)');
+  if(bestSubset){
+    steps+=stepBlock(5,'Subset check','Check subsets — shorter tc may give higher i and higher Q despite smaller area',
+      'Best subset ['+bestSubset.join(', ')+'] at tc='+bestTC+'min: i='+bestI.toFixed(3)+' in/hr, Q='+bestQ.toFixed(2)+' cfs',
+      'GOVERNS — use Q = '+bestQ.toFixed(2)+' cfs');
+  } else {
+    steps+=stepBlock(5,'Subset check','Verify no subset outperforms the full area',
+      'All subsets checked — none exceed Q = '+Q_control.toFixed(2)+' cfs',
+      'Full area at tc = '+maxTC.toFixed(1)+' min controls \u2713');
+  }
+  showSteps('mscr-steps','mscr-steps-body',steps);
+}
+
+// ─── CALCULATOR 12: ROUTING CURVE BUILDER ────────────────────────────────────
+function calcRCB(){
+  hideError('rcb-error');
+  document.getElementById('rcb-result').style.display='none';
+  var dt=parseFloat(document.getElementById('rcb-dt').value);
+  if(isNaN(dt)||dt<=0){showError('rcb-error','Enter a valid time step \u0394t (hours).');return;}
+  var dt_s=dt*3600;
+  var stageRaw=document.getElementById('rcb-stage').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var storRaw=document.getElementById('rcb-storage').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var outRaw=document.getElementById('rcb-outflow').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  if(stageRaw.some(isNaN)||storRaw.some(isNaN)||outRaw.some(isNaN)){showError('rcb-error','All three columns must contain numbers only, one per line.');return;}
+  if(stageRaw.length!==storRaw.length||stageRaw.length!==outRaw.length||stageRaw.length<2){showError('rcb-error','All three columns must have the same number of rows (at least 2).');return;}
+
+  var rows=stageRaw.map(function(stage,i){
+    var S_ft3=storRaw[i]*43560;
+    var O=outRaw[i];
+    var ind_plus=2*S_ft3/dt_s+O;
+    var ind_minus=2*S_ft3/dt_s-O;
+    return{stage:stage,S_acft:storRaw[i],S_ft3:S_ft3,O:O,ind_plus:ind_plus,ind_minus:ind_minus};
+  });
+
+  var tbl=document.getElementById('rcb-table');
+  tbl.innerHTML='<tr>'
+    +'<th class="conv-table-header">Stage (ft)</th>'
+    +'<th class="conv-table-header">Storage S (ac-ft)</th>'
+    +'<th class="conv-table-header">S (ft\u00B3)</th>'
+    +'<th class="conv-table-header">Outflow O (cfs)</th>'
+    +'<th class="conv-table-header">2S/\u0394t (cfs)</th>'
+    +'<th class="conv-table-header" style="background:#28a745;">2S/\u0394t + O (cfs)</th>'
+    +'<th class="conv-table-header" style="background:#6f42c1;color:#fff;">2S/\u0394t \u2212 O (cfs)</th>'
+    +'</tr>';
+  rows.forEach(function(r){
+    tbl.innerHTML+='<tr>'
+      +'<td class="conv-table-cell time">'+r.stage.toFixed(2)+'</td>'
+      +'<td class="conv-table-cell">'+r.S_acft.toFixed(3)+'</td>'
+      +'<td class="conv-table-cell">'+r.S_ft3.toFixed(0)+'</td>'
+      +'<td class="conv-table-cell drh">'+r.O.toFixed(2)+'</td>'
+      +'<td class="conv-table-cell">'+((2*r.S_ft3/dt_s)).toFixed(2)+'</td>'
+      +'<td class="conv-table-cell total">'+r.ind_plus.toFixed(2)+'</td>'
+      +'<td class="conv-table-cell" style="background:#f3f0fa;font-weight:600;color:#6f42c1;">'+r.ind_minus.toFixed(2)+'</td>'
+      +'</tr>';
+  });
+
+  document.getElementById('rcb-steps-body').innerHTML=
+    stepBlock(1,'Convert storage to ft\u00B3','S [ft\u00B3] = S [ac-ft] \u00D7 43,560','Example: '+storRaw[1].toFixed(2)+' ac-ft \u00D7 43,560 = '+rows[1].S_ft3.toFixed(0)+' ft\u00B3','Repeat for every stage row')
+    +stepBlock(2,'Compute 2S/\u0394t','2S/\u0394t [cfs] = 2 \u00D7 S [ft\u00B3] / \u0394t [s]','\u0394t = '+dt+' hr = '+dt_s+' s &nbsp;|&nbsp; Example row 2: 2\u00D7'+rows[1].S_ft3.toFixed(0)+'/'+dt_s+' = '+(2*rows[1].S_ft3/dt_s).toFixed(2)+' cfs','Repeat for every stage row')
+    +stepBlock(3,'Build routing indicator columns','2S/\u0394t + O &nbsp; (right side of Modified Puls equation)','Example row 2: '+(2*rows[1].S_ft3/dt_s).toFixed(2)+' + '+rows[1].O.toFixed(2)+' = '+rows[1].ind_plus.toFixed(2)+' cfs','2S/\u0394t \u2212 O is the carry-forward term')
+    +stepBlock(4,'Use in Modified Puls routing','Given known I\u2081+I\u2082 and carry-forward (2S\u2081/\u0394t \u2212 O\u2081):','RHS = I\u2081+I\u2082+(2S\u2081/\u0394t\u2212O\u2081) &rarr; interpolate this table to find O\u2082 &rarr; carry-forward = RHS \u2212 2O\u2082','Plot 2S/\u0394t+O vs O for a smooth routing curve to interpolate from');
+
+  document.getElementById('rcb-result').style.display='block';
+}
+
+// ─── CALCULATOR 13: NSE / GOODNESS OF FIT ────────────────────────────────────
+function calcNSE(){
+  hideError('nse-error'); hideEl('nse-result'); hideEl('nse-steps');
+  var obsRaw=document.getElementById('nse-obs').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  var simRaw=document.getElementById('nse-sim').value.trim().split('\n').map(function(x){return parseFloat(x.trim());});
+  if(obsRaw.some(isNaN)||obsRaw.length<3){showError('nse-error','Observed values: one number per line, at least 3 values.');return;}
+  if(simRaw.some(isNaN)||simRaw.length<3){showError('nse-error','Simulated values: one number per line, at least 3 values.');return;}
+  if(obsRaw.length!==simRaw.length){showError('nse-error','Observed and simulated must have the same number of values ('+obsRaw.length+' vs '+simRaw.length+').');return;}
+
+  var n=obsRaw.length;
+  var meanObs=obsRaw.reduce(function(a,b){return a+b;},0)/n;
+
+  // NSE = 1 - SS_res/SS_tot
+  var SS_res=0,SS_tot=0;
+  obsRaw.forEach(function(o,i){SS_res+=Math.pow(o-simRaw[i],2);SS_tot+=Math.pow(o-meanObs,2);});
+  var NSE=1-(SS_res/SS_tot);
+
+  // RMSE
+  var RMSE=Math.sqrt(SS_res/n);
+
+  // Peak flow
+  var peakObs=Math.max.apply(null,obsRaw), peakSim=Math.max.apply(null,simRaw);
+  var peakObsIdx=obsRaw.indexOf(peakObs), peakSimIdx=simRaw.indexOf(peakSim);
+  var peakErr=(peakSim-peakObs)/peakObs*100;
+  var timingErr=peakSimIdx-peakObsIdx;
+
+  // Volume
+  var volObs=obsRaw.reduce(function(a,b){return a+b;},0);
+  var volSim=simRaw.reduce(function(a,b){return a+b;},0);
+  var volErr=(volSim-volObs)/volObs*100;
+
+  // NSE rating
+  function nseRating(nse){
+    if(nse>=0.85)return{label:'Excellent',color:'#155724',bg:'#edf7f0'};
+    if(nse>=0.75)return{label:'Good',color:'#0c4e1c',bg:'#d4edda'};
+    if(nse>=0.65)return{label:'Satisfactory',color:'#533f03',bg:'#fff3cd'};
+    if(nse>=0.50)return{label:'Acceptable',color:'#856404',bg:'#fff8ec'};
+    if(nse>=0.00)return{label:'Poor — needs improvement',color:'#721c24',bg:'#f8d7da'};
+    return{label:'Unsatisfactory — model worse than mean',color:'#721c24',bg:'#f8d7da'};
+  }
+  var rating=nseRating(NSE);
+
+  var html='<div style="background:'+rating.bg+';border:1px solid '+rating.color+';border-radius:4px;padding:0.6rem 1rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:1rem;">'
+    +'<div style="font-size:2rem;font-weight:700;color:'+rating.color+';">'+NSE.toFixed(3)+'</div>'
+    +'<div><div style="font-weight:700;color:'+rating.color+';">NSE Rating: '+rating.label+'</div>'
+    +'<div style="font-size:0.82rem;color:#495057;">NSE \u2265 0.85 Excellent | \u2265 0.75 Good | \u2265 0.65 Satisfactory | \u2265 0.50 Acceptable | &lt; 0.50 Poor</div>'
+    +'</div></div>'
+    +resultRow('n (number of time steps)',n)
+    +resultRow('Mean observed Q\u0304<sub>obs</sub>',meanObs.toFixed(3)+' cfs')
+    +resultRow('SS<sub>res</sub> = \u03A3(Q<sub>obs</sub>\u2212Q<sub>sim</sub>)\u00B2',SS_res.toFixed(2)+' cfs\u00B2')
+    +resultRow('SS<sub>tot</sub> = \u03A3(Q<sub>obs</sub>\u2212Q\u0304)\u00B2',SS_tot.toFixed(2)+' cfs\u00B2')
+    +resultRow('NSE = 1 \u2212 SS<sub>res</sub>/SS<sub>tot</sub>',NSE.toFixed(4))
+    +resultRow('RMSE = \u221A(SS<sub>res</sub>/n)',RMSE.toFixed(3)+' cfs')
+    +'<div style="border-top:2px solid #c3e6cb;margin:0.4rem 0;"></div>'
+    +resultRow('Peak Q<sub>obs</sub>',peakObs.toFixed(2)+' cfs at step '+(peakObsIdx+1))
+    +resultRow('Peak Q<sub>sim</sub>',peakSim.toFixed(2)+' cfs at step '+(peakSimIdx+1))
+    +resultRow('Peak flow error',(peakErr>=0?'+':'')+peakErr.toFixed(1)+'%'+(Math.abs(peakErr)<10?' \u2713 (<10%)':(Math.abs(peakErr)<15?' \u26A0 (10\u201315%)':' \u274C (>15%)')))
+    +resultRow('Peak timing error',(timingErr===0?'0 steps \u2713':(timingErr>0?'+':'')+timingErr+' steps'))
+    +resultRow('Volume error',(volErr>=0?'+':'')+volErr.toFixed(1)+'%'+(Math.abs(volErr)<5?' \u2713 (<5%)':(Math.abs(volErr)<10?' \u26A0 (5\u201310%)':' \u274C (>10%)')));
+
+  document.getElementById('nse-result-body').innerHTML=html;
+  showEl('nse-result');
+
+  var steps=stepBlock(1,'Compute mean of observed values','\u0305Q<sub>obs</sub> = \u03A3Q<sub>obs</sub> / n',
+    '\u03A3Q<sub>obs</sub> = '+volObs.toFixed(2)+' | n = '+n,
+    '\u0305Q<sub>obs</sub> = '+meanObs.toFixed(3)+' cfs');
+  steps+=stepBlock(2,'Compute SS<sub>res</sub> (residual sum of squares)','SS<sub>res</sub> = \u03A3(Q<sub>obs,i</sub> \u2212 Q<sub>sim,i</sub>)\u00B2',
+    'Sum of squared differences between observed and simulated at each time step',
+    'SS<sub>res</sub> = '+SS_res.toFixed(3));
+  steps+=stepBlock(3,'Compute SS<sub>tot</sub> (total sum of squares)','SS<sub>tot</sub> = \u03A3(Q<sub>obs,i</sub> \u2212 \u0305Q<sub>obs</sub>)\u00B2',
+    'Sum of squared deviations of observed from the observed mean',
+    'SS<sub>tot</sub> = '+SS_tot.toFixed(3));
+  steps+=stepBlock(4,'Nash-Sutcliffe Efficiency','NSE = 1 \u2212 SS<sub>res</sub> / SS<sub>tot</sub>',
+    'NSE = 1 \u2212 '+SS_res.toFixed(3)+' / '+SS_tot.toFixed(3)+' = 1 \u2212 '+(SS_res/SS_tot).toFixed(4),
+    'NSE = '+NSE.toFixed(4)+' \u2192 '+rating.label);
+  steps+=stepBlock(5,'RMSE','RMSE = \u221A(SS<sub>res</sub> / n)',
+    'RMSE = \u221A('+SS_res.toFixed(2)+' / '+n+') = \u221A'+((SS_res/n)).toFixed(2),
+    'RMSE = '+RMSE.toFixed(3)+' cfs');
+  steps+=stepBlock(6,'Peak flow error','Error% = (Q<sub>sim,peak</sub> \u2212 Q<sub>obs,peak</sub>) / Q<sub>obs,peak</sub> \u00D7 100',
+    '('+peakSim.toFixed(2)+' \u2212 '+peakObs.toFixed(2)+') / '+peakObs.toFixed(2)+' \u00D7 100',
+    (peakErr>=0?'+':'')+peakErr.toFixed(1)+'% | Target: |error| < 10% for calibration, < 15% for verification');
+  steps+=stepBlock(7,'Volume error','Error% = (V<sub>sim</sub> \u2212 V<sub>obs</sub>) / V<sub>obs</sub> \u00D7 100',
+    '(\u03A3Q<sub>sim</sub> \u2212 \u03A3Q<sub>obs</sub>) / \u03A3Q<sub>obs</sub> \u00D7 100 = ('+volSim.toFixed(1)+' \u2212 '+volObs.toFixed(1)+') / '+volObs.toFixed(1)+' \u00D7 100',
+    (volErr>=0?'+':'')+volErr.toFixed(1)+'% | Target: |error| < 5% for calibration');
+  showSteps('nse-steps','nse-steps-body',steps);
+}
 </script>
 </body>
 </html>
